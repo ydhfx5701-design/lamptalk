@@ -1,7 +1,7 @@
 {
   "name": "토이 배틀",
   "short_name": "토이 배틀",
-  "description": "살아 움직이는 장난감들과 밀림의 과자를 지키는 액션 디펜스 게임",
+  "description": "살아 움직이는 장난감들과 밀림의 쿠키를 지키는 액션 디펜스 게임",
   "start_url": "./index.html",
   "display": "fullscreen",
   "display_override": ["fullscreen", "standalone"],
