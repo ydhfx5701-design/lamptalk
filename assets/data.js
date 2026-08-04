@@ -1546,7 +1546,8 @@ window.TOY_DATA={
     "spear": "assets/sfx/spear.mp3",
     "sword": "assets/sfx/sword.mp3",
     "hammer": "assets/sfx/hammer.mp3",
-    "death": "assets/sfx/death.mp3"
+    "death": "assets/sfx/death.mp3",
+    "click": "assets/sfx/click.mp3"
   },
   "items": {
     "chest": "assets/items/hidden_chest.webp",
