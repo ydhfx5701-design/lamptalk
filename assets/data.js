@@ -1549,6 +1549,39 @@ window.TOY_DATA={
     "death": "assets/sfx/death.mp3",
     "click": "assets/sfx/click.mp3"
   },
+  "update": {
+    "snake": [
+      "assets/update/snake/snake_0.webp",
+      "assets/update/snake/snake_1.webp",
+      "assets/update/snake/snake_2.webp",
+      "assets/update/snake/snake_3.webp",
+      "assets/update/snake/snake_4.webp",
+      "assets/update/snake/snake_5.webp",
+      "assets/update/snake/snake_6.webp"
+    ],
+    "death": {
+      "fly": ["assets/update/death/fly/4.webp","assets/update/death/fly/5.webp","assets/update/death/fly/6.webp","assets/update/death/fly/7.webp","assets/update/death/fly/8.webp"],
+      "croc": ["assets/update/death/croc/4.webp","assets/update/death/croc/5.webp","assets/update/death/croc/6.webp","assets/update/death/croc/7.webp","assets/update/death/croc/8.webp"],
+      "snake": ["assets/update/death/croc/4.webp","assets/update/death/croc/5.webp","assets/update/death/croc/6.webp","assets/update/death/croc/7.webp","assets/update/death/croc/8.webp"],
+      "pillbug": ["assets/update/death/pillbug/4.webp","assets/update/death/pillbug/5.webp","assets/update/death/pillbug/6.webp","assets/update/death/pillbug/7.webp","assets/update/death/pillbug/8.webp"],
+      "hippo": ["assets/update/death/hippo/4.webp","assets/update/death/hippo/5.webp","assets/update/death/hippo/6.webp","assets/update/death/hippo/7.webp","assets/update/death/hippo/8.webp"],
+      "rhino": ["assets/update/death/hippo/4.webp","assets/update/death/hippo/5.webp","assets/update/death/hippo/6.webp","assets/update/death/hippo/7.webp","assets/update/death/hippo/8.webp"]
+    },
+    "spearFx": [
+      "assets/update/spear/1.png","assets/update/spear/2.png","assets/update/spear/3.png",
+      "assets/update/spear/4.png","assets/update/spear/5.png","assets/update/spear/6.png"
+    ],
+    "swordFx": [
+      "assets/update/sword/1.png","assets/update/sword/2.png",
+      "assets/update/sword/3.png","assets/update/sword/4.png"
+    ],
+    "top": [
+      "assets/update/top/3.webp","assets/update/top/4.webp","assets/update/top/5.webp",
+      "assets/update/top/6.webp","assets/update/top/7.webp","assets/update/top/8.webp"
+    ],
+    "helicopter": "assets/update/helicopter.webp",
+    "missile": "assets/update/missile_strip.webp"
+  },
   "items": {
     "chest": "assets/items/hidden_chest.webp",
     "car": "assets/items/car.webp"
