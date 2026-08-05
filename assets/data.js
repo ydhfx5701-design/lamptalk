@@ -1551,13 +1551,13 @@ window.TOY_DATA={
   },
   "update": {
     "snake": [
-      "assets/update/snake/snake_0.webp",
-      "assets/update/snake/snake_1.webp",
-      "assets/update/snake/snake_2.webp",
-      "assets/update/snake/snake_3.webp",
-      "assets/update/snake/snake_4.webp",
-      "assets/update/snake/snake_5.webp",
-      "assets/update/snake/snake_6.webp"
+      "assets/update/snake/snake_0.png",
+      "assets/update/snake/snake_1.png",
+      "assets/update/snake/snake_2.png",
+      "assets/update/snake/snake_3.png",
+      "assets/update/snake/snake_4.png",
+      "assets/update/snake/snake_5.png",
+      "assets/update/snake/snake_6.png"
     ],
     "death": {
       "fly": ["assets/update/death/fly/4.webp","assets/update/death/fly/5.webp","assets/update/death/fly/6.webp","assets/update/death/fly/7.webp","assets/update/death/fly/8.webp"],
