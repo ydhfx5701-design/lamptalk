@@ -74,7 +74,7 @@
     #select .char-row{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:none}
     #select .round-btn{position:absolute;top:27.96%;width:15%;height:12.5%;margin:0;padding:0;border:0;background:transparent;box-shadow:none;opacity:.001;pointer-events:auto;z-index:6}
     #select #prevChar{left:9.3%}#select #nextChar{right:10.4%}
-    #select .char-info{position:absolute;left:20%;right:20%;top:6.7%;min-width:0;text-align:center;pointer-events:none;z-index:3}
+    #select .char-info{position:absolute;left:20%;right:20%;top:calc(var(--safe-top) + 13%);min-width:0;text-align:center;pointer-events:none;z-index:3}
     #select #charName{font-size:clamp(20px,5.3vw,29px);line-height:1;font-weight:1000;color:#4b2b0e;text-shadow:0 2px 0 #ffe3a0}
     #select #charWeapon{display:none}
     #select .setup-block{position:absolute;left:0;right:0;top:60.7%;width:100%;height:23.3%;margin:0;display:grid;grid-template-rows:repeat(3,1fr);gap:0}
@@ -242,6 +242,8 @@
     const vv=window.visualViewport;
     DPR=Math.min(devicePixelRatio||1,1.35);topSafe=standalone?Math.max(48,envSafeTop()):12;bottomSafe=standalone?Math.max(34,envSafeBottom()):10;
     const root=document.documentElement;root.style.setProperty('--safe-top',topSafe+'px');root.style.setProperty('--safe-bottom',bottomSafe+'px');
+    const measuredH=Math.max(window.innerHeight||0,document.documentElement.clientHeight||0,vv?vv.height:0);
+    if(measuredH>0)root.style.setProperty('--app-h',measuredH+'px');
     /* 레이아웃 뷰포트와 시각 뷰포트가 어긋나면(사파리 확대/축소 상태 등) fixed 요소가 밀려 보인다 — 오프셋만큼 되돌려준다 */
     const offX=vv?vv.offsetLeft:0, offY=vv?vv.offsetTop:0;
     root.style.transform=(offX||offY)?`translate(${-offX}px,${-offY}px)`:'none';
@@ -1024,17 +1026,13 @@
     if(p.flags.helicopter){const im=IMG[DATA.update?.helicopter],hp=helicopterPose(p),s=worldToScreen(hp.x,hp.y),target=nearest(hp.x,hp.y,660),facing=target?(target.x>=hp.x?1:-1):hp.face,pulse=(Math.sin(G.time*4.1)+1)*.5;ctx.save();ctx.translate(s.x,s.y+32-hp.bob*.22);ctx.fillStyle=`rgba(8,20,10,${.16+pulse*.08})`;ctx.beginPath();ctx.ellipse(0,0,17+pulse*3,4.5+pulse*1.2,0,0,TAU);ctx.fill();ctx.restore();ctx.save();ctx.translate(s.x,s.y);ctx.scale(facing>0?-1:1,1);if(im?.complete){const w=58,h=w*(im.height/im.width);ctx.drawImage(im,-w/2,-h/2,w,h);}ctx.restore();}
     const mi=IMG[DATA.update?.missile];for(const m of G.missiles){if(m.delay>0)continue;const s=worldToScreen(m.x,m.y);ctx.save();ctx.translate(s.x,s.y);ctx.rotate(m.a);if(mi?.complete)ctx.drawImage(mi,32,0,32,32,-16,-16,32,32);else{ctx.fillStyle='#ffb52e';ctx.fillRect(-10,-3,20,6);}ctx.restore();}
     for(const b of (G.booms||[])){const sc=worldToScreen(b.x,b.y);
-      const cs=worldToScreen(b.cx,b.cy);
-      ctx.save();ctx.translate(cs.x,cs.y);
-      ctx.globalAlpha=.4;ctx.strokeStyle='rgba(255,225,90,.55)';ctx.lineWidth=2;ctx.setLineDash([6,7]);
-      ctx.beginPath();ctx.arc(0,0,b.R,0,TAU);ctx.stroke();ctx.setLineDash([]);
-      ctx.restore();
       ctx.save();ctx.translate(sc.x,sc.y);
-      ctx.globalAlpha=.5;ctx.strokeStyle='rgba(255,235,120,.8)';ctx.lineWidth=4;ctx.lineCap='round';
-      ctx.beginPath();ctx.arc(0,0,24,b.spin-1.2,b.spin+1.2);ctx.stroke();
-      ctx.globalAlpha=1;ctx.rotate(b.spin);
+      ctx.rotate(b.spin);
       const bfx=DATA.boomerangFx||[],bim=IMG[bfx[Math.floor(b.spin*2.2)%(bfx.length||1)]];
-      if(bim&&bim.complete){const bw=70,bh=bw*(bim.height/bim.width);ctx.drawImage(bim,-bw/2,-bh/2,bw,bh);}
+      if(bim&&bim.complete){
+        const bw=78,bh=bw*(bim.height/bim.width);
+        ctx.drawImage(bim,-bw/2,-bh/2,bw,bh);
+      }
       ctx.restore();
     }
     if(p.ball){
