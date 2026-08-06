@@ -1546,6 +1546,52 @@ window.TOY_DATA={
     "assets/boomerang/2.png",
     "assets/boomerang/4.png"
   ],
+  "tank": "assets/tank/tank.png",
+  "train": "assets/train/train.png",
+  "santaFrames": [
+    "assets/santa/1.png",
+    "assets/santa/2.png",
+    "assets/santa/3.png"
+  ],
+  "santaBombs": [
+    "assets/santa/bombs/1.png",
+    "assets/santa/bombs/2.png",
+    "assets/santa/bombs/3.png",
+    "assets/santa/bombs/4.png",
+    "assets/santa/bombs/5.png",
+    "assets/santa/bombs/6.png",
+    "assets/santa/bombs/7.png",
+    "assets/santa/bombs/8.png"
+  ],
+  "littlefireIdle": [
+    "assets/littlefire/idle/1.png",
+    "assets/littlefire/idle/2.png",
+    "assets/littlefire/idle/3.png",
+    "assets/littlefire/idle/4.png",
+    "assets/littlefire/idle/5.png"
+  ],
+  "littlefireAttack": [
+    "assets/littlefire/attack/1.png",
+    "assets/littlefire/attack/2.png",
+    "assets/littlefire/attack/3.png",
+    "assets/littlefire/attack/4.png"
+  ],
+  "hitfx": {
+    "gun": [
+      "assets/hitfx/gun/1.png",
+      "assets/hitfx/gun/2.png",
+      "assets/hitfx/gun/3.png",
+      "assets/hitfx/gun/4.png",
+      "assets/hitfx/gun/5.png"
+    ],
+    "water": [
+      "assets/hitfx/water/1.png",
+      "assets/hitfx/water/2.png",
+      "assets/hitfx/water/3.png",
+      "assets/hitfx/water/4.png",
+      "assets/hitfx/water/5.png"
+    ]
+  },
   "portraits": {
     "windup_soldier": "assets/portraits/windup_soldier.webp",
     "plush_cat": "assets/portraits/plush_cat.webp",
@@ -1564,7 +1610,10 @@ window.TOY_DATA={
     "hammer": "assets/sfx/hammer.mp3",
     "boomerang": "assets/sfx/boomerang.mp3",
     "death": "assets/sfx/death.mp3",
-    "click": "assets/sfx/click.mp3"
+    "click": "assets/sfx/click.mp3",
+    "xp": "assets/sfx/xp.mp3",
+    "santa": "assets/sfx/santa.mp3",
+    "train": "assets/sfx/train.mp3"
   },
   "update": {
     "snake": [
@@ -1597,7 +1646,8 @@ window.TOY_DATA={
       "assets/update/top/6.webp","assets/update/top/7.webp","assets/update/top/8.webp"
     ],
     "helicopter": "assets/update/helicopter.webp",
-    "missile": "assets/update/missile_strip.webp"
+    "heliBody": "assets/heli/body.png",
+    "missile": "assets/update/missile_new.png"
   },
   "items": {
     "chest": "assets/items/hidden_chest.webp",
