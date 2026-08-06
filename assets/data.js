@@ -1530,6 +1530,22 @@ window.TOY_DATA={
     "snake": "assets/v2mobs/snake.webp",
     "rhino": "assets/v2mobs/rhino.webp"
   },
+  "stage2mobs": {
+    "golem_body": "assets/stage2/golem_body.png",
+    "golem_footL": "assets/stage2/golem_footL.png",
+    "golem_footR": "assets/stage2/golem_footR.png",
+    "greenbot": "assets/stage2/greenbot2.png",
+    "bluebot": "assets/stage2/bluebot2.png",
+    "redbot": "assets/stage2/redbot2.png",
+    "robotboss": "assets/stage2/robotboss2.png",
+    "mouse": "assets/stage2/mouse.png",
+    "bulldozer": "assets/stage2/bulldozer.png"
+  },
+  "boomerangFx": [
+    "assets/boomerang/1.png",
+    "assets/boomerang/2.png",
+    "assets/boomerang/4.png"
+  ],
   "portraits": {
     "windup_soldier": "assets/portraits/windup_soldier.webp",
     "plush_cat": "assets/portraits/plush_cat.webp",
@@ -1546,6 +1562,7 @@ window.TOY_DATA={
     "spear": "assets/sfx/spear.mp3",
     "sword": "assets/sfx/sword.mp3",
     "hammer": "assets/sfx/hammer.mp3",
+    "boomerang": "assets/sfx/boomerang.mp3",
     "death": "assets/sfx/death.mp3",
     "click": "assets/sfx/click.mp3"
   },
@@ -1584,6 +1601,7 @@ window.TOY_DATA={
   },
   "items": {
     "chest": "assets/items/hidden_chest.webp",
-    "car": "assets/items/car.webp"
+    "car": "assets/items/car.webp",
+    "bounceball": "assets/items/bounceball.png"
   }
 };
