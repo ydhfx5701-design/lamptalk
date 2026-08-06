@@ -1662,8 +1662,11 @@ window.TOY_DATA={
     "xp": "assets/sfx/xp.mp3",
     "santa": "assets/sfx/santa.mp3",
     "train": "assets/sfx/train.mp3",
-    "ufoAttack": "assets/sfx/ufo.mp3"
+    "ufoAttack": "assets/sfx/ufo.mp3",
+    "hit": "assets/sfx/monsterHit.mp3",
+    "bossWarning": "assets/sfx/bossWarning.mp3"
   },
+  "luckybox": "assets/luckybox/luckybox.png",
   "update": {
     "snake": [
       "assets/update/snake/snake_0.png",
