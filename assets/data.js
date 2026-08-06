@@ -1547,12 +1547,60 @@ window.TOY_DATA={
     "assets/boomerang/4.png"
   ],
   "tank": "assets/tank/tank.png",
-  "train": "assets/train/train.png",
-  "santaFrames": [
-    "assets/santa/1.png",
-    "assets/santa/2.png",
-    "assets/santa/3.png"
+  "ufo": "assets/ufo/ufo.png",
+  "spintopFrames": [
+    "assets/spintop/1.png",
+    "assets/spintop/2.png",
+    "assets/spintop/3.png",
+    "assets/spintop/4.png"
   ],
+  "spintopFrag": [
+    "assets/spintop/frag1.png",
+    "assets/spintop/frag2.png",
+    "assets/spintop/frag3.png",
+    "assets/spintop/frag4.png"
+  ],
+  "bluebotFrag": [
+    "assets/bluebotfrag/1.png",
+    "assets/bluebotfrag/2.png",
+    "assets/bluebotfrag/3.png",
+    "assets/bluebotfrag/4.png"
+  ],
+  "yoyoFrames": [
+    "assets/yoyo/1.png",
+    "assets/yoyo/2.png",
+    "assets/yoyo/3.png",
+    "assets/yoyo/4.png",
+    "assets/yoyo/5.png"
+  ],
+  "swordFx2": [
+    "assets/swordfx2/1.png",
+    "assets/swordfx2/2.png",
+    "assets/swordfx2/3.png",
+    "assets/swordfx2/4.png"
+  ],
+  "ufoBoom": [
+    "assets/ufo/boom1.png",
+    "assets/ufo/boom2.png",
+    "assets/ufo/boom3.png",
+    "assets/ufo/boom4.png",
+    "assets/ufo/boom5.png"
+  ],
+  "tankBoom": [
+    "assets/tank/boom/frame1.png",
+    "assets/tank/boom/frame2.png",
+    "assets/tank/boom/frame3.png",
+    "assets/tank/boom/frame4.png",
+    "assets/tank/boom/frame5.png"
+  ],
+  "santaBombFx": [
+    "assets/santa/bombfx/frame1.png",
+    "assets/santa/bombfx/frame2.png",
+    "assets/santa/bombfx/frame3.png",
+    "assets/santa/bombfx/frame4.png"
+  ],
+  "train": "assets/train/train.png",
+  "santaTop": "assets/santa/topdown.png",
   "santaBombs": [
     "assets/santa/bombs/1.png",
     "assets/santa/bombs/2.png",
@@ -1613,7 +1661,8 @@ window.TOY_DATA={
     "click": "assets/sfx/click.mp3",
     "xp": "assets/sfx/xp.mp3",
     "santa": "assets/sfx/santa.mp3",
-    "train": "assets/sfx/train.mp3"
+    "train": "assets/sfx/train.mp3",
+    "ufoAttack": "assets/sfx/ufo.mp3"
   },
   "update": {
     "snake": [
