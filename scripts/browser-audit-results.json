@@ -1,0 +1,2094 @@
+{
+  "url": "http://127.0.0.1:8102/index.html?test=1&character=1&audit=1786210425754",
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+    "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "requestFailures": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Jua&family=Black+Han+Sans&display=swap",
+      "error": "net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "httpErrors": [],
+  "results": {
+    "timing": {
+      "baseTimeScale": 1,
+      "fixedDeltaTime": 0.016666666666666666,
+      "dtCap": 0.05,
+      "playerBaseMoveSpeed": 245,
+      "aiBaseMoveSpeed": 218,
+      "playerBaseHp": 150,
+      "aiBaseHp": 125,
+      "testWeapon": "nerf",
+      "characters": [
+        {
+          "char": "windup_soldier",
+          "name": "기어",
+          "weapon": "nerf",
+          "ratings": {
+            "hp": 55,
+            "atk": 55,
+            "spd": 50,
+            "aspd": 50,
+            "crit": 5
+          },
+          "moveMul": 1,
+          "attackSpeedMul": 1,
+          "speed": 245,
+          "move5s60": 1225,
+          "move5s90": 1225,
+          "move5s120": 1225,
+          "moveDelta": 0,
+          "baseAttackInterval": 1.7,
+          "finalAttackInterval": 1.7,
+          "attacks10s60": 5,
+          "attacks10s90": 5,
+          "attacks10s120": 5,
+          "attackDelta": 0,
+          "steps10s": {
+            "hz60": 600,
+            "hz90": 600,
+            "hz120": 600
+          },
+          "damageExpected": 18.9,
+          "damageActual": 18.9,
+          "damageDelta": 0
+        },
+        {
+          "char": "plush_cat",
+          "name": "미유",
+          "weapon": "nerf",
+          "ratings": {
+            "hp": 42,
+            "atk": 47,
+            "spd": 72,
+            "aspd": 65,
+            "crit": 10
+          },
+          "moveMul": 1.22,
+          "attackSpeedMul": 1.15,
+          "speed": 298.9,
+          "move5s60": 1494.5,
+          "move5s90": 1494.5,
+          "move5s120": 1494.5,
+          "moveDelta": 0,
+          "baseAttackInterval": 1.7,
+          "finalAttackInterval": 1.478261,
+          "attacks10s60": 6,
+          "attacks10s90": 6,
+          "attacks10s120": 6,
+          "attackDelta": 0,
+          "steps10s": {
+            "hz60": 600,
+            "hz90": 600,
+            "hz120": 600
+          },
+          "damageExpected": 17.46,
+          "damageActual": 17.46,
+          "damageDelta": 0
+        },
+        {
+          "char": "wooden_puppet",
+          "name": "우디",
+          "weapon": "nerf",
+          "ratings": {
+            "hp": 75,
+            "atk": 50,
+            "spd": 40,
+            "aspd": 42,
+            "crit": 3
+          },
+          "moveMul": 0.9,
+          "attackSpeedMul": 0.92,
+          "speed": 220.5,
+          "move5s60": 1102.5,
+          "move5s90": 1102.5,
+          "move5s120": 1102.5,
+          "moveDelta": 0,
+          "baseAttackInterval": 1.7,
+          "finalAttackInterval": 1.847826,
+          "attacks10s60": 5,
+          "attacks10s90": 5,
+          "attacks10s120": 5,
+          "attackDelta": 0,
+          "steps10s": {
+            "hz60": 600,
+            "hz90": 600,
+            "hz120": 600
+          },
+          "damageExpected": 18,
+          "damageActual": 18,
+          "damageDelta": 0
+        },
+        {
+          "char": "rubber_duck",
+          "name": "덕키",
+          "weapon": "nerf",
+          "ratings": {
+            "hp": 58,
+            "atk": 44,
+            "spd": 58,
+            "aspd": 50,
+            "crit": 5
+          },
+          "moveMul": 1.08,
+          "attackSpeedMul": 1,
+          "speed": 264.6,
+          "move5s60": 1323,
+          "move5s90": 1323,
+          "move5s120": 1323,
+          "moveDelta": 0,
+          "baseAttackInterval": 1.7,
+          "finalAttackInterval": 1.7,
+          "attacks10s60": 5,
+          "attacks10s90": 5,
+          "attacks10s120": 5,
+          "attackDelta": 0,
+          "steps10s": {
+            "hz60": 600,
+            "hz90": 600,
+            "hz120": 600
+          },
+          "damageExpected": 16.92,
+          "damageActual": 16.92,
+          "damageDelta": 0
+        },
+        {
+          "char": "paper_robot",
+          "name": "페이퍼",
+          "weapon": "nerf",
+          "ratings": {
+            "hp": 38,
+            "atk": 72,
+            "spd": 55,
+            "aspd": 62,
+            "crit": 8
+          },
+          "moveMul": 1.05,
+          "attackSpeedMul": 1.12,
+          "speed": 257.25,
+          "move5s60": 1286.25,
+          "move5s90": 1286.25,
+          "move5s120": 1286.25,
+          "moveDelta": 0,
+          "baseAttackInterval": 1.7,
+          "finalAttackInterval": 1.517857,
+          "attacks10s60": 6,
+          "attacks10s90": 6,
+          "attacks10s120": 6,
+          "attackDelta": 0,
+          "steps10s": {
+            "hz60": 600,
+            "hz90": 600,
+            "hz120": 600
+          },
+          "damageExpected": 21.96,
+          "damageActual": 21.96,
+          "damageDelta": 0
+        },
+        {
+          "char": "clown_doll",
+          "name": "피코",
+          "weapon": "nerf",
+          "ratings": {
+            "hp": 45,
+            "atk": 58,
+            "spd": 62,
+            "aspd": 58,
+            "crit": 15
+          },
+          "moveMul": 1.12,
+          "attackSpeedMul": 1.08,
+          "speed": 274.4,
+          "move5s60": 1372,
+          "move5s90": 1372,
+          "move5s120": 1372,
+          "moveDelta": 0,
+          "baseAttackInterval": 1.7,
+          "finalAttackInterval": 1.574074,
+          "attacks10s60": 6,
+          "attacks10s90": 6,
+          "attacks10s120": 6,
+          "attackDelta": 0,
+          "steps10s": {
+            "hz60": 600,
+            "hz90": 600,
+            "hz120": 600
+          },
+          "damageExpected": 19.44,
+          "damageActual": 19.44,
+          "damageDelta": 0
+        },
+        {
+          "char": "toy_knight",
+          "name": "랜슬롯",
+          "weapon": "nerf",
+          "ratings": {
+            "hp": 68,
+            "atk": 65,
+            "spd": 45,
+            "aspd": 45,
+            "crit": 7
+          },
+          "moveMul": 0.95,
+          "attackSpeedMul": 0.95,
+          "speed": 232.75,
+          "move5s60": 1163.75,
+          "move5s90": 1163.75,
+          "move5s120": 1163.75,
+          "moveDelta": 0,
+          "baseAttackInterval": 1.7,
+          "finalAttackInterval": 1.789474,
+          "attacks10s60": 5,
+          "attacks10s90": 5,
+          "attacks10s120": 5,
+          "attackDelta": 0,
+          "steps10s": {
+            "hz60": 600,
+            "hz90": 600,
+            "hz120": 600
+          },
+          "damageExpected": 20.7,
+          "damageActual": 20.7,
+          "damageDelta": 0
+        }
+      ],
+      "ratios": [
+        {
+          "char": "windup_soldier",
+          "move": 1,
+          "expectedMove": 1,
+          "intervalRatio": 1,
+          "expectedAttackSpeed": 1
+        },
+        {
+          "char": "plush_cat",
+          "move": 1.22,
+          "expectedMove": 1.22,
+          "intervalRatio": 1.15,
+          "expectedAttackSpeed": 1.15
+        },
+        {
+          "char": "wooden_puppet",
+          "move": 0.9,
+          "expectedMove": 0.9,
+          "intervalRatio": 0.92,
+          "expectedAttackSpeed": 0.92
+        },
+        {
+          "char": "rubber_duck",
+          "move": 1.08,
+          "expectedMove": 1.08,
+          "intervalRatio": 1,
+          "expectedAttackSpeed": 1
+        },
+        {
+          "char": "paper_robot",
+          "move": 1.05,
+          "expectedMove": 1.05,
+          "intervalRatio": 1.12,
+          "expectedAttackSpeed": 1.12
+        },
+        {
+          "char": "clown_doll",
+          "move": 1.12,
+          "expectedMove": 1.12,
+          "intervalRatio": 1.08,
+          "expectedAttackSpeed": 1.08
+        },
+        {
+          "char": "toy_knight",
+          "move": 0.95,
+          "expectedMove": 0.95,
+          "intervalRatio": 0.95,
+          "expectedAttackSpeed": 0.95
+        }
+      ],
+      "allMovementStable": true,
+      "allAttackStable": true,
+      "allDamageExact": true,
+      "ratioPass": true,
+      "independentRuntime": true,
+      "baseFrozen": true
+    },
+    "modeRuntime": {
+      "modes": [
+        "defense",
+        "survival",
+        "hunt",
+        "escape"
+      ],
+      "characters": 7,
+      "rows": 28,
+      "modeStable": true,
+      "runtimeIndependent": true,
+      "pass": true,
+      "details": [
+        {
+          "mode": "defense",
+          "char": "windup_soldier",
+          "fighters": [
+            {
+              "entityId": "P-15",
+              "kind": "player",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 245,
+              "attackMul": 1.05,
+              "move5s": 1225,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-16",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-17",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            },
+            {
+              "entityId": "AI-18",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "defense",
+          "char": "plush_cat",
+          "fighters": [
+            {
+              "entityId": "P-19",
+              "kind": "player",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 298.9,
+              "attackMul": 0.97,
+              "move5s": 1494.5,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.478261
+            },
+            {
+              "entityId": "AI-20",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-21",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            },
+            {
+              "entityId": "AI-22",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "defense",
+          "char": "wooden_puppet",
+          "fighters": [
+            {
+              "entityId": "P-23",
+              "kind": "player",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 220.5,
+              "attackMul": 1,
+              "move5s": 1102.5,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.847826
+            },
+            {
+              "entityId": "AI-24",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-25",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-26",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "defense",
+          "char": "rubber_duck",
+          "fighters": [
+            {
+              "entityId": "P-27",
+              "kind": "player",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 264.6,
+              "attackMul": 0.94,
+              "move5s": 1323,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-28",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-29",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-30",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "defense",
+          "char": "paper_robot",
+          "fighters": [
+            {
+              "entityId": "P-31",
+              "kind": "player",
+              "char": "paper_robot",
+              "name": "페이퍼",
+              "speed": 257.25,
+              "attackMul": 1.22,
+              "move5s": 1286.25,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.517857
+            },
+            {
+              "entityId": "AI-32",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-33",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-34",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "defense",
+          "char": "clown_doll",
+          "fighters": [
+            {
+              "entityId": "P-35",
+              "kind": "player",
+              "char": "clown_doll",
+              "name": "피코",
+              "speed": 274.4,
+              "attackMul": 1.08,
+              "move5s": 1372,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.574074
+            },
+            {
+              "entityId": "AI-36",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-37",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-38",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "defense",
+          "char": "toy_knight",
+          "fighters": [
+            {
+              "entityId": "P-39",
+              "kind": "player",
+              "char": "toy_knight",
+              "name": "랜슬롯",
+              "speed": 232.75,
+              "attackMul": 1.15,
+              "move5s": 1163.75,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.789474
+            },
+            {
+              "entityId": "AI-40",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-41",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-42",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "survival",
+          "char": "windup_soldier",
+          "fighters": [
+            {
+              "entityId": "P-43",
+              "kind": "player",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 245,
+              "attackMul": 1.05,
+              "move5s": 1225,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-44",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-45",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            },
+            {
+              "entityId": "AI-46",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "survival",
+          "char": "plush_cat",
+          "fighters": [
+            {
+              "entityId": "P-47",
+              "kind": "player",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 298.9,
+              "attackMul": 0.97,
+              "move5s": 1494.5,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.478261
+            },
+            {
+              "entityId": "AI-48",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-49",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            },
+            {
+              "entityId": "AI-50",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "survival",
+          "char": "wooden_puppet",
+          "fighters": [
+            {
+              "entityId": "P-51",
+              "kind": "player",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 220.5,
+              "attackMul": 1,
+              "move5s": 1102.5,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.847826
+            },
+            {
+              "entityId": "AI-52",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-53",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-54",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "survival",
+          "char": "rubber_duck",
+          "fighters": [
+            {
+              "entityId": "P-55",
+              "kind": "player",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 264.6,
+              "attackMul": 0.94,
+              "move5s": 1323,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-56",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-57",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-58",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "survival",
+          "char": "paper_robot",
+          "fighters": [
+            {
+              "entityId": "P-59",
+              "kind": "player",
+              "char": "paper_robot",
+              "name": "페이퍼",
+              "speed": 257.25,
+              "attackMul": 1.22,
+              "move5s": 1286.25,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.517857
+            },
+            {
+              "entityId": "AI-60",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-61",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-62",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "survival",
+          "char": "clown_doll",
+          "fighters": [
+            {
+              "entityId": "P-63",
+              "kind": "player",
+              "char": "clown_doll",
+              "name": "피코",
+              "speed": 274.4,
+              "attackMul": 1.08,
+              "move5s": 1372,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.574074
+            },
+            {
+              "entityId": "AI-64",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-65",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-66",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "survival",
+          "char": "toy_knight",
+          "fighters": [
+            {
+              "entityId": "P-67",
+              "kind": "player",
+              "char": "toy_knight",
+              "name": "랜슬롯",
+              "speed": 232.75,
+              "attackMul": 1.15,
+              "move5s": 1163.75,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.789474
+            },
+            {
+              "entityId": "AI-68",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-69",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-70",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "hunt",
+          "char": "windup_soldier",
+          "fighters": [
+            {
+              "entityId": "P-71",
+              "kind": "player",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 245,
+              "attackMul": 1.05,
+              "move5s": 1225,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-72",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-73",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            },
+            {
+              "entityId": "AI-74",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "hunt",
+          "char": "plush_cat",
+          "fighters": [
+            {
+              "entityId": "P-75",
+              "kind": "player",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 298.9,
+              "attackMul": 0.97,
+              "move5s": 1494.5,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.478261
+            },
+            {
+              "entityId": "AI-76",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-77",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            },
+            {
+              "entityId": "AI-78",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "hunt",
+          "char": "wooden_puppet",
+          "fighters": [
+            {
+              "entityId": "P-79",
+              "kind": "player",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 220.5,
+              "attackMul": 1,
+              "move5s": 1102.5,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.847826
+            },
+            {
+              "entityId": "AI-80",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-81",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-82",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "hunt",
+          "char": "rubber_duck",
+          "fighters": [
+            {
+              "entityId": "P-83",
+              "kind": "player",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 264.6,
+              "attackMul": 0.94,
+              "move5s": 1323,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-84",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-85",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-86",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "hunt",
+          "char": "paper_robot",
+          "fighters": [
+            {
+              "entityId": "P-87",
+              "kind": "player",
+              "char": "paper_robot",
+              "name": "페이퍼",
+              "speed": 257.25,
+              "attackMul": 1.22,
+              "move5s": 1286.25,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.517857
+            },
+            {
+              "entityId": "AI-88",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-89",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-90",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "hunt",
+          "char": "clown_doll",
+          "fighters": [
+            {
+              "entityId": "P-91",
+              "kind": "player",
+              "char": "clown_doll",
+              "name": "피코",
+              "speed": 274.4,
+              "attackMul": 1.08,
+              "move5s": 1372,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.574074
+            },
+            {
+              "entityId": "AI-92",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-93",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-94",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "hunt",
+          "char": "toy_knight",
+          "fighters": [
+            {
+              "entityId": "P-95",
+              "kind": "player",
+              "char": "toy_knight",
+              "name": "랜슬롯",
+              "speed": 232.75,
+              "attackMul": 1.15,
+              "move5s": 1163.75,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.789474
+            },
+            {
+              "entityId": "AI-96",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-97",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-98",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "escape",
+          "char": "windup_soldier",
+          "fighters": [
+            {
+              "entityId": "P-99",
+              "kind": "player",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 245,
+              "attackMul": 1.05,
+              "move5s": 1225,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-100",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-101",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            },
+            {
+              "entityId": "AI-102",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "escape",
+          "char": "plush_cat",
+          "fighters": [
+            {
+              "entityId": "P-103",
+              "kind": "player",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 298.9,
+              "attackMul": 0.97,
+              "move5s": 1494.5,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.478261
+            },
+            {
+              "entityId": "AI-104",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-105",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            },
+            {
+              "entityId": "AI-106",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "escape",
+          "char": "wooden_puppet",
+          "fighters": [
+            {
+              "entityId": "P-107",
+              "kind": "player",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 220.5,
+              "attackMul": 1,
+              "move5s": 1102.5,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.847826
+            },
+            {
+              "entityId": "AI-108",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-109",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-110",
+              "kind": "ai",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 235.44,
+              "attackMul": 0.94,
+              "move5s": 1177.2,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.95
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "escape",
+          "char": "rubber_duck",
+          "fighters": [
+            {
+              "entityId": "P-111",
+              "kind": "player",
+              "char": "rubber_duck",
+              "name": "덕키",
+              "speed": 264.6,
+              "attackMul": 0.94,
+              "move5s": 1323,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-112",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-113",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-114",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "escape",
+          "char": "paper_robot",
+          "fighters": [
+            {
+              "entityId": "P-115",
+              "kind": "player",
+              "char": "paper_robot",
+              "name": "페이퍼",
+              "speed": 257.25,
+              "attackMul": 1.22,
+              "move5s": 1286.25,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.517857
+            },
+            {
+              "entityId": "AI-116",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-117",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-118",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "escape",
+          "char": "clown_doll",
+          "fighters": [
+            {
+              "entityId": "P-119",
+              "kind": "player",
+              "char": "clown_doll",
+              "name": "피코",
+              "speed": 274.4,
+              "attackMul": 1.08,
+              "move5s": 1372,
+              "attacks10s": 6,
+              "finalAttackInterval": 1.574074
+            },
+            {
+              "entityId": "AI-120",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-121",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-122",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        },
+        {
+          "mode": "escape",
+          "char": "toy_knight",
+          "fighters": [
+            {
+              "entityId": "P-123",
+              "kind": "player",
+              "char": "toy_knight",
+              "name": "랜슬롯",
+              "speed": 232.75,
+              "attackMul": 1.15,
+              "move5s": 1163.75,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.789474
+            },
+            {
+              "entityId": "AI-124",
+              "kind": "ai",
+              "char": "windup_soldier",
+              "name": "기어",
+              "speed": 218,
+              "attackMul": 1.05,
+              "move5s": 1090,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.7
+            },
+            {
+              "entityId": "AI-125",
+              "kind": "ai",
+              "char": "plush_cat",
+              "name": "미유",
+              "speed": 265.96,
+              "attackMul": 0.97,
+              "move5s": 1329.8,
+              "attacks10s": 12,
+              "finalAttackInterval": 0.826087
+            },
+            {
+              "entityId": "AI-126",
+              "kind": "ai",
+              "char": "wooden_puppet",
+              "name": "우디",
+              "speed": 196.2,
+              "attackMul": 1,
+              "move5s": 981,
+              "attacks10s": 5,
+              "finalAttackInterval": 1.73913
+            }
+          ],
+          "independentRuntime": true
+        }
+      ]
+    },
+    "runtimeState": {
+      "forbiddenKeys": [
+        "finalMoveSpeed",
+        "currentMoveSpeed",
+        "finalAttackSpeed",
+        "attackInterval",
+        "runtimeStats",
+        "temporaryBuffs",
+        "modeMultiplier"
+      ],
+      "hits": [],
+      "persistedCharacters": {
+        "windup_soldier": {
+          "keys": [
+            "level",
+            "exp",
+            "statPoints",
+            "stats"
+          ],
+          "statKeys": [
+            "attack",
+            "hp",
+            "defense",
+            "agility",
+            "attackSpeed",
+            "crit",
+            "luck"
+          ]
+        },
+        "plush_cat": {
+          "keys": [
+            "level",
+            "exp",
+            "statPoints",
+            "stats"
+          ],
+          "statKeys": [
+            "attack",
+            "hp",
+            "defense",
+            "agility",
+            "attackSpeed",
+            "crit",
+            "luck"
+          ]
+        },
+        "wooden_puppet": {
+          "keys": [
+            "level",
+            "exp",
+            "statPoints",
+            "stats"
+          ],
+          "statKeys": [
+            "attack",
+            "hp",
+            "defense",
+            "agility",
+            "attackSpeed",
+            "crit",
+            "luck"
+          ]
+        },
+        "rubber_duck": {
+          "keys": [
+            "level",
+            "exp",
+            "statPoints",
+            "stats"
+          ],
+          "statKeys": [
+            "attack",
+            "hp",
+            "defense",
+            "agility",
+            "attackSpeed",
+            "crit",
+            "luck"
+          ]
+        },
+        "paper_robot": {
+          "keys": [
+            "level",
+            "exp",
+            "statPoints",
+            "stats"
+          ],
+          "statKeys": [
+            "attack",
+            "hp",
+            "defense",
+            "agility",
+            "attackSpeed",
+            "crit",
+            "luck"
+          ]
+        },
+        "clown_doll": {
+          "keys": [
+            "level",
+            "exp",
+            "statPoints",
+            "stats"
+          ],
+          "statKeys": [
+            "attack",
+            "hp",
+            "defense",
+            "agility",
+            "attackSpeed",
+            "crit",
+            "luck"
+          ]
+        },
+        "toy_knight": {
+          "keys": [
+            "level",
+            "exp",
+            "statPoints",
+            "stats"
+          ],
+          "statKeys": [
+            "attack",
+            "hp",
+            "defense",
+            "agility",
+            "attackSpeed",
+            "crit",
+            "luck"
+          ]
+        }
+      },
+      "pass": true
+    },
+    "statOwnership": {
+      "playerUsesInvestedStats": true,
+      "sameCharacterGrowthNotCopied": true,
+      "savedOtherCharacterGrowthNotCopied": true,
+      "aiBaseStatsApplied": true,
+      "playerUpgradeOnly": true,
+      "aiOwnUpgradeOnly": true,
+      "distinctObjects": true,
+      "player": {
+        "char": "windup_soldier",
+        "growth": {
+          "attack": 10,
+          "hp": 8,
+          "defense": 6,
+          "agility": 10,
+          "attackSpeed": 9,
+          "crit": 4,
+          "luck": 5
+        },
+        "speed": 309.925,
+        "attackMul": 1.4489999999999998
+      },
+      "sameCharAi": {
+        "char": "windup_soldier",
+        "growth": {
+          "attack": 0,
+          "hp": 0,
+          "defense": 0,
+          "agility": 0,
+          "attackSpeed": 0,
+          "crit": 0,
+          "luck": 0
+        },
+        "speed": 218,
+        "attackMul": 1.05
+      },
+      "aiCharacters": [
+        {
+          "char": "windup_soldier",
+          "name": "기어",
+          "hp": 131,
+          "speed": 218,
+          "attackMul": 1.05,
+          "cooldownMul": 1
+        },
+        {
+          "char": "plush_cat",
+          "name": "미유",
+          "hp": 115,
+          "speed": 265.96,
+          "attackMul": 0.97,
+          "cooldownMul": 0.87
+        },
+        {
+          "char": "wooden_puppet",
+          "name": "우디",
+          "hp": 156,
+          "speed": 196.2,
+          "attackMul": 1,
+          "cooldownMul": 1.087
+        },
+        {
+          "char": "rubber_duck",
+          "name": "덕키",
+          "hp": 135,
+          "speed": 235.44,
+          "attackMul": 0.94,
+          "cooldownMul": 1
+        },
+        {
+          "char": "paper_robot",
+          "name": "페이퍼",
+          "hp": 110,
+          "speed": 228.9,
+          "attackMul": 1.22,
+          "cooldownMul": 0.893
+        },
+        {
+          "char": "clown_doll",
+          "name": "피코",
+          "hp": 119,
+          "speed": 244.16,
+          "attackMul": 1.08,
+          "cooldownMul": 0.926
+        },
+        {
+          "char": "toy_knight",
+          "name": "랜슬롯",
+          "hp": 148,
+          "speed": 207.1,
+          "attackMul": 1.15,
+          "cooldownMul": 1.053
+        }
+      ],
+      "pass": true
+    }
+  }
+}
