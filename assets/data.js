@@ -1698,7 +1698,7 @@ window.TOY_DATA={
       "assets/update/top/6.webp","assets/update/top/7.webp","assets/update/top/8.webp"
     ],
     "helicopter": "assets/update/helicopter.webp",
-    "heliBody": "assets/heli/body.png",
+    "heliBody": "assets/update/helicopter.webp",
     "missile": "assets/update/missile_new.png"
   },
   "items": {
