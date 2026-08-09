@@ -211,6 +211,30 @@
     return true;
   }
 
+  function beginCombatSection(key, section, options={}) {
+    if (storyState[key] || ESCAPE.combatStory) return;
+    const all = scenes.get(section) || [], start = options.start == null ? 0 : options.start, end = options.end == null ? Infinity : options.end;
+    const lines = all.filter(line => line.dialogueIndex >= start && line.dialogueIndex < end && !line.system);
+    storyState[key] = 'playing';
+    if (!lines.length) { storyState[key] = 'done'; return; }
+    ESCAPE.combatStory = {key,lines,index:0,t:.01,serial:Date.now()};
+    document.getElementById('escapeStorySkip').style.display='none';
+    document.getElementById('escapeStory').classList.add('show','combat-story');
+  }
+
+  function updateCombatStory(dt) {
+    const c=ESCAPE.combatStory;if(!c)return;
+    c.t-=dt;if(c.t>0)return;
+    if(c.index>=c.lines.length){storyState[c.key]='done';ESCAPE.combatStory=null;document.getElementById('escapeStory').classList.remove('show','combat-story');return;}
+    const line=c.lines[c.index++],serial=c.serial;
+    document.getElementById('escapeStorySpeaker').textContent=line.name||'';
+    document.getElementById('escapeStoryLine').textContent=line.text;
+    const card=document.querySelector('.escape-dialog');if(card)card.classList.remove('system','no-portrait');
+    const img=document.getElementById('escapeStoryPortrait');img.style.visibility='hidden';
+    cleanedPortrait(expressionPath(line)).then(src=>{if(ESCAPE.combatStory?.serial!==serial)return;img.src=src;img.style.visibility='visible';});
+    applyStoryBeat(line);c.t=.54;
+  }
+
   const original = {
     resetRun: ESCAPE.resetRun.bind(ESCAPE),
     renderDialogue: ESCAPE.renderDialogue.bind(ESCAPE),
@@ -225,6 +249,8 @@
   ESCAPE.resetRun = function() {
     original.resetRun();
     resetStoryState();
+    this.combatStory=null;
+    document.getElementById('escapeStory').classList.remove('combat-story');
   };
 
   ESCAPE.renderDialogue = function() {
@@ -299,6 +325,7 @@
   ESCAPE.updateDefense = function(dt) {
     const d = this.defense;
     if (!d) return;
+    updateCombatStory(dt);
     const elapsed = d.dur - d.t;
     if (d.storyKind === 'first') {
       if (elapsed >= 20 && d.t > 5 && blockWithStory('firstDefenseMid',6,null,{start:0,end:7})) return;
@@ -308,7 +335,7 @@
       if (d.t <= 5 && d.openingT <= 0 && blockWithStory('middleDefenseLast5',9,null,{start:9,end:13})) return;
       if (d.openingT > 0 && blockWithStory('middleDefenseOpen',9,null,{start:13,end:14})) return;
     } else if (d.storyKind === 'final') {
-      if (d.t <= 5 && d.openingT <= 0 && blockWithStory('finalDefenseLast5',14)) return;
+      if (d.t <= 5 && d.openingT <= 0) beginCombatSection('finalDefenseLast5',14);
     }
     original.updateDefense(dt);
   };
@@ -318,9 +345,16 @@
     if (!dv || dv.armed) return;
     dv.armed = true;
     const finalDevice = !!dv.final;
+    if(finalDevice){
+      if(this.finalRouteState!=='FINAL_DEVICE_DROPPED')return;
+      this.setFinalRouteState('FINAL_DEVICE_COLLECTED');
+    }
     const key = finalDevice ? 'finalDevice' : 'firstDevice';
     const section = finalDevice ? 13 : 5;
-    blockWithStory(key, section, () => this.showDefenseWarning(dv), {skippable:true});
+    blockWithStory(key, section, () => {
+      if(finalDevice){this.setFinalRouteState('FINAL_DEVICE_DIALOGUE');this.finalDeviceStoryDone=true;}
+      this.showDefenseWarning(dv);
+    }, {skippable:true});
   };
 
   ESCAPE.update = function(dt) {
@@ -334,12 +368,25 @@
     const gateAReady = this.gateA && this.gateA.state === 'LOCKED' && this.midbossDefeated && !this.device && py < this.gateAY+420 && py > this.gateAY-320;
     if (gateAReady && blockWithStory('firstGate',4)) return;
 
-    if (this.finalboss && this.finalboss.dead && this.lockY && blockWithStory('snakeDefeat',12)) return;
-    const snakeReady = !this.finalboss && !this.finalbossDefeated && this.gateC?.state === 'OPEN' && py < this.finalbossY+250;
-    if (snakeReady && blockWithStory('snakeIntro',11)) return;
+    if (this.finalboss && this.finalboss.dead && this.lockY) {
+      if(blockWithStory('snakeDefeat',12,()=>{
+        this.finalbossDefeated=true;this.finalboss=null;G.boss=null;
+        this.setFinalRouteState('SNAKE_DEFEATED');this.dropFinalDevice();
+        showToast('마지막 태엽장치가 떨어졌습니다.',2200);
+      }))return;
+    }
+    const snakeReady = !this.finalboss && !this.finalbossDefeated && this.finalRouteState==='RUSH_3_COMPLETE' && py < this.gateCY+420;
+    if (snakeReady) {
+      this.setFinalRouteState('FINAL_GATE_APPROACH');
+      blockWithStory('snakeIntro',11,()=>{
+        this.setFinalRouteState('SNAKE_INTRO_DIALOGUE');
+        this.beginFinalBossBattle();
+      });
+      return;
+    }
 
-    if (this.portal && Math.hypot(G.p.x-this.portal.x,G.p.y-this.portal.y) < 70) {
-      if (blockWithStory('portal',15,() => { this.portal=null; endGame(true,'escape'); })) return;
+    if (this.portal && this.finalRouteState==='EXIT_PORTAL' && Math.hypot(G.p.x-this.portal.x,G.p.y-this.portal.y) < 70) {
+      if (blockWithStory('portal',15,() => { this.setFinalRouteState('CLEARED');this.portal=null;endGame(true,'escape'); })) return;
     }
     original.update(dt);
   };

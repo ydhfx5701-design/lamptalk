@@ -37,12 +37,26 @@ const { chromium } = require('playwright');
     ambushZones: 'escapeAmbushZonesAudit',
     encounterOrder: 'escapeEncounterOrderAudit',
     bossOrder: 'escapeBossOrderAudit',
+    burstTarget: 'burstTargetAudit',
+    jungleP0Regression: 'escapeFinalRouteRegressionAudit',
     escapeMultiplier: 'escapeMultiplierAudit',
     escapeAi: 'escapeAiAudit',
     intro: 'escapeIntroAudit',
     story: 'characterStoryAudit',
     viewport: 'viewportAudit',
-    loop: 'loopAudit'
+    loop: 'loopAudit',
+    factoryDialogue: 'factoryDialogueAudit',
+    factoryStoryFlow: 'factoryStoryFlowAudit',
+    factoryEncounter: 'factoryEncounterAudit',
+    factoryWaveBoundary: 'factoryWaveBoundaryAudit',
+    factoryGates: 'factoryGateAudit',
+    factoryMapJoin: 'factoryMapJoinAudit',
+    factoryFinalBoss: 'factoryFinalBossAudit',
+    factoryDifficulty: 'factoryDifficultyAudit',
+    factoryBulldozer: 'factoryBulldozerFlowAudit',
+    factoryRoute: 'factoryRouteAudit',
+    factoryDeviceOrder: 'factoryDeviceOrderAudit',
+    factoryP0Regression: 'factoryP0RouteRegressionAudit'
   };
   const requested = new Set((process.env.TOY_AUDITS || '').split(',').map(v => v.trim()).filter(Boolean));
   const selectedJobs = requested.size ? Object.entries(jobs).filter(([name]) => requested.has(name)) : Object.entries(jobs);
@@ -51,6 +65,8 @@ const { chromium } = require('playwright');
     results[name] = await page.evaluate(({ method }) => {
       if (method === 'lifecycleAudit') return window.__TOY_TEST__[method](30);
       if (method === 'escapeIntroAudit') return window.__TOY_TEST__[method](30);
+      if (method === 'escapeFinalRouteRegressionAudit') return window.__TOY_TEST__[method](20);
+      if (method === 'factoryP0RouteRegressionAudit') return window.__TOY_TEST__[method](20);
       return window.__TOY_TEST__[method]();
     }, { method });
   }

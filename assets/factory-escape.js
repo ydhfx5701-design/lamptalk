@@ -3,7 +3,7 @@
 (() => {
   'use strict';
 
-  const VERSION='20260809-17';
+  const VERSION='20260810-25';
   const MAP_PATHS=['assets/factory_escape/map1.png','assets/factory_escape/map2.png','assets/factory_escape/map3.png'];
   const CHAR_BY_NAME={기어:'windup_soldier',미유:'plush_cat',우디:'wooden_puppet',덕키:'rubber_duck',페이퍼:'paper_robot',피코:'clown_doll',랜슬롯:'toy_knight'};
   const FACTORY_TYPES=['greenbot','bluebot','redbot','mouse'];
@@ -12,9 +12,11 @@
   for(const key of ['bake','resetRun','positionPartyAtStart','gatherPartyInZone','findSpawnNear','nearestWalkable','walkableSegmentsAtY','blocked','cellAt','drawMapLayer','pausedForStory','beginIntro','confirmWarning','update','draw']) jungle[key]=ESCAPE[key].bind(ESCAPE);
 
   const F={
-    ready:null,scenes:new Map(),parts:[],bridges:[],doors:[],phase:'idle',raid:null,timer:null,device:null,portal:null,
-    active:false,warningAction:null,midboss:null,boss:null,last5Played:false,sceneBusy:false,eventSerial:0,bulldozerDefeated:false,bulldozerTimerDone:false,
+    ready:null,scenes:new Map(),parts:[],bridges:[],doors:[],phase:'idle',raid:null,timer:null,device:null,portal:null,guidancePath:null,
+    active:false,warningAction:null,midboss:null,boss:null,last5Played:false,sceneBusy:false,eventSerial:0,bulldozerDefeated:false,bulldozerTimerDone:false,routeState:'ROOM4_LOCKED_DOOR_DIALOGUE_3',routeHistory:[],doorHistory:[],
     eventState:Object.create(null),sequenceTimers:new Set(),combatDialogueToken:0,
+    linkedDoorId:{DEVICE4:'door_room4_to_room5',ROOM5_UNLOCK:'door_room5_to_room6',BULLDOZER_UNLOCK:'door_room6_to_arena'},
+    routeOrder:['ROOM4_LOCKED_DOOR_DIALOGUE_3','ROOM4_DEVICE_SEARCH','ROOM4_DEVICE_DIALOGUE_4','ROOM4_TO_ROOM5_OPEN','ROOM5_ENTER','ROOM5_INTRO_DIALOGUE','ROOM5_WARNING','ROOM5_DEFENSE_60','ROOM5_COUNTDOWN','ROOM5_TO_ROOM6_OPEN','ROOM6_APPROACH','ROOM6_DIALOGUE','BULLDOZER_SPAWN','ROOM6_DEFENSE_30','BULLDOZER_AND_TIMER_COMPLETE','ROOM6_TO_ARENA_OPEN'],
     points:{},
     parseDialogue(text){
       const scenes=new Map();let section=0,segment='main';
@@ -52,6 +54,9 @@
         if(m){
           const name=clean(m[1]),text=cleanStageDirection(m[2]).replace(/^"|"$/g,''),expression=clean(m[3]).split(',')[0].trim();
           if(section===5&&segment==='last5'&&name==='기어'&&/열렸다/.test(text))segment='room5AfterOpen';
+          // 5번 방 개방 직후의 기어 한 줄과, 실제로 6번 비상문에 도착한 뒤의
+          // 덕키/페이퍼 대사를 분리한다. 이 경계가 없으면 5번 방에서 6번 대사가 선행된다.
+          if(section===5&&segment==='room5AfterOpen'&&name==='덕키'&&/또\s*문/.test(text))segment='room6Arrival';
           const group=name==='전원';
           scenes.get(section).push({char:CHAR_BY_NAME[name]||null,name,text,expression,system:!group&&!CHAR_BY_NAME[name],group,effect:effectFor(text),segment});
           continue;
@@ -84,15 +89,14 @@
       const m1={id:'m1',...raw[0],x:connectorX,y:lowerConnectorY-380*s,s};
       const m3={id:'m3',...raw[2],x:connectorX,y:upperConnectorY-380*s,s};
       this.parts=[m1,m2,m3];
-      this.bridges=[
-        {x1:m2.x+(m2.w-45)*s,y1:m2.y+1225*s,x2:m1.x+55*s,y2:m1.y+380*s,w:180},
-        {x1:m2.x+(m2.w-45)*s,y1:m2.y+165*s,x2:m3.x+55*s,y2:m3.y+380*s,w:180}
-      ];
+      // 세 PNG의 통로 끝점을 정확히 맞대어 사용한다. 예전의 갈색 캡슐형 임시
+      // 연결판은 원본 맵을 가리고 충돌 모양도 달라서 완전히 제거했다.
+      this.bridges=[];
       const minX=Math.max(0,Math.min(...this.parts.map(p=>p.x))),minY=Math.min(...this.parts.map(p=>p.y)),maxX=Math.min(WORLD,Math.max(...this.parts.map(p=>p.x+p.w*s))),maxY=Math.max(...this.parts.map(p=>p.y+p.h*s));
       ESCAPE.factory=true;ESCAPE.baked=true;ESCAPE.mapCanvas=null;ESCAPE.sourceCanvas=null;ESCAPE.mapLeft=minX;ESCAPE.mapTop=minY;ESCAPE.mapW=maxX-minX;ESCAPE.mapH=maxY-minY;
       ESCAPE.map2TopY=minY;ESCAPE.map2W=ESCAPE.mapW;ESCAPE.map2H=ESCAPE.mapH;ESCAPE.map1W=0;ESCAPE.map1H=0;ESCAPE.map2BotY=maxY;ESCAPE.map1TopY=maxY;
       this.points={
-        start:this.local(m1,1240,385),room2:this.local(m1,995,385),room4:this.local(m1,535,175),room5:this.local(m1,485,585),bulldozerTrigger:this.local(m1,745,485),
+        start:this.local(m1,1240,385),room2:this.local(m1,995,385),room4:this.local(m1,535,175),room5:this.local(m1,485,585),bulldozerTrigger:this.local(m1,165,485),
         transferLow:this.local(m2,690,1215),arena:this.local(m2,380,690),transferHigh:this.local(m2,690,175),room9:this.local(m3,205,380),
         // 최종보스 트리거는 교차로가 아니라 타원형 보스방 입구 안쪽이다.
         finalLock:this.local(m3,845,380),finalDevice:this.local(m3,940,380),exit:this.local(m3,1280,380)
@@ -107,13 +111,11 @@
       let sum=0,n=0,max=0;for(let oy=-r;oy<=r;oy+=3)for(let ox=-r;ox<=r;ox+=3){const xx=Math.max(0,Math.min(part.w-1,ix+ox)),yy=Math.max(0,Math.min(part.h-1,iy+oy)),v=part.lum[yy*part.w+xx];sum+=v;n++;if(v>max)max=v;}
       return sum/n>=28&&max>=35?1:0;
     },
-    pointBridgeWalkable(x,y){
-      return this.bridges.some(b=>this.pointSegmentDistance(x,y,b.x1,b.y1,b.x2,b.y2)<=b.w*.5);
-    },
+    pointBridgeWalkable(){return false;},
     buildGrid(){
       const cell=24,ox=0,oy=Math.max(0,ESCAPE.mapTop-120),gw=Math.ceil(WORLD/cell),gh=Math.ceil((ESCAPE.mapTop+ESCAPE.mapH+120-oy)/cell),grid=new Uint8Array(gw*gh);
       ESCAPE.gridCell=cell;ESCAPE.gridOX=ox;ESCAPE.gridOY=oy;ESCAPE.gridW=gw;ESCAPE.gridH=gh;
-      for(let gy=0;gy<gh;gy++)for(let gx=0;gx<gw;gx++){const x=ox+(gx+.5)*cell,y=oy+(gy+.5)*cell;grid[gy*gw+gx]=(this.parts.some(p=>this.samplePart(p,x,y))||this.pointBridgeWalkable(x,y))?1:0;}
+      for(let gy=0;gy<gh;gy++)for(let gx=0;gx<gw;gx++){const x=ox+(gx+.5)*cell,y=oy+(gy+.5)*cell;grid[gy*gw+gx]=this.parts.some(p=>this.samplePart(p,x,y))?1:0;}
       for(let pass=0;pass<2;pass++){
         const src=grid.slice();for(let gy=1;gy<gh-1;gy++)for(let gx=1;gx<gw-1;gx++){
           let n=0;for(let oy2=-1;oy2<=1;oy2++)for(let ox2=-1;ox2<=1;ox2++)if(ox2||oy2)n+=src[(gy+oy2)*gw+gx+ox2];
@@ -126,12 +128,12 @@
       const p=this.parts.find(x=>x.id==='m1'),p2=this.parts.find(x=>x.id==='m2'),p3=this.parts.find(x=>x.id==='m3');
       this.doors=[
         // 아래 길이는 안전한 초깃값이며, 생성 직후 실제 통로의 양쪽 벽까지 자동으로 맞춘다.
-        this.door('room34Permanent',this.local(p,390,200),Math.PI/2,465,true,'3·4번 기어실 영구 차단문',true),
+        // 3번과 4번은 같은 태엽장치 방이므로 그 사이를 막는 별도 문은 두지 않는다.
         this.door('firstBack',this.local(p,820,385),Math.PI/2,450,false,'첫 습격 후방문'),
         this.door('firstFront',this.local(p,1120,385),Math.PI/2,450,false,'첫 습격 전방문'),
-        this.door('branch',this.local(p,610,545),Math.PI/2,390,true,'하부 동력실 잠금'),
-        this.door('room5Back',this.local(p,280,585),Math.PI/2,405,false,'후방 태엽문'),
-        this.door('room5Front',this.local(p,615,585),Math.PI/2,405,false,'전방 태엽문'),
+        this.door('door_room4_to_room5',this.local(p,610,545),Math.PI/2,405,true,'4번→5번 입구'),
+        this.door('door_room5_to_room6',this.local(p,280,585),Math.PI/2,405,true,'5번→6번 출구'),
+        this.door('door_room6_to_arena',this.local(p,55,380),Math.PI/2,405,true,'6번→7·8번 출구'),
         this.door('arenaLow',this.local(p2,380,905),0,345,false,'투기장 하부 태엽문'),
         this.door('arenaHigh',this.local(p2,380,505),0,345,false,'투기장 상부 태엽문'),
         this.door('room9Back',this.local(p3,65,380),Math.PI/2,330,false,'9번 구역 후방문'),
@@ -140,11 +142,13 @@
         this.door('final',this.local(p3,1205,380),Math.PI/2,345,true,'최종 셔터 태엽문')
       ];
       for(const d of this.doors)this.fitDoorToPassage(d);
-      ESCAPE.gateA=this.byDoor('branch');ESCAPE.gateB=this.byDoor('arenaLow');ESCAPE.gateC=this.byDoor('final');ESCAPE.gateD=null;
+      ESCAPE.gateA=this.byDoor('door_room4_to_room5');ESCAPE.gateB=this.byDoor('door_room5_to_room6');ESCAPE.gateC=this.byDoor('door_room6_to_arena');ESCAPE.gateD=null;
     },
     door(id,c,a,len,locked,label,permanent=false,thickness=78){return{id,x:c.x,y:c.y,a,len,thickness,locked,state:locked?'LOCKED':'OPEN',label,openT:locked?0:1,permanent};},
     fitDoorToPassage(d){
-      const ca=Math.cos(d.a),sa=Math.sin(d.a),step=12,max=720;let neg=0,pos=0;
+      // 공장 PNG는 3배 확대되어 큰 입구가 720px보다 길다. 양쪽 벽까지 전부 탐색해
+      // 보이는 톱니문 길이와 실제 충돌 길이를 같은 값으로 맞춘다.
+      const ca=Math.cos(d.a),sa=Math.sin(d.a),step=12,max=1500;let neg=0,pos=0;
       if(this.cellAt(d.x,d.y)!==1)return d;
       while(neg<max&&this.cellAt(d.x-ca*(neg+step),d.y-sa*(neg+step))===1)neg+=step;
       while(pos<max&&this.cellAt(d.x+ca*(pos+step),d.y+sa*(pos+step))===1)pos+=step;
@@ -152,8 +156,8 @@
       return d;
     },
     byDoor(id){return this.doors.find(d=>d.id===id);},
-    lockDoors(ids){for(const id of ids){const d=this.byDoor(id);if(d){d.locked=true;d.state='LOCKED';d.openT=0;}}},
-    openDoors(ids){for(const id of ids){const d=this.byDoor(id);if(d&&!d.permanent){d.locked=false;d.state='OPEN';d.openT=1;}}},
+    lockDoors(ids){for(const id of ids){const d=this.byDoor(id);if(d){d.locked=true;d.state='LOCKED';d.openT=0;this.doorHistory.push({id,action:'LOCK',routeState:this.routeState});}}},
+    openDoors(ids){for(const id of ids){const d=this.byDoor(id);if(d&&!d.permanent){d.locked=false;d.state='OPEN';d.openT=1;this.doorHistory.push({id,action:'OPEN',routeState:this.routeState});}}},
     pointSegmentDistance(px,py,x1,y1,x2,y2){const dx=x2-x1,dy=y2-y1,l=dx*dx+dy*dy;if(!l)return Math.hypot(px-x1,py-y1);const t=Math.max(0,Math.min(1,((px-x1)*dx+(py-y1)*dy)/l));return Math.hypot(px-(x1+t*dx),py-(y1+t*dy));},
     doorBlocked(x,y,r){
       for(const d of this.doors){if(!d.locked)continue;const ca=Math.cos(d.a),sa=Math.sin(d.a),hx=ca*d.len*.5,hy=sa*d.len*.5;if(this.pointSegmentDistance(x,y,d.x-hx,d.y-hy,d.x+hx,d.y+hy)<r+d.thickness*.5)return true;}
@@ -172,6 +176,24 @@
       for(let rad=1;rad<90;rad++)for(let yy=-rad;yy<=rad;yy++)for(let xx=-rad;xx<=rad;xx++){if(Math.abs(xx)!==rad&&Math.abs(yy)!==rad)continue;const wx=ESCAPE.gridOX+(gx+xx+.5)*c,wy=ESCAPE.gridOY+(gy+yy+.5)*c;if(!this.blocked(wx,wy,14))return{x:wx,y:wy};}
       return{x:this.points.start.x,y:this.points.start.y};
     },
+    gridPath(from,to){
+      const start=this.nearestWalkable(from.x,from.y),goal=this.nearestWalkable(to.x,to.y),c=ESCAPE.gridCell,gw=ESCAPE.gridW,gh=ESCAPE.gridH,total=gw*gh;
+      const toCell=p=>({gx:Math.max(0,Math.min(gw-1,Math.floor((p.x-ESCAPE.gridOX)/c))),gy:Math.max(0,Math.min(gh-1,Math.floor((p.y-ESCAPE.gridOY)/c)))}),s=toCell(start),g=toCell(goal),si=s.gy*gw+s.gx,gi=g.gy*gw+g.gx;
+      const parent=new Int32Array(total);parent.fill(-2);parent[si]=-1;const queue=new Int32Array(total);let head=0,tail=0;queue[tail++]=si;
+      const dirs=[[1,0],[-1,0],[0,1],[0,-1],[1,1],[-1,1],[1,-1],[-1,-1]];
+      while(head<tail&&parent[gi]===-2){
+        const i=queue[head++],x=i%gw,y=(i/gw)|0;
+        for(const [dx,dy] of dirs){
+          const nx=x+dx,ny=y+dy;if(nx<0||ny<0||nx>=gw||ny>=gh)continue;const ni=ny*gw+nx;if(parent[ni]!==-2)continue;
+          const wx=ESCAPE.gridOX+(nx+.5)*c,wy=ESCAPE.gridOY+(ny+.5)*c;if(this.blocked(wx,wy,8))continue;
+          if(dx&&dy){const ax=ESCAPE.gridOX+(x+dx+.5)*c,ay=ESCAPE.gridOY+(y+.5)*c,bx=ESCAPE.gridOX+(x+.5)*c,by=ESCAPE.gridOY+(y+dy+.5)*c;if(this.blocked(ax,ay,8)||this.blocked(bx,by,8))continue;}
+          parent[ni]=i;queue[tail++]=ni;
+        }
+      }
+      if(parent[gi]===-2)return[];const raw=[];for(let i=gi;i>=0;i=parent[i])raw.push({x:ESCAPE.gridOX+(i%gw+.5)*c,y:ESCAPE.gridOY+(((i/gw)|0)+.5)*c});raw.reverse();
+      const reduced=raw.filter((_,i)=>i===0||i===raw.length-1||i%4===0);reduced[0]=start;reduced[reduced.length-1]=goal;return reduced;
+    },
+    buildGuidancePath(from,to){this.guidancePath=this.gridPath(from,to);return this.guidancePath;},
     findSpawnNear(px,py,minD=280,maxD=760,zone=null){
       for(let i=0;i<90;i++){const a=Math.random()*Math.PI*2,d=minD+Math.random()*(maxD-minD),p=this.nearestWalkable(px+Math.cos(a)*d,py+Math.sin(a)*d);if(Math.hypot(p.x-px,p.y-py)<minD*.72)continue;if(zone&&!this.inZone(p,zone,-30))continue;return p;}return null;
     },
@@ -200,8 +222,11 @@
       if(p.flags?.tank){const q=this.nearestWalkable(p.x-52,p.y+28);p.tankX=q.x;p.tankY=q.y;p.tankTargetRef=null;p.tankAvoidT=0;}
       p.ufoRoam=0;p.ufoRoamTarget=0;p.lfRoam=0;
     },
-    stagePartyForEncounter(zone,anchor=null){
-      const units=[G.p,...G.allies.filter(a=>!a.dead)],spots=[],cx=anchor?.x??(zone.x+zone.w/2),cy=anchor?.y??(zone.y+zone.h/2),margin=58;
+    stagePartyForEncounter(zone,anchor=null,options={}){
+      const includePlayer=options.includePlayer!==false;
+      const units=[...(includePlayer?[G.p]:[]),...G.allies.filter(a=>!a.dead)],spots=[];
+      if(!includePlayer&&this.inZone(G.p,zone,-(G.p.r||18)))spots.push({x:G.p.x,y:G.p.y});
+      const cx=anchor?.x??(includePlayer?zone.x+zone.w/2:G.p.x),cy=anchor?.y??(includePlayer?zone.y+zone.h/2:G.p.y),margin=58;
       const candidates=[{x:cx,y:cy}];
       for(let ring=1;ring<=8;ring++)for(let step=0;step<16;step++){
         const a=step/16*Math.PI*2+(ring%2)*Math.PI/16,rx=Math.min(zone.w*.38,ring*48),ry=Math.min(zone.h*.38,ring*42);
@@ -221,7 +246,7 @@
         if(!chosen)throw new Error(`[factory] no party slot inside ${zone.name||'encounter'} boundary`);
         u.x=chosen.x;u.y=chosen.y;u.vx=u.vy=0;spots.push(chosen);
       }
-      this.syncPlayerPets();cam.x=G.p.x;cam.y=G.p.y;
+      this.syncPlayerPets();if(includePlayer){cam.x=G.p.x;cam.y=G.p.y;}
       const outside=units.filter(u=>!this.inZone(u,zone,0)).length,blocked=units.filter(u=>this.blocked(u.x,u.y,u.r||18)).length;
       ESCAPE.lastPartyGather={units:units.length,spots:spots.length,outside,blocked,zone:{...zone}};
       return ESCAPE.lastPartyGather;
@@ -231,22 +256,30 @@
       const a=this.byDoor(backId),b=this.byDoor(frontId),inset=34;
       if(!a||!b)return null;
       const left=Math.min(a.x,b.x)+Math.max(a.thickness,b.thickness)*.5+inset,right=Math.max(a.x,b.x)-Math.max(a.thickness,b.thickness)*.5-inset;
-      const h=Math.max(260,Math.min(a.len,b.len)-36);
+      const h=Math.max(260,Math.max(a.len,b.len)-36);
       return{name,x:left,y:cy-h/2,w:Math.max(180,right-left),h,axis:'horizontal',backDoor:backId,frontDoor:frontId};
     },
     zoneBetweenY(lowId,highId,cx,name){
       const a=this.byDoor(lowId),b=this.byDoor(highId),inset=34;
       if(!a||!b)return null;
       const top=Math.min(a.y,b.y)+Math.max(a.thickness,b.thickness)*.5+inset,bottom=Math.max(a.y,b.y)-Math.max(a.thickness,b.thickness)*.5-inset;
-      const w=Math.max(260,Math.min(a.len,b.len)-36);
+      const w=Math.max(260,Math.max(a.len,b.len)-36);
       return{name,x:cx-w/2,y:top,w,h:Math.max(180,bottom-top),axis:'vertical',backDoor:lowId,frontDoor:highId};
+    },
+    bulldozerZone(){
+      const west=this.byDoor('door_room6_to_arena'),east=this.byDoor('door_room5_to_room6'),inset=36,pad=190;
+      if(!west||!east)return null;
+      const left=Math.min(west.x,east.x)+Math.max(west.thickness,east.thickness)*.5+inset;
+      const right=Math.max(west.x,east.x)-Math.max(west.thickness,east.thickness)*.5-inset;
+      const top=Math.min(west.y,east.y)-pad,bottom=Math.max(west.y,east.y)+pad;
+      return{name:'bulldozer',x:left,y:top,w:Math.max(260,right-left),h:Math.max(520,bottom-top),axis:'horizontal',backDoor:'door_room5_to_room6',frontDoor:'door_room6_to_arena'};
     },
     zoneFor(name){
       const p=this.points;
       return ({
         first:()=>this.zoneBetweenX('firstBack','firstFront',p.room2.y,'first'),
-        room5:()=>this.zoneBetweenX('room5Back','room5Front',p.room5.y,'room5'),
-        bulldozer:()=>this.zoneBetweenX('room5Front','firstBack',p.bulldozerTrigger.y,'bulldozer'),
+        room5:()=>this.zoneBetweenX('door_room5_to_room6','door_room4_to_room5',p.room5.y,'room5'),
+        bulldozer:()=>this.bulldozerZone(),
         arena:()=>this.zoneBetweenY('arenaHigh','arenaLow',p.arena.x,'arena'),
         room9:()=>this.zoneBetweenX('room9Back','room9Front',p.room9.y,'room9'),
         final:()=>this.zoneBetweenX('finalBack','final',p.finalDevice.y,'final')
@@ -254,6 +287,8 @@
     },
     resetEventStates(){
       this.eventState=Object.create(null);
+      this.routeState='ROOM4_LOCKED_DOOR_DIALOGUE_3';
+      this.routeHistory=[this.routeState];this.doorHistory=[];
       for(const key of [
         'INTRO','FIRST_STORY','FIRST_RAID','DEVICE_STORY','DEVICE4',
         'ROOM5_STORY','ROOM5_DEFENSE','ROOM5_UNLOCK',
@@ -266,6 +301,12 @@
     beginEvent(key){if(this.eventState[key]!=='PENDING')return false;this.eventState[key]='RUNNING';return true;},
     completeEvent(key){this.eventState[key]='COMPLETED';},
     eventDone(key){return this.eventState[key]==='COMPLETED';},
+    setRouteState(next){
+      if(next===this.routeState)return true;
+      const currentIndex=this.routeOrder.indexOf(this.routeState),nextIndex=this.routeOrder.indexOf(next);
+      if(currentIndex<0||nextIndex!==currentIndex+1){console.error('[factory] rejected route transition',{from:this.routeState,to:next});return false;}
+      this.routeState=next;this.routeHistory.push(next);return true;
+    },
     later(fn,ms){const id=setTimeout(()=>{this.sequenceTimers.delete(id);fn();},ms);this.sequenceTimers.add(id);return id;},
     clearSequences(){for(const id of this.sequenceTimers)clearTimeout(id);this.sequenceTimers.clear();this.combatDialogueToken++;this.hideSystem();this.hideCombatDialogue();this.endBlackout();},
     showSystem(text,ms=0,done=null){
@@ -423,13 +464,16 @@
       const fighters=[G.p,...G.allies.filter(a=>!a.dead)],margin=radius+5,candidates=[],add=(x,y)=>{
         const p={x,y};if(!this.inZone(p,zone,-margin)||this.blocked(x,y,radius))return;const d=Math.min(...fighters.map(f=>Math.hypot(x-f.x,y-f.y)));candidates.push({x,y,d});
       };
-      if(preferred)add(preferred.x,preferred.y);
+      if(preferred){add(preferred.x,preferred.y);const chosen=candidates[0];if(chosen&&chosen.d>=minDistance)return chosen;}
       const x0=zone.x+margin,x1=zone.x+zone.w-margin,y0=zone.y+margin,y1=zone.y+zone.h-margin,step=Math.max(18,Math.min(34,radius*.24));
       if(x0<=x1&&y0<=y1){for(let y=y0;y<=y1+.01;y+=step)for(let x=x0;x<=x1+.01;x+=step)add(x,y);add(x1,y1);add(x1,(y0+y1)/2);add((x0+x1)/2,(y0+y1)/2);}
       candidates.sort((a,b)=>b.d-a.d);const found=candidates.find(p=>p.d>=minDistance)||candidates[0];if(!found)throw new Error(`[factory] no boss slot inside ${zone.name||'encounter'} boundary`);return found;
     },
     startRaid(kind,zone,packets,count,done){
-      G.enemies.length=0;G.enemyBullets.length=0;this.stagePartyForEncounter(zone);this.raid={kind,zone,packets,count,packet:0,prep:1.1,wait:0,done};
+      G.enemies.length=0;G.enemyBullets.length=0;
+      // 플레이어는 직접 방 안으로 걸어 들어온 위치를 유지하고, 뒤처진 AI만 안전 진형으로 모은다.
+      this.stagePartyForEncounter(zone,null,{includePlayer:false});
+      this.raid={kind,zone,packets,count,packet:0,prep:1.1,wait:0,done};
     },
     updateRaid(dt){
       const r=this.raid;if(!r)return;r.prep-=dt;if(r.prep>0)return;r.wait-=dt;const alive=G.enemies.filter(e=>!e.dead&&e.factoryTag===r.kind).length;
@@ -437,10 +481,15 @@
     },
     startTimer(kind,dur,zone,done,options={}){
       for(let i=G.enemies.length-1;i>=0;i--)if(!G.enemies[i].boss&&!G.enemies[i].midboss&&G.enemies[i]!==this.midboss&&G.enemies[i]!==this.boss)G.enemies.splice(i,1);
-      G.enemyBullets.length=0;if(options.stage!==false)this.stagePartyForEncounter(zone);this.timer={kind,t:dur,dur,zone,spawn:0,opening:false,done,last5:false,last5Done:kind!=='room5',prep:options.prep==null?1.1:options.prep};
+      G.enemyBullets.length=0;if(options.stage!==false)this.stagePartyForEncounter(zone,null,{includePlayer:false});this.timer={kind,t:dur,dur,zone,spawn:0,opening:false,done,last5:false,last5Done:kind!=='room5',countShown:0,prep:options.prep==null?1.1:options.prep};
     },
     updateTimer(dt){
-      const t=this.timer;if(!t)return;if(t.prep>0){t.prep=Math.max(0,t.prep-dt);return;}t.t=Math.max(0,t.t-dt);t.spawn-=dt;const frac=1-t.t/t.dur,cfg=this.timerProfile(t.kind),difficulty=this.difficultyProfile(),cap=Math.max(8,Math.round(cfg.cap*difficulty.cap));
+      const t=this.timer;if(!t)return;if(t.prep>0){t.prep=Math.max(0,t.prep-dt);return;}
+      // 마지막 5초 대사는 실제 00:05에 한 번 시작하지만 타이머를 멈추지 않는다.
+      // 따라서 전투 HUD의 3·2·1은 평소처럼 계속 흐른다. 단, 00:00이 되어도
+      // 대사가 아직 끝나지 않았다면 문 개방만 기다려 순서가 앞질러 가지 않게 한다.
+      t.t=Math.max(0,t.t-dt);
+      t.spawn-=dt;const frac=1-t.t/t.dur,cfg=this.timerProfile(t.kind),difficulty=this.difficultyProfile(),cap=Math.max(8,Math.round(cfg.cap*difficulty.cap));
       if(!t.opening){
         t.opening=true;const initial=Math.max(0,Math.round((cfg.opening||0)*difficulty.raidCount));if(initial)this.spawnEnemyBatch(t.zone,t.kind,initial,false,t.zone.axis||'horizontal');t.spawn=Math.max(.8,cfg.startGap*difficulty.gap);
       }else if(t.spawn<=0&&G.enemies.filter(e=>!e.dead&&!e.boss&&!e.midboss).length<cap){
@@ -449,72 +498,96 @@
         // 60~40초는 일반 위주, 40~20초는 빠른 적 증가, 20~5초는 강한 적과 일반 적 혼합 물량이다.
         this.spawnEnemyBatch(t.zone,t.kind,count,frac>.34,t.zone.axis||'horizontal');
       }
-      if(t.kind==='room5'&&t.t<=5&&!t.last5){t.last5=true;const lines=this.sceneLines(5,'last5').filter(line=>!!line.char||line.group);this.playCombatLines(lines,()=>{if(this.timer===t)t.last5Done=true;},560);}
-      if(t.kind==='room5'&&t.t<=0&&!t.last5Done)return;
-      if(t.t<=0){for(let i=G.enemies.length-1;i>=0;i--)if(!G.enemies[i].boss&&!G.enemies[i].midboss&&G.enemies[i]!==this.midboss&&G.enemies[i]!==this.boss)G.enemies.splice(i,1);G.enemyBullets.length=0;const cb=t.done;this.timer=null;if(cb)cb();}
+      if(t.kind==='room5'&&t.t<=5&&!t.last5){
+        t.last5=true;if(!this.setRouteState('ROOM5_COUNTDOWN'))return;
+        // 마지막 5초 대사는 실제 타이머가 00:05가 된 뒤에만 한 번 재생한다.
+        // 전투를 멈추지 않는 짧은 전투 대사창으로 전체 순서를 보여 주며,
+        // 00:00에 도달해도 대사가 끝나기 전에는 문 개방 단계로 넘어가지 않는다.
+        const lines=this.sceneLines(5,'last5').filter(line=>!!line.char||line.group);
+        this.playCombatLines(lines,()=>{if(this.timer===t)t.last5Done=true;},1400);
+      }
+      if(t.kind==='room5'&&t.t>0&&t.t<=3){const n=Math.max(1,Math.ceil(t.t));if(t.countShown!==n){t.countShown=n;this.showSystem(`${n}...`,620);}}
+      if(t.t<=0){
+        if(t.kind==='room5'&&!t.last5Done)return;
+        for(let i=G.enemies.length-1;i>=0;i--)if(!G.enemies[i].boss&&!G.enemies[i].midboss&&G.enemies[i]!==this.midboss&&G.enemies[i]!==this.boss)G.enemies.splice(i,1);
+        G.enemyBullets.length=0;const cb=t.done;this.timer=null;if(cb)cb();
+      }
     },
     bindBossToZone(e,z){e.factoryZone={x:z.x,y:z.y,w:z.w,h:z.h};e.factorySafeX=e.x;e.factorySafeY=e.y;},
-    spawnBulldozer(){spawnBulldozer();const e=G.rhino;if(!e)return;e.hp=e.maxHp*=1.5;e.damage*=1.5;const z=this.zoneFor('bulldozer'),p=this.safeBossPoint(z,250,Math.max(54,e.r||54),{x:z.x+z.w*.78,y:z.y+z.h*.5});e.x=p.x;e.y=p.y;e.vx=e.vy=0;this.bindBossToZone(e,z);this.midboss=e;},
+    spawnBulldozer(){spawnBulldozer();const e=G.rhino;if(!e)return;e.hp=e.maxHp*=1.5;e.damage*=1.5;const z=this.zoneFor('bulldozer'),p=this.safeBossPoint(z,250,Math.max(54,e.r||54),{x:z.x+z.w*.18,y:z.y+z.h*.42});e.x=p.x;e.y=p.y;e.vx=e.vy=0;this.bindBossToZone(e,z);this.midboss=e;},
     spawnRobot(){spawnRobotBoss();const e=G.boss;if(!e)return;e.hp=e.maxHp*=1.5;e.damage*=1.5;const z=this.zoneFor('arena'),p=this.safeBossPoint(z,520,Math.max(82,e.r||82),{x:z.x+z.w*.5,y:z.y+z.h*.76});e.x=p.x;e.y=p.y;e.vx=e.vy=0;this.bindBossToZone(e,z);this.boss=e;},
-    spawnGiant(){spawnGiantRobotBoss();const e=G.boss;if(!e)return;e.hp=e.maxHp*=1.5;e.damage*=1.5;const z=this.zoneFor('final'),p=this.safeBossPoint(z,480,Math.max(118,e.r||118),{x:z.x+z.w*.78,y:z.y+z.h*.5});e.x=p.x;e.y=p.y;e.vx=e.vy=0;this.bindBossToZone(e,z);this.boss=e;},
+    spawnGiant(){spawnGiantRobotBoss();const e=G.boss;if(!e)return;e.hp=e.maxHp*=1.5;e.damage*=1.5;const z=this.zoneFor('final'),p=this.safeBossPoint(z,480,Math.max(118,e.r||118),{x:z.x+z.w*.64,y:z.y+z.h*.5});e.x=p.x;e.y=p.y;e.vx=e.vy=0;this.bindBossToZone(e,z);this.boss=e;},
     finishFirstRaid(){
       if(this.eventState.FIRST_RAID!=='RUNNING')return;this.completeEvent('FIRST_RAID');this.openDoors(['firstBack','firstFront']);this.phase='to_device';showToast('목표: 중앙 기어실의 태엽장치를 찾으세요.',2400);
     },
     startRoom5(){
-      if(!this.eventDone('DEVICE4')||!this.beginEvent('ROOM5_STORY'))return;
-      this.phase='room5_story';this.lockDoors(['room5Back','room5Front']);this.stagePartyForEncounter(this.zoneFor('room5'));
+      if(!this.eventDone('DEVICE4')||this.routeState!=='ROOM4_TO_ROOM5_OPEN')return;
+      const zone=this.zoneFor('room5');if(!this.inZone(G.p,zone,-(G.p.r||18)))return;
+      const gathered=this.stagePartyForEncounter(zone,null,{includePlayer:false}),units=[G.p,...G.allies.filter(a=>!a.dead)];
+      if(gathered.outside||gathered.blocked||units.some(u=>!this.inZone(u,zone,-(u.r||16))))return;
+      if(!this.beginEvent('ROOM5_STORY'))return;
+      if(!this.setRouteState('ROOM5_ENTER'))return;this.guidancePath=null;this.phase='room5_story';this.lockDoors(['door_room4_to_room5','door_room5_to_room6']);if(!this.setRouteState('ROOM5_INTRO_DIALOGUE'))return;
       this.playScene(5,()=>this.runRoom5Machinery(()=>this.playScene(5,()=>this.runRoom5Pulses(()=>this.playScene(5,()=>{
         const flash=document.getElementById('escapeAlertFlash');flash?.classList.add('show');
-        this.alert('⚠ 비인가 동력실 접근 감지','철문 잠금 해제 절차를 방해합니다.',()=>{flash?.classList.remove('show');this.playScene(5,()=>{
+        if(!this.setRouteState('ROOM5_WARNING'))return;this.alert('⚠ 비인가 동력실 접근 감지','철문 잠금 해제 절차를 방해합니다.',()=>{flash?.classList.remove('show');this.playScene(5,()=>{
           this.completeEvent('ROOM5_STORY');this.showSystem('방어 준비!\n60초 동안 버티세요!',1450,()=>{
-            if(!this.beginEvent('ROOM5_DEFENSE'))return;this.phase='room5_defense';this.startTimer('room5',60,this.zoneFor('room5'),()=>this.finishRoom5());startGameLoop();
+            if(!this.beginEvent('ROOM5_DEFENSE')||!this.setRouteState('ROOM5_DEFENSE_60'))return;this.phase='room5_defense';this.startTimer('room5',60,zone,()=>this.finishRoom5());startGameLoop();
           });
         },{segment:'room5Briefing'});});
       },{segment:'room5Pulse'})),{segment:'room5Lock'})),{segment:'room5Arrival'});
     },
     finishRoom5(){
-      if(!this.eventDone('ROOM5_STORY')||this.eventState.ROOM5_DEFENSE!=='RUNNING'||!this.beginEvent('ROOM5_UNLOCK'))return;
-      this.completeEvent('ROOM5_DEFENSE');this.phase='room5_unlock';
-      this.runCountdown(()=>{this.openDoors(['room5Front']);this.playScene(5,()=>{this.completeEvent('ROOM5_UNLOCK');this.phase='to_bulldozer';showToast('목표: 열린 철문을 지나 내부 비상문으로 이동하세요.',2500);},{segment:'room5AfterOpen'});});
+      if(!this.eventDone('ROOM5_STORY')||this.eventState.ROOM5_DEFENSE!=='RUNNING'||!['ROOM5_DEFENSE_60','ROOM5_COUNTDOWN'].includes(this.routeState)||!this.beginEvent('ROOM5_UNLOCK'))return;
+      this.completeEvent('ROOM5_DEFENSE');if(!this.setRouteState('ROOM5_TO_ROOM6_OPEN'))return;this.phase='room5_unlock';
+      this.playCue('철컥—!!',()=>this.playCue('쿠웅— 철컥!!',()=>{this.lockDoors(['door_room4_to_room5']);this.openDoors(['door_room5_to_room6']);this.playScene(5,()=>{this.completeEvent('ROOM5_UNLOCK');if(!this.setRouteState('ROOM6_APPROACH'))return;this.phase='to_bulldozer';showToast('목표: 열린 철문을 지나 6번 비상문 구역으로 이동하세요.',2500);},{segment:'room5AfterOpen'});},820),700);
     },
     startBulldozerEncounter(){
-      if(!this.eventDone('ROOM5_UNLOCK')||!this.beginEvent('BULLDOZER_INTRO'))return;
-      const zone=this.zoneFor('bulldozer');this.phase='bulldozer_intro';this.lockDoors(['room5Front','firstBack']);this.stagePartyForEncounter(zone,{x:zone.x+zone.w*.78,y:zone.y+zone.h*.5});
-      this.playScene(6,()=>{
+      if(!this.eventDone('ROOM5_UNLOCK')||this.routeState!=='ROOM6_APPROACH')return;
+      const zone=this.zoneFor('bulldozer');if(!this.inZone(G.p,zone,-(G.p.r||18))||!this.beginEvent('BULLDOZER_INTRO'))return;
+      if(!this.setRouteState('ROOM6_DIALOGUE'))return;this.phase='bulldozer_intro';
+      this.stagePartyForEncounter(zone,{x:G.p.x,y:G.p.y},{includePlayer:false});
+      this.lockDoors(['door_room5_to_room6','door_room6_to_arena']);
+      this.playScene(5,()=>this.playScene(6,()=>{
         this.completeEvent('BULLDOZER_INTRO');if(!this.beginEvent('BULLDOZER_DEFENSE'))return;
-        this.phase='bulldozer';this.bulldozerDefeated=false;this.bulldozerTimerDone=false;this.stagePartyForEncounter(zone,{x:zone.x+zone.w*.78,y:zone.y+zone.h*.5});this.spawnBulldozer();
-        this.startTimer('bulldozer',30,zone,()=>{this.bulldozerTimerDone=true;this.phase='bulldozer_wait';this.tryFinishBulldozer();},{stage:false,prep:0});
+        if(!this.setRouteState('BULLDOZER_SPAWN'))return;this.phase='bulldozer';this.bulldozerDefeated=false;this.bulldozerTimerDone=false;this.spawnBulldozer();
+        if(!this.midboss){console.error('[factory] bulldozer spawn failed',{currentPhase:this.phase,linkedDoorId:this.linkedDoorId.BULLDOZER_UNLOCK});return;}
+        if(!this.setRouteState('ROOM6_DEFENSE_30'))return;this.startTimer('bulldozer',30,zone,()=>{this.bulldozerTimerDone=true;this.phase='bulldozer_wait';this.tryFinishBulldozer();},{stage:false,prep:0});
         this.showSystem('비상문 개방 중\n00:30',900);this.playCombatLines(this.sceneLines(6,'bossReveal').filter(line=>!!line.char||line.group),null,650);startGameLoop();
-      },{segment:'preBoss'});
+      },{segment:'preBoss'}),{segment:'room6Arrival'});
     },
-    tryFinishBulldozer(){if(this.bulldozerDefeated&&this.bulldozerTimerDone)this.finishBulldozer();},
+    tryFinishBulldozer(){
+      const door=this.byDoor(this.linkedDoorId.BULLDOZER_UNLOCK);
+      console.info('[factory] bulldozer gate check',{bulldozerDefeated:this.bulldozerDefeated,defense30SecondsCompleted:this.bulldozerTimerDone,currentPhase:this.phase,linkedDoorId:this.linkedDoorId.BULLDOZER_UNLOCK,doorOpen:!!door&&!door.locked,collisionEnabled:!!door&&door.locked});
+      if(this.bulldozerDefeated&&this.bulldozerTimerDone&&this.setRouteState('BULLDOZER_AND_TIMER_COMPLETE'))this.finishBulldozer();
+    },
     finishBulldozer(){
       if(this.phase==='bulldozer_outro'||this.phase==='to_arena'||!this.eventDone('BULLDOZER_INTRO')||this.eventState.BULLDOZER_DEFENSE!=='RUNNING'||!this.beginEvent('BULLDOZER_UNLOCK'))return;
       this.completeEvent('BULLDOZER_DEFENSE');this.phase='bulldozer_outro';
-      this.playCue('철컥—!!',()=>this.playScene(6,()=>{this.openDoors(['room5Front','firstBack','firstFront']);this.completeEvent('BULLDOZER_UNLOCK');this.phase='to_arena';showToast('비상문이 열렸습니다. 중앙 투기장으로 이동하세요.',2300);},{segment:'afterBoss'}),700);
+      this.playCue('철컥—!!',()=>this.playScene(6,()=>{this.lockDoors(['door_room5_to_room6']);this.openDoors(['door_room6_to_arena']);this.completeEvent('BULLDOZER_UNLOCK');if(!this.setRouteState('ROOM6_TO_ARENA_OPEN'))return;this.phase='to_arena';showToast('6번 왼쪽 출구가 열렸습니다. 7·8번 전투장으로 이동하세요.',2300);},{segment:'afterBoss'}),700);
     },
     startArena(){
       if(!this.eventDone('BULLDOZER_UNLOCK')||!this.beginEvent('ARENA_STORY'))return;
-      this.phase='arena_story';this.lockDoors(['arenaLow','arenaHigh']);
+      const zone=this.zoneFor('arena');if(!this.inZone(G.p,zone,-(G.p.r||18))){this.eventState.ARENA_STORY='PENDING';return;}
+      this.stagePartyForEncounter(zone,{x:G.p.x,y:G.p.y},{includePlayer:false});this.phase='arena_story';this.lockDoors(['arenaLow','arenaHigh']);
       this.playScene(7,()=>this.alert('⚠ 침입자 격리 완료','제거 절차를 시작합니다.',()=>this.playScene(7,()=>{
         this.completeEvent('ARENA_STORY');this.showSystem('3분 동안 버티세요!',1300,()=>{if(!this.beginEvent('ARENA_DEFENSE'))return;this.phase='arena_defense';this.startTimer('arena',180,this.zoneFor('arena'),()=>this.finishArenaDefense());startGameLoop();});
       },{segment:'arenaBriefing'})),{segment:'arenaLock'});
     },
     finishArenaDefense(){
       if(this.eventState.ARENA_DEFENSE!=='RUNNING'||!this.beginEvent('ROBOT_INTRO'))return;this.completeEvent('ARENA_DEFENSE');this.phase='robot_intro';
-      this.playScene(8,()=>this.alert('⚠ 대형 개체 접근','정체를 알 수 없는 무거운 진동이 가까워집니다.',()=>{this.completeEvent('ROBOT_INTRO');if(!this.beginEvent('ROBOT_BOSS'))return;this.phase='robot_boss';this.stagePartyForEncounter(this.zoneFor('arena'));this.spawnRobot();}),{part:'beforeBoss'});
+      this.playScene(8,()=>this.alert('⚠ 대형 개체 접근','정체를 알 수 없는 무거운 진동이 가까워집니다.',()=>{this.completeEvent('ROBOT_INTRO');if(!this.beginEvent('ROBOT_BOSS'))return;this.phase='robot_boss';this.spawnRobot();}),{part:'beforeBoss'});
     },
     finishRobot(){
       if(this.eventState.ROBOT_BOSS!=='RUNNING')return;this.completeEvent('ROBOT_BOSS');this.openDoors(['arenaLow','arenaHigh']);this.phase='to_room9';this.playScene(8,()=>showToast('목표: 열린 태엽문을 지나 공장 상부로 이동하세요.',2300),{part:'afterBoss'});
     },
     startRoom9(){
-      if(!this.eventDone('ROBOT_BOSS')||!this.beginEvent('ROOM9_STORY'))return;this.phase='room9_story';this.lockDoors(['room9Back','room9Front']);this.stagePartyForEncounter(this.zoneFor('room9'));
+      if(!this.eventDone('ROBOT_BOSS')||!this.beginEvent('ROOM9_STORY'))return;const zone=this.zoneFor('room9');if(!this.inZone(G.p,zone,-(G.p.r||18))){this.eventState.ROOM9_STORY='PENDING';return;}this.stagePartyForEncounter(zone,{x:G.p.x,y:G.p.y},{includePlayer:false});this.phase='room9_story';this.lockDoors(['room9Back','room9Front']);
       this.playScene(9,()=>{this.completeEvent('ROOM9_STORY');if(!this.beginEvent('ROOM9_RAID'))return;this.phase='room9_raid';this.startRaid('room9',this.zoneFor('room9'),3,20,()=>{this.completeEvent('ROOM9_RAID');this.openDoors(['room9Back','room9Front']);this.phase='to_final';showToast('목표: 최종 셔터로 이동하세요.',2200);});});
     },
     startFinalBoss(){
-      if(!this.eventDone('ROOM9_RAID')||!this.beginEvent('FINAL_STORY'))return;this.phase='final_story';this.lockDoors(['finalBack','final']);const finalZone=this.zoneFor('final');this.stagePartyForEncounter(finalZone,{x:finalZone.x+finalZone.w*.20,y:finalZone.y+finalZone.h*.5});
+      if(!this.eventDone('ROOM9_RAID')||!this.beginEvent('FINAL_STORY'))return;const finalZone=this.zoneFor('final');if(!this.inZone(G.p,finalZone,-(G.p.r||18))){this.eventState.FINAL_STORY='PENDING';return;}this.stagePartyForEncounter(finalZone,{x:finalZone.x+finalZone.w*.22,y:finalZone.y+finalZone.h*.5},{includePlayer:true});this.phase='final_story';this.lockDoors(['finalBack','final']);
       this.playScene(10,()=>this.runBlackout(()=>this.playScene(10,()=>this.playScene(11,()=>this.alert('🚨 최고 위험 개체 활성화','보안 등급 MAX',()=>{
-        this.endBlackout();this.completeEvent('FINAL_STORY');if(!this.beginEvent('GIANT_BOSS'))return;this.phase='giant_boss';const z=this.zoneFor('final');this.stagePartyForEncounter(z,{x:z.x+z.w*.22,y:z.y+z.h*.5});this.spawnGiant();
+        this.endBlackout();this.completeEvent('FINAL_STORY');if(!this.beginEvent('GIANT_BOSS'))return;this.phase='giant_boss';this.spawnGiant();
       }),{part:'beforeBoss'}),{segment:'blackoutReaction'})),{segment:'finalDoor'});
     },
     finishGiant(){
@@ -532,7 +605,7 @@
     },
     reset(){
       this.clearSequences();this.resetEventStates();
-      this.phase='intro';this.raid=null;this.timer=null;this.device=null;this.portal=null;this.warningAction=null;this.midboss=null;this.boss=null;this.bulldozerDefeated=false;this.bulldozerTimerDone=false;this.sceneBusy=false;this.eventSerial++;
+      this.phase='intro';this.raid=null;this.timer=null;this.device=null;this.portal=null;this.guidancePath=null;this.warningAction=null;this.midboss=null;this.boss=null;this.bulldozerDefeated=false;this.bulldozerTimerDone=false;this.sceneBusy=false;this.eventSerial++;
       document.getElementById('escapeStory').classList.remove('show');document.getElementById('escapeWarning').classList.remove('show');document.getElementById('escapeAlertFlash').classList.remove('show');
       this.installDoors();ESCAPE.dialogue=null;ESCAPE.warning=null;ESCAPE.device=null;ESCAPE.portal=null;ESCAPE.defense=null;ESCAPE.ambush=null;ESCAPE.ambushBarriers=[];ESCAPE.ambushBoundaryVines=[];ESCAPE.midboss=null;ESCAPE.finalboss=null;
     },
@@ -545,7 +618,7 @@
       if(this.raid){this.updateRaid(dt);return;}if(this.timer){this.updateTimer(dt);return;}
       if(this.midboss&&(this.midboss.dead||!G.enemies.includes(this.midboss))){this.midboss=null;G.rhino=null;if(this.phase==='bulldozer'||this.phase==='bulldozer_wait'){this.bulldozerDefeated=true;this.tryFinishBulldozer();}}
       if(this.boss&&(this.boss.dead||!G.enemies.includes(this.boss))){const giant=this.phase==='giant_boss';this.boss=null;G.boss=null;if(giant)this.finishGiant();else if(this.phase==='robot_boss')this.finishRobot();return;}
-      if(this.device){this.device.t+=dt;if(Math.hypot(G.p.x-this.device.x,G.p.y-this.device.y)<65){if(this.device.final)this.triggerFinalDevice();else if(this.beginEvent('DEVICE4')){this.device=null;this.phase='device_found_story';this.playScene(4,()=>{this.completeEvent('DEVICE4');this.openDoors(['branch']);this.phase='to_room5';showToast('하부 동력실 태엽문이 열렸습니다.',2200);});}}}
+       if(this.device){this.device.t+=dt;if(Math.hypot(G.p.x-this.device.x,G.p.y-this.device.y)<65){if(this.device.final)this.triggerFinalDevice();else if(this.routeState==='ROOM4_DEVICE_SEARCH'&&this.beginEvent('DEVICE4')){this.device=null;if(!this.setRouteState('ROOM4_DEVICE_DIALOGUE_4'))return;this.phase='device_found_story';this.playScene(4,()=>{this.completeEvent('DEVICE4');this.openDoors(['door_room4_to_room5']);if(!this.setRouteState('ROOM4_TO_ROOM5_OPEN'))return;this.phase='to_room5';this.buildGuidancePath(G.p,this.points.room5);showToast('바닥의 안내 빛을 따라 5번 방으로 이동하세요.',2600);});}}}
       if(this.portal){this.portal.t+=dt;if(Math.hypot(G.p.x-this.portal.x,G.p.y-this.portal.y)<72){this.portal=null;ESCAPE.portal=null;endGame(true,'escape');return;}}
       if(this.phase==='to_first'&&this.near(this.points.room2,300)&&this.beginEvent('FIRST_STORY')){
         this.phase='first_story';this.lockDoors(['firstBack','firstFront']);this.playScene(2,()=>this.alert('⚠ 침입자 감지','보안 시스템을 재가동합니다.',()=>this.playScene(2,()=>{
@@ -553,10 +626,10 @@
         },{segment:'detected'})),{segment:'sensor'});return;
       }
       if(this.phase==='to_device'&&this.near(this.points.room4,330)&&this.beginEvent('DEVICE_STORY')){
-        this.phase='device_story';this.playScene(3,()=>{this.completeEvent('DEVICE_STORY');const p=this.findSpawnNear(this.points.room4.x,this.points.room4.y,50,210)||this.points.room4;this.device={x:p.x,y:p.y,t:0,final:false};this.phase='device_search';showToast('태엽장치에 가까이 가서 작동시키세요.',2200);});return;
+        this.phase='device_story';this.playScene(3,()=>{this.completeEvent('DEVICE_STORY');const room4Zone=this.zone(this.points.room4.x,this.points.room4.y,510,390),p=this.findSpawnNear(this.points.room4.x,this.points.room4.y,50,210,room4Zone)||this.nearestWalkable(this.points.room4.x,this.points.room4.y);this.device={x:p.x,y:p.y,t:0,final:false};if(!this.setRouteState('ROOM4_DEVICE_SEARCH'))return;this.phase='device_search';showToast('태엽장치에 가까이 가서 작동시키세요.',2200);});return;
       }
-      if(this.phase==='to_room5'&&this.near(this.points.room5,330)){this.startRoom5();return;}
-      if(this.phase==='to_bulldozer'&&this.near(this.points.bulldozerTrigger,260)){this.startBulldozerEncounter();return;}
+      if(this.phase==='to_room5'&&this.inZone(G.p,this.zoneFor('room5'),-(G.p.r||18))){this.startRoom5();return;}
+      if(this.phase==='to_bulldozer'&&this.routeState==='ROOM6_APPROACH'&&this.inZone(G.p,this.zoneFor('bulldozer'),-(G.p.r||18))&&this.near(this.points.bulldozerTrigger,260)){this.startBulldozerEncounter();return;}
       if(this.phase==='to_arena'&&this.near(this.points.arena,480)){this.startArena();return;}
       if(this.phase==='to_room9'&&this.near(this.points.room9,360)){this.startRoom9();return;}
       if(this.phase==='to_final'&&this.inZone(G.p,this.zoneFor('final'),-12)&&this.near(this.points.finalLock,190)){this.startFinalBoss();return;}
@@ -569,7 +642,6 @@
     drawMap(g){
       g.fillStyle='#0d1115';g.fillRect(cam.x-W/2-180,cam.y-H/2-180,W+360,H+360);
       for(const part of this.parts)this.drawVisible(g,part);
-      g.save();g.strokeStyle='#695031';g.lineCap='round';for(const b of this.bridges){g.lineWidth=b.w;g.beginPath();g.moveTo(b.x1,b.y1);g.lineTo(b.x2,b.y2);g.stroke();g.strokeStyle='#a58448';g.lineWidth=b.w*.68;g.stroke();}g.restore();
     },
     drawDoor(d){
       if(!d.locked)return;const s=worldToScreen(d.x,d.y),th=d.thickness,count=Math.max(5,Math.ceil(d.len/35)+1),spacing=d.len/(count-1),gearR=21;
@@ -590,6 +662,11 @@
     },
     drawWorld(){
       for(const d of this.doors)this.drawDoor(d);
+      if(this.guidancePath?.length>1){
+        ctx.save();ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle='rgba(255,224,92,.20)';ctx.lineWidth=13;ctx.beginPath();this.guidancePath.forEach((p,i)=>{const s=worldToScreen(p.x,p.y);if(i)ctx.lineTo(s.x,s.y);else ctx.moveTo(s.x,s.y);});ctx.stroke();
+        const phase=(clock*2.5)%1;for(let i=1;i<this.guidancePath.length;i++){const a=this.guidancePath[i-1],b=this.guidancePath[i],dx=b.x-a.x,dy=b.y-a.y,len=Math.hypot(dx,dy);if(!len)continue;for(let d=phase*72;d<len;d+=72){const t=d/len,s=worldToScreen(a.x+dx*t,a.y+dy*t),ang=Math.atan2(dy,dx);ctx.save();ctx.translate(s.x,s.y);ctx.rotate(ang);ctx.fillStyle='rgba(255,238,116,.88)';ctx.shadowColor='#ffd84d';ctx.shadowBlur=9;ctx.beginPath();ctx.moveTo(11,0);ctx.lineTo(-7,-7);ctx.lineTo(-3,0);ctx.lineTo(-7,7);ctx.closePath();ctx.fill();ctx.restore();}}
+        ctx.restore();
+      }
       if(this.device){const s=worldToScreen(this.device.x,this.device.y),bob=Math.sin(clock*3)*5;ctx.save();ctx.translate(s.x,s.y+bob);ctx.rotate(Math.sin(clock*2)*.08);ctx.fillStyle='rgba(255,205,70,.22)';ctx.beginPath();ctx.arc(0,0,54+Math.sin(clock*4)*5,0,Math.PI*2);ctx.fill();const im=IMG['escape_windup'];if(im?.complete){const h=70*(im.height/im.width);ctx.drawImage(im,-35,-h/2,70,h);}ctx.restore();}
       if(this.portal){const s=worldToScreen(this.portal.x,this.portal.y);ctx.save();ctx.translate(s.x,s.y);ctx.rotate(this.portal.t*1.4);for(let i=0;i<3;i++){ctx.strokeStyle=`rgba(255,205,80,${.85-i*.22})`;ctx.lineWidth=7-i;ctx.beginPath();ctx.arc(0,0,48-i*12,0,Math.PI*1.7);ctx.stroke();}ctx.restore();}
     },
@@ -642,7 +719,7 @@
       const effectCoverage=Object.fromEntries(requiredEffects.map(word=>[word,rows.filter(x=>x.text.includes(word)).length]));
       const segments={
         scene2:Object.fromEntries(['sensor','detected'].map(segment=>[segment,rows.filter(x=>x.section===2&&x.segment===segment).length])),
-        scene5:Object.fromEntries(['room5Arrival','room5Lock','room5Pulse','room5Briefing','last5','room5AfterOpen'].map(segment=>[segment,rows.filter(x=>x.section===5&&x.segment===segment).length])),
+        scene5:Object.fromEntries(['room5Arrival','room5Lock','room5Pulse','room5Briefing','last5','room5AfterOpen','room6Arrival'].map(segment=>[segment,rows.filter(x=>x.section===5&&x.segment===segment).length])),
         scene6:Object.fromEntries(['preBoss','bossReveal','afterBoss'].map(segment=>[segment,rows.filter(x=>x.section===6&&x.segment===segment).length])),
         scene7:Object.fromEntries(['arenaLock','arenaBriefing'].map(segment=>[segment,rows.filter(x=>x.section===7&&x.segment===segment).length])),
         scene10:Object.fromEntries(['finalDoor','blackoutReaction'].map(segment=>[segment,rows.filter(x=>x.section===10&&x.segment===segment).length])),
@@ -654,15 +731,26 @@
     window.__TOY_TEST__.factoryStoryFlowAudit=async()=>{
       const old={selectedMode,selectedStage,selectedParty,selectedWeapon,selected,selectedDiff};selectedMode='escape';selectedStage=2;selectedParty=3;selectedWeapon='nerf';selectedDiff='normal';selected=0;
       startGame(CHAR_ORDER[selected]);await F.loadDialogue();ESCAPE.advanceDialogue(true);stopGameLoop();
-      F.resetEventStates();F.eventState.ROOM5_STORY='COMPLETED';F.eventState.ROOM5_DEFENSE='RUNNING';F.lockDoors(['room5Back','room5Front']);
-      let last5Calls=0,timerDone=0;const originalCombat=F.playCombatLines;F.playCombatLines=(lines,done)=>{last5Calls++;if(done)done();};
-      F.startTimer('room5',6,F.zoneFor('room5'),()=>timerDone++,{stage:false,prep:0});F.updateTimer(.8);const beforeFive={time:F.timer.t,last5Calls};F.updateTimer(.3);const atFive={time:F.timer.t,last5Calls,last5:F.timer.last5,last5Done:F.timer.last5Done,modalPaused:!!ESCAPE.dialogue};F.updateTimer(.2);const onceOnly=last5Calls;
-      F.timer.t=0;F.timer.last5Done=false;F.updateTimer(0);const heldAtZero={timer:!!F.timer,doorLocked:F.byDoor('room5Front').locked,timerDone};F.timer.last5Done=true;F.updateTimer(0);const releasedAtZero={timer:!!F.timer,timerDone};F.playCombatLines=originalCombat;
-      F.eventState.ROOM5_STORY='COMPLETED';F.eventState.ROOM5_DEFENSE='RUNNING';F.eventState.ROOM5_UNLOCK='PENDING';F.lockDoors(['room5Back','room5Front']);
-      const originalCountdown=F.runCountdown,originalScene=F.playScene;let countdownDone=null,sceneDone=null;F.runCountdown=done=>{countdownDone=done;};F.playScene=(n,done)=>{sceneDone=done;};F.finishRoom5();
-      const beforeCountdown={phase:F.phase,frontLocked:F.byDoor('room5Front').locked,unlock:F.eventState.ROOM5_UNLOCK};countdownDone();const afterCountdown={frontLocked:F.byDoor('room5Front').locked,unlock:F.eventState.ROOM5_UNLOCK};sceneDone();const afterOpenDialogue={phase:F.phase,unlock:F.eventState.ROOM5_UNLOCK};F.runCountdown=originalCountdown;F.playScene=originalScene;
+      const A='door_room4_to_room5',B='door_room5_to_room6';
+      F.resetEventStates();F.eventState.ROOM5_STORY='COMPLETED';F.eventState.ROOM5_DEFENSE='RUNNING';F.routeState='ROOM5_DEFENSE_60';F.routeHistory=['ROOM5_DEFENSE_60'];F.lockDoors([A,B]);
+      let last5Calls=0,timerDone=0,last5Done=null,last5LineCount=0;const systems=[],originalCombat=F.playCombatLines,originalSystem=F.showSystem;
+      F.playCombatLines=(lines,done)=>{last5Calls++;last5LineCount=lines.length;last5Done=done;};F.showSystem=text=>systems.push(text);
+      F.startTimer('room5',6,F.zoneFor('room5'),()=>timerDone++,{stage:false,prep:0});F.updateTimer(.8);const beforeFive={time:F.timer.t,last5Calls};F.updateTimer(.3);
+      const atFive={time:F.timer.t,last5Calls,last5LineCount,last5:F.timer.last5,last5Done:F.timer.last5Done,routeState:F.routeState,modalPaused:!!ESCAPE.dialogue};F.updateTimer(2);const flowing={time:F.timer.t,last5Calls,last5Done:F.timer.last5Done,timerDone};const onceOnly=last5Calls;
+      F.timer.t=3.05;F.updateTimer(.1);F.timer.t=2.05;F.updateTimer(.1);F.timer.t=1.05;F.updateTimer(.1);const countdown=systems.filter(x=>/^\d\.\.\.$/.test(x));
+      F.timer.t=0;F.updateTimer(0);const atZeroWaiting={timer:!!F.timer,timerDone,entryLocked:F.byDoor(A).locked,exitLocked:F.byDoor(B).locked};
+      if(typeof last5Done==='function')last5Done();const afterRead={time:F.timer.t,last5Done:F.timer.last5Done,timerDone};F.updateTimer(0);
+      const atZero={timer:!!F.timer,timerDone,entryLocked:F.byDoor(A).locked,exitLocked:F.byDoor(B).locked};F.playCombatLines=originalCombat;F.showSystem=originalSystem;
+      F.eventState.ROOM5_STORY='COMPLETED';F.eventState.ROOM5_DEFENSE='RUNNING';F.eventState.ROOM5_UNLOCK='PENDING';F.routeState='ROOM5_COUNTDOWN';F.routeHistory=['ROOM5_COUNTDOWN'];F.doorHistory=[];F.lockDoors([A,B]);
+      const originalCue=F.playCue,originalScene=F.playScene;const cueDone=[];let sceneDone=null;F.playCue=(text,done)=>{cueDone.push(done);};F.playScene=(n,done,opts)=>{if(opts?.segment==='room5AfterOpen')sceneDone=done;};F.finishRoom5();
+      const beforeOpen={phase:F.phase,entryLocked:F.byDoor(A).locked,exitLocked:F.byDoor(B).locked,unlock:F.eventState.ROOM5_UNLOCK,routeState:F.routeState,cues:cueDone.length};
+      if(typeof cueDone[0]==='function')cueDone[0]();
+      const afterFirstCue={entryLocked:F.byDoor(A).locked,exitLocked:F.byDoor(B).locked,cues:cueDone.length,opened:F.doorHistory.filter(x=>x.action==='OPEN').map(x=>x.id)};
+      if(typeof cueDone[1]==='function')cueDone[1]();
+      const afterUnlock={entryLocked:F.byDoor(A).locked,exitOpen:!F.byDoor(B).locked,opened:F.doorHistory.filter(x=>x.action==='OPEN').map(x=>x.id),unlock:F.eventState.ROOM5_UNLOCK};if(typeof sceneDone==='function')sceneDone();
+      const afterDialogue={phase:F.phase,unlock:F.eventState.ROOM5_UNLOCK,routeState:F.routeState};F.playCue=originalCue;F.playScene=originalScene;
       home();selectedMode=old.selectedMode;selectedStage=old.selectedStage;selectedParty=old.selectedParty;selectedWeapon=old.selectedWeapon;selectedDiff=old.selectedDiff;selected=old.selected;
-      return{beforeFive,atFive,onceOnly,heldAtZero,releasedAtZero,beforeCountdown,afterCountdown,afterOpenDialogue,pass:beforeFive.last5Calls===0&&atFive.last5Calls===1&&atFive.last5&&atFive.last5Done&&!atFive.modalPaused&&onceOnly===1&&heldAtZero.timer&&heldAtZero.doorLocked&&heldAtZero.timerDone===0&&!releasedAtZero.timer&&releasedAtZero.timerDone===1&&beforeCountdown.phase==='room5_unlock'&&beforeCountdown.frontLocked&&beforeCountdown.unlock==='RUNNING'&&!afterCountdown.frontLocked&&afterCountdown.unlock==='RUNNING'&&afterOpenDialogue.phase==='to_bulldozer'&&afterOpenDialogue.unlock==='COMPLETED'};
+      return{beforeFive,atFive,flowing,afterRead,onceOnly,countdown,atZeroWaiting,atZero,beforeOpen,afterFirstCue,afterUnlock,afterDialogue,pass:beforeFive.last5Calls===0&&atFive.last5Calls===1&&atFive.last5LineCount===8&&atFive.last5&&!atFive.last5Done&&atFive.routeState==='ROOM5_COUNTDOWN'&&!atFive.modalPaused&&flowing.time<3&&flowing.last5Calls===1&&!flowing.last5Done&&flowing.timerDone===0&&atZeroWaiting.timer&&atZeroWaiting.timerDone===0&&atZeroWaiting.entryLocked&&atZeroWaiting.exitLocked&&afterRead.time===0&&afterRead.last5Done&&afterRead.timerDone===0&&onceOnly===1&&countdown.join(',')==='3...,2...,1...'&&!atZero.timer&&atZero.timerDone===1&&atZero.entryLocked&&atZero.exitLocked&&beforeOpen.routeState==='ROOM5_TO_ROOM6_OPEN'&&beforeOpen.entryLocked&&beforeOpen.exitLocked&&beforeOpen.unlock==='RUNNING'&&beforeOpen.cues===1&&afterFirstCue.entryLocked&&afterFirstCue.exitLocked&&afterFirstCue.cues===2&&afterFirstCue.opened.length===0&&afterUnlock.entryLocked&&afterUnlock.exitOpen&&afterUnlock.opened.length===1&&afterUnlock.opened[0]===B&&afterDialogue.phase==='to_bulldozer'&&afterDialogue.unlock==='COMPLETED'&&afterDialogue.routeState==='ROOM6_APPROACH'};
     };
     window.__TOY_TEST__.factoryEncounterAudit=async()=>{
       const old={selectedMode,selectedStage,selectedParty,selectedWeapon,selected,selectedDiff};
@@ -696,10 +784,22 @@
       F.lockDoors(F.doors.map(d=>d.id));
       const canBypass=(d,r)=>{const step=12,ca=Math.cos(d.a),sa=Math.sin(d.a),nx=-sa,ny=ca,au=Math.ceil((d.len*.5+72)/step),av=Math.ceil((d.thickness*.5+108)/step),open=new Set(),starts=[],goals=new Set(),key=(u,v)=>`${u},${v}`;for(let v=-av;v<=av;v++)for(let u=-au;u<=au;u++){const x=d.x+ca*u*step+nx*v*step,y=d.y+sa*u*step+ny*v*step;if(!F.blocked(x,y,r)){const k=key(u,v);open.add(k);if(v<=-av+1)starts.push([u,v]);if(v>=av-1)goals.add(k);}}const q=starts.slice(),seen=new Set(starts.map(x=>key(x[0],x[1])));for(let qi=0;qi<q.length;qi++){const [u,v]=q[qi],k=key(u,v);if(goals.has(k))return true;for(const [du,dv] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[-1,1],[1,-1],[-1,-1]]){const nk=key(u+du,v+dv);if(open.has(nk)&&!seen.has(nk)){seen.add(nk);q.push([u+du,v+dv]);}}}return false;};
       const doorRows=F.doors.map(d=>{const ca=Math.cos(d.a),sa=Math.sin(d.a),samples=Array.from({length:17},(_,i)=>{const k=i/16-.5,x=d.x+ca*d.len*k,y=d.y+sa*d.len*k;return F.doorBlocked(x,y,0);}),edge=d.len*.5+d.thickness*.55,wallsAtEnds=F.cellAt(d.x-ca*edge,d.y-sa*edge)===0&&F.cellAt(d.x+ca*edge,d.y+sa*edge)===0,bypassSmall=canBypass(d,14),bypassPlayer=canBypass(d,18),bypassLarge=canBypass(d,26);return{id:d.id,len:d.len,thickness:d.thickness,centerWalkable:F.cellAt(d.x,d.y),sealed:samples.every(Boolean),wallsAtEnds,bypassSmall,bypassPlayer,bypassLarge};});
-      const zones=['first','room5','arena','room9','final'].map(name=>{const zone=F.zoneFor(name),report=F.stagePartyForEncounter(zone),units=[G.p,...G.allies.filter(a=>!a.dead)];return{name,...report,minSpacing:Math.min(...units.flatMap((a,i)=>units.slice(i+1).map(b=>Math.hypot(a.x-b.x,a.y-b.y))))};});
-      const permanent=F.byDoor('room34Permanent');F.openDoors(F.doors.map(d=>d.id));const opened=F.doors.filter(d=>!d.permanent).every(d=>!F.doorBlocked(d.x,d.y,0)),permanentHeld=permanent.locked&&F.doorBlocked(permanent.x,permanent.y,0);
+      const zones=['first','room5','bulldozer','arena','room9','final'].map(name=>{const zone=F.zoneFor(name),report=F.stagePartyForEncounter(zone),units=[G.p,...G.allies.filter(a=>!a.dead)];return{name,...report,minSpacing:Math.min(...units.flatMap((a,i)=>units.slice(i+1).map(b=>Math.hypot(a.x-b.x,a.y-b.y))))};});
+      F.openDoors(F.doors.map(d=>d.id));const opened=F.doors.every(d=>!F.doorBlocked(d.x,d.y,0));
       home();selectedMode=old.selectedMode;selectedStage=old.selectedStage;selectedParty=old.selectedParty;selectedWeapon=old.selectedWeapon;selectedDiff=old.selectedDiff;selected=old.selected;
-      return{doors:doorRows,zones,opened,permanentHeld,pass:doorRows.every(d=>d.centerWalkable===1&&d.sealed&&!d.bypassSmall&&!d.bypassPlayer&&!d.bypassLarge&&d.len<=540)&&zones.every(z=>z.outside===0&&z.blocked===0&&z.minSpacing>=50)&&opened&&permanentHeld};
+      return{doors:doorRows,zones,opened,pass:doorRows.every(d=>d.centerWalkable===1&&d.sealed&&!d.bypassSmall&&!d.bypassPlayer&&!d.bypassLarge&&d.len<=1500)&&zones.every(z=>z.outside===0&&z.blocked===0&&z.minSpacing>=50)&&opened};
+    };
+    window.__TOY_TEST__.factoryMapJoinAudit=async()=>{
+      const old={selectedMode,selectedStage,selectedParty,selectedWeapon,selected,selectedDiff};selectedMode='escape';selectedStage=2;selectedParty=3;selectedWeapon='nerf';selectedDiff='normal';selected=0;
+      startGame(CHAR_ORDER[selected]);await F.loadDialogue();ESCAPE.advanceDialogue(true);stopGameLoop();
+      const m1=F.parts.find(p=>p.id==='m1'),m2=F.parts.find(p=>p.id==='m2'),m3=F.parts.find(p=>p.id==='m3'),joinX=m2.x+m2.w*m2.s;
+      const joins={bridgeCount:F.bridges.length,partCount:F.parts.length,lowerEdgeGap:Math.abs(m1.x-joinX),upperEdgeGap:Math.abs(m3.x-joinX)};
+      const A='door_room4_to_room5',B='door_room5_to_room6',C='door_room6_to_arena';F.lockDoors([A,B,C]);F.openDoors([A]);
+      const path=F.buildGuidancePath(F.points.room4,F.points.room5)||[],start=path[0]||null,end=path[path.length-1]||null,room5=F.nearestWalkable(F.points.room5.x,F.points.room5.y);
+      const guidance={count:path.length,mostlyDown:!!start&&!!end&&end.y>start.y+120,allWalkable:path.every(p=>F.cellAt(p.x,p.y)===1&&!F.blocked(p.x,p.y,8)),endDistance:end?Math.hypot(end.x-room5.x,end.y-room5.y):Infinity};
+      const routeLocks={room4Open:!F.byDoor(A).locked,room5ExitLocked:F.byDoor(B).locked,room6ExitLocked:F.byDoor(C).locked};
+      home();selectedMode=old.selectedMode;selectedStage=old.selectedStage;selectedParty=old.selectedParty;selectedWeapon=old.selectedWeapon;selectedDiff=old.selectedDiff;selected=old.selected;
+      return{joins,guidance,routeLocks,pass:joins.bridgeCount===0&&joins.partCount===3&&joins.lowerEdgeGap<.01&&joins.upperEdgeGap<.01&&guidance.count>2&&guidance.mostlyDown&&guidance.allWalkable&&guidance.endDistance<2&&routeLocks.room4Open&&routeLocks.room5ExitLocked&&routeLocks.room6ExitLocked};
     };
     window.__TOY_TEST__.factoryFinalBossAudit=async()=>{
       const old={selectedMode,selectedStage,selectedParty,selectedWeapon,selected,selectedDiff};selectedMode='escape';selectedStage=2;selectedParty=3;selectedWeapon='nerf';selectedDiff='normal';selected=0;
@@ -711,10 +811,10 @@
       const atArrival={distance:Math.hypot(G.p.x-gate.x,G.p.y-gate.y),phase:F.phase,story:F.eventState.FINAL_STORY,dialogue:!!ESCAPE.dialogue};
       F.clearSequences();ESCAPE.dialogue=null;document.getElementById('escapeStory').classList.remove('show');F.sceneBusy=false;F.eventState.FINAL_STORY='COMPLETED';F.eventState.GIANT_BOSS='RUNNING';F.phase='giant_boss';
       const zone=F.zoneFor('final');F.stagePartyForEncounter(zone,{x:zone.x+zone.w*.22,y:zone.y+zone.h*.5});G.p.flags.tank=true;G.p.tankX=0;G.p.tankY=0;F.syncPlayerPets();F.spawnGiant();const boss=F.boss,fighters=[G.p,...G.allies.filter(a=>!a.dead)];
-      const spawn={inside:F.inZone(boss,zone,-boss.r),blocked:F.blocked(boss.x,boss.y,boss.r),minDistance:Math.min(...fighters.map(f=>Math.hypot(boss.x-f.x,boss.y-f.y))),petDistance:Math.hypot(G.p.tankX-G.p.x,G.p.tankY-G.p.y)};
+      const fighterMaxX=Math.max(...fighters.map(f=>f.x)),spawn={inside:F.inZone(boss,zone,-boss.r),blocked:F.blocked(boss.x,boss.y,boss.r),minDistance:Math.min(...fighters.map(f=>Math.hypot(boss.x-f.x,boss.y-f.y))),petDistance:Math.hypot(G.p.tankX-G.p.x,G.p.tankY-G.p.y),partyLeft:fighterMaxX<=zone.x+zone.w*.48,bossRight:boss.x>=zone.x+zone.w*.55,bossCenteredY:Math.abs(boss.y-(zone.y+zone.h*.5))<=zone.h*.34};
       const safe={x:boss.x,y:boss.y};boss.factorySafeX=safe.x;boss.factorySafeY=safe.y;boss.x=0;boss.y=0;boss.vx=800;boss.vy=800;clampWorldBounds(boss);const collision={restored:Math.hypot(boss.x-safe.x,boss.y-safe.y)<1,blocked:F.blocked(boss.x,boss.y,boss.r),vx:boss.vx,vy:boss.vy};
       home();selectedMode=old.selectedMode;selectedStage=old.selectedStage;selectedParty=old.selectedParty;selectedWeapon=old.selectedWeapon;selectedDiff=old.selectedDiff;selected=old.selected;
-      return{beforeArrival,atArrival,spawn,collision,pass:beforeArrival.phase==='to_final'&&beforeArrival.story==='PENDING'&&atArrival.phase==='final_story'&&atArrival.story==='RUNNING'&&atArrival.dialogue&&spawn.inside&&!spawn.blocked&&spawn.minDistance>=300&&spawn.petDistance<100&&collision.restored&&!collision.blocked&&collision.vx===0&&collision.vy===0};
+      return{beforeArrival,atArrival,spawn,collision,pass:beforeArrival.phase==='to_final'&&beforeArrival.story==='PENDING'&&atArrival.phase==='final_story'&&atArrival.story==='RUNNING'&&atArrival.dialogue&&spawn.inside&&!spawn.blocked&&spawn.minDistance>=300&&spawn.petDistance<100&&spawn.partyLeft&&spawn.bossRight&&spawn.bossCenteredY&&collision.restored&&!collision.blocked&&collision.vx===0&&collision.vy===0};
     };
     window.__TOY_TEST__.factoryDoorPreview=async()=>{
       const old={selectedMode,selectedStage,selectedParty,selectedWeapon,selected,selectedDiff};selectedMode='escape';selectedStage=2;selectedParty=3;selectedWeapon='nerf';selectedDiff='normal';selected=0;
@@ -737,37 +837,56 @@
     };
     window.__TOY_TEST__.factoryBulldozerFlowAudit=async()=>{
       const old={selectedMode,selectedStage,selectedParty,selectedWeapon,selected,selectedDiff};selectedMode='escape';selectedStage=2;selectedParty=3;selectedWeapon='nerf';selectedDiff='normal';selected=0;
-      startGame(CHAR_ORDER[selected]);await F.loadDialogue();ESCAPE.advanceDialogue(true);stopGameLoop();F.resetEventStates();F.eventState.ROOM5_UNLOCK='COMPLETED';F.lockDoors(['room5Front','firstBack','firstFront']);
-      const originalScene=F.playScene,originalCue=F.playCue,originalCombat=F.playCombatLines;let introDone=null;F.playScene=(n,done,opts)=>{if(opts?.segment==='preBoss')introDone=done;else if(done)done();};F.playCue=(text,done)=>{if(done)done();};F.playCombatLines=()=>{};
-      F.startBulldozerEncounter();const beforeIntro={boss:!!F.midboss,timer:!!F.timer,state:F.eventState.BULLDOZER_INTRO};introDone();const boss=F.midboss,fighters=[G.p,...G.allies.filter(a=>!a.dead)],minDistance=Math.min(...fighters.map(f=>Math.hypot(boss.x-f.x,boss.y-f.y))),startedTogether={boss:!!boss,timer:!!F.timer,time:F.timer?.t,state:F.eventState.BULLDOZER_DEFENSE};
-      boss.dead=true;F.updateTimer(FIXED_DT);const killedEarly={timerStillRunning:!!F.timer,timerDone:F.bulldozerTimerDone,doorsLocked:F.byDoor('room5Front').locked&&F.byDoor('firstBack').locked};F.timer.t=0;F.updateTimer(FIXED_DT);F.update(FIXED_DT);
-      const completed={phase:F.phase,unlock:F.eventState.BULLDOZER_UNLOCK,frontOpen:!F.byDoor('room5Front').locked,innerOpen:!F.byDoor('firstBack').locked};F.playScene=originalScene;F.playCue=originalCue;F.playCombatLines=originalCombat;
+      const B='door_room5_to_room6',C='door_room6_to_arena';startGame(CHAR_ORDER[selected]);await F.loadDialogue();ESCAPE.advanceDialogue(true);stopGameLoop();F.resetEventStates();F.eventState.ROOM5_UNLOCK='COMPLETED';F.routeState='ROOM6_APPROACH';F.routeHistory=['ROOM6_APPROACH'];F.openDoors([B]);F.lockDoors([C]);F.doorHistory=[];
+      const originalScene=F.playScene,originalCue=F.playCue,originalCombat=F.playCombatLines;let room6ArrivalDone=null,introDone=null;const seenSegments=[];F.playScene=(n,done,opts)=>{seenSegments.push(opts?.segment||'main');if(opts?.segment==='room6Arrival')room6ArrivalDone=done;else if(opts?.segment==='preBoss')introDone=done;else if(done)done();};F.playCue=(text,done)=>{if(done)done();};F.playCombatLines=()=>{};
+      const bulldozerZone=F.zoneFor('bulldozer');F.stagePartyForEncounter(bulldozerZone,{x:bulldozerZone.x+bulldozerZone.w*.78,y:bulldozerZone.y+bulldozerZone.h*.62});F.startBulldozerEncounter();const beforeArrival={boss:!!F.midboss,timer:!!F.timer,state:F.eventState.BULLDOZER_INTRO,routeState:F.routeState,doorsLocked:F.byDoor(B).locked&&F.byDoor(C).locked,hasArrivalCallback:typeof room6ArrivalDone==='function',segments:[...seenSegments]};if(typeof room6ArrivalDone==='function')room6ArrivalDone();const beforeIntro={boss:!!F.midboss,timer:!!F.timer,state:F.eventState.BULLDOZER_INTRO,routeState:F.routeState,hasIntroCallback:typeof introDone==='function',segments:[...seenSegments]};if(typeof introDone==='function')introDone();const boss=F.midboss,fighters=[G.p,...G.allies.filter(a=>!a.dead)],minDistance=Math.min(...fighters.map(f=>Math.hypot(boss.x-f.x,boss.y-f.y))),startedTogether={boss:!!boss,timer:!!F.timer,time:F.timer?.t,state:F.eventState.BULLDOZER_DEFENSE,routeState:F.routeState};
+      boss.dead=true;F.bulldozerDefeated=true;F.tryFinishBulldozer();const killedEarly={timerStillRunning:!!F.timer,timerDone:F.bulldozerTimerDone,doorsLocked:F.byDoor(B).locked&&F.byDoor(C).locked,routeState:F.routeState};F.timer.t=0;F.updateTimer(0);
+      const completed={phase:F.phase,unlock:F.eventState.BULLDOZER_UNLOCK,forwardOpen:!F.byDoor(C).locked,backHeld:F.byDoor(B).locked,routeState:F.routeState,opened:F.doorHistory.filter(x=>x.action==='OPEN').map(x=>x.id)};F.playScene=originalScene;F.playCue=originalCue;F.playCombatLines=originalCombat;
       home();selectedMode=old.selectedMode;selectedStage=old.selectedStage;selectedParty=old.selectedParty;selectedWeapon=old.selectedWeapon;selectedDiff=old.selectedDiff;selected=old.selected;
       const zone=F.zoneFor('bulldozer'),bossInside=F.inZone(boss,zone,-(boss.r||54))&&!F.blocked(boss.x,boss.y,boss.r||54),partyInside=fighters.every(e=>F.inZone(e,zone,-(e.r||16))&&!F.blocked(e.x,e.y,e.r||16));
       const noSpawnOverlap=minDistance>=(boss.r||54)+Math.max(...fighters.map(e=>e.r||18))+44;
-      return{zone:{x:zone.x,y:zone.y,w:zone.w,h:zone.h},boss:{x:boss.x,y:boss.y,r:boss.r},fighters:fighters.map(e=>({x:e.x,y:e.y,r:e.r})),beforeIntro,minDistance,noSpawnOverlap,bossInside,partyInside,startedTogether,killedEarly,completed,pass:!beforeIntro.boss&&!beforeIntro.timer&&beforeIntro.state==='RUNNING'&&startedTogether.boss&&startedTogether.timer&&startedTogether.time===30&&startedTogether.state==='RUNNING'&&noSpawnOverlap&&bossInside&&partyInside&&killedEarly.timerStillRunning&&!killedEarly.timerDone&&killedEarly.doorsLocked&&completed.phase==='to_arena'&&completed.unlock==='COMPLETED'&&completed.frontOpen&&completed.innerOpen};
+      return{zone:{x:zone.x,y:zone.y,w:zone.w,h:zone.h},boss:{x:boss.x,y:boss.y,r:boss.r},fighters:fighters.map(e=>({x:e.x,y:e.y,r:e.r})),beforeArrival,beforeIntro,minDistance,noSpawnOverlap,bossInside,partyInside,startedTogether,killedEarly,completed,pass:!beforeArrival.boss&&!beforeArrival.timer&&beforeArrival.state==='RUNNING'&&beforeArrival.routeState==='ROOM6_DIALOGUE'&&beforeArrival.doorsLocked&&beforeArrival.hasArrivalCallback&&beforeIntro.hasIntroCallback&&beforeIntro.segments.join(',')==='room6Arrival,preBoss'&&!beforeIntro.boss&&!beforeIntro.timer&&startedTogether.boss&&startedTogether.timer&&startedTogether.time===30&&startedTogether.state==='RUNNING'&&startedTogether.routeState==='ROOM6_DEFENSE_30'&&noSpawnOverlap&&bossInside&&partyInside&&killedEarly.timerStillRunning&&!killedEarly.timerDone&&killedEarly.doorsLocked&&killedEarly.routeState==='ROOM6_DEFENSE_30'&&completed.phase==='to_arena'&&completed.unlock==='COMPLETED'&&completed.forwardOpen&&completed.backHeld&&completed.routeState==='ROOM6_TO_ARENA_OPEN'&&completed.opened.length===1&&completed.opened[0]===C};
     };
     window.__TOY_TEST__.factoryRouteAudit=async()=>{
       const old={selectedMode,selectedStage,selectedParty,selectedWeapon,selected};
       selectedMode='escape';selectedStage=2;selectedParty=3;selectedWeapon='nerf';selected=0;startGame(CHAR_ORDER[selected]);await F.loadDialogue();ESCAPE.advanceDialogue(true);stopGameLoop();
-      const permanent=F.byDoor('room34Permanent'),branch=F.byDoor('branch');
-      const before={locked:permanent?.locked,permanent:permanent?.permanent,blocked:F.doorBlocked(permanent.x,permanent.y,18),leftWalkable:F.cellAt(permanent.x-65,permanent.y),rightWalkable:F.cellAt(permanent.x+65,permanent.y)};
-      F.openDoors(['room34Permanent','branch']);
-      const after={permanentLocked:permanent.locked,permanentBlocked:F.doorBlocked(permanent.x,permanent.y,18),branchOpened:!branch.locked};
+      const A=F.byDoor('door_room4_to_room5'),B=F.byDoor('door_room5_to_room6'),C=F.byDoor('door_room6_to_arena'),bulldozerZone=F.zoneFor('bulldozer'),nearestTrigger=F.nearestWalkable(F.points.bulldozerTrigger.x,F.points.bulldozerTrigger.y);
+      F.lockDoors([A.id,B.id,C.id]);
+      const before={ids:[A.id,B.id,C.id],distinct:new Set([A.id,B.id,C.id]).size===3,allLocked:[A,B,C].every(d=>d.locked),allBlocked:[A,B,C].every(d=>F.doorBlocked(d.x,d.y,18))};
+      F.doorHistory=[];F.openDoors([A.id]);const aOpened=F.doorHistory.filter(x=>x.action==='OPEN').map(x=>x.id);F.lockDoors([A.id]);F.doorHistory=[];F.openDoors([B.id]);const bOpened=F.doorHistory.filter(x=>x.action==='OPEN').map(x=>x.id);F.lockDoors([B.id]);F.doorHistory=[];F.openDoors([C.id]);const cOpened=F.doorHistory.filter(x=>x.action==='OPEN').map(x=>x.id);
+      const after={aOpened:aOpened.join(',')===A.id,bOpened:bOpened.join(',')===B.id,cOpened:cOpened.join(',')===C.id};
+      const route={entryX:A.x,room5ExitX:B.x,bulldozerExitX:C.x,triggerX:F.points.bulldozerTrigger.x,triggerInZone:F.inZone(F.points.bulldozerTrigger,bulldozerZone,0),triggerWalkableDistance:Math.hypot(nearestTrigger.x-F.points.bulldozerTrigger.x,nearestTrigger.y-F.points.bulldozerTrigger.y),linkedDoorId:{...F.linkedDoorId},stateOrder:[...F.routeOrder]};
       home();selectedMode=old.selectedMode;selectedStage=old.selectedStage;selectedParty=old.selectedParty;selectedWeapon=old.selectedWeapon;selected=old.selected;
-      return{before,after,pass:before.locked&&before.permanent&&before.blocked&&after.permanentLocked&&after.permanentBlocked&&after.branchOpened};
+      const expected=['ROOM4_LOCKED_DOOR_DIALOGUE_3','ROOM4_DEVICE_SEARCH','ROOM4_DEVICE_DIALOGUE_4','ROOM4_TO_ROOM5_OPEN','ROOM5_ENTER','ROOM5_INTRO_DIALOGUE','ROOM5_WARNING','ROOM5_DEFENSE_60','ROOM5_COUNTDOWN','ROOM5_TO_ROOM6_OPEN','ROOM6_APPROACH','ROOM6_DIALOGUE','BULLDOZER_SPAWN','ROOM6_DEFENSE_30','BULLDOZER_AND_TIMER_COMPLETE','ROOM6_TO_ARENA_OPEN'];
+      return{before,after,route,pass:before.distinct&&before.allLocked&&before.allBlocked&&after.aOpened&&after.bOpened&&after.cOpened&&route.entryX>route.room5ExitX&&route.room5ExitX>route.bulldozerExitX&&route.triggerX<route.room5ExitX&&route.triggerInZone&&route.triggerWalkableDistance<90&&route.linkedDoorId.DEVICE4===A.id&&route.linkedDoorId.ROOM5_UNLOCK===B.id&&route.linkedDoorId.BULLDOZER_UNLOCK===C.id&&JSON.stringify(route.stateOrder)===JSON.stringify(expected)};
     };
     window.__TOY_TEST__.factoryDeviceOrderAudit=async()=>{
       const old={selectedMode,selectedStage,selectedParty,selectedWeapon,selected};
       selectedMode='escape';selectedStage=2;selectedParty=3;selectedWeapon='nerf';selected=0;startGame(CHAR_ORDER[selected]);await F.loadDialogue();ESCAPE.advanceDialogue(true);stopGameLoop();
       const target=F.nearestWalkable(F.points.room4.x,F.points.room4.y);G.p.x=target.x;G.p.y=target.y;cam.x=G.p.x;cam.y=G.p.y;F.phase='to_device';F.update(FIXED_DT);await new Promise(resolve=>setTimeout(resolve,0));
-      const beforePickup={phase:F.phase,scene3:!!ESCAPE.dialogue,device:!!F.device,branchLocked:F.byDoor('branch').locked};
-      ESCAPE.advanceDialogue(true);stopGameLoop();const deviceReady={phase:F.phase,device:!!F.device,sceneClosed:!ESCAPE.dialogue,branchLocked:F.byDoor('branch').locked};
+      const A='door_room4_to_room5',room4=F.zone(F.points.room4.x,F.points.room4.y,510,390);const beforePickup={phase:F.phase,scene3:!!ESCAPE.dialogue,device:!!F.device,entryLocked:F.byDoor(A).locked,routeState:F.routeState};
+      ESCAPE.advanceDialogue(true);stopGameLoop();const deviceReady={phase:F.phase,device:!!F.device,sceneClosed:!ESCAPE.dialogue,entryLocked:F.byDoor(A).locked,routeState:F.routeState,insideRoom4:!!F.device&&F.inZone(F.device,room4,0)};
       if(F.device){G.p.x=F.device.x;G.p.y=F.device.y;F.update(FIXED_DT);await new Promise(resolve=>setTimeout(resolve,0));}
-      const afterPickup={phase:F.phase,scene4:!!ESCAPE.dialogue,deviceRemoved:!F.device,branchLocked:F.byDoor('branch').locked};
-      ESCAPE.advanceDialogue(true);stopGameLoop();const completed={phase:F.phase,branchOpened:!F.byDoor('branch').locked};
+      const afterPickup={phase:F.phase,scene4:!!ESCAPE.dialogue,deviceRemoved:!F.device,entryLocked:F.byDoor(A).locked,routeState:F.routeState};
+      ESCAPE.advanceDialogue(true);stopGameLoop();const completed={phase:F.phase,entryOpened:!F.byDoor(A).locked,routeState:F.routeState};
       home();selectedMode=old.selectedMode;selectedStage=old.selectedStage;selectedParty=old.selectedParty;selectedWeapon=old.selectedWeapon;selected=old.selected;
-      return{beforePickup,deviceReady,afterPickup,completed,pass:beforePickup.scene3&&!beforePickup.device&&beforePickup.branchLocked&&deviceReady.device&&deviceReady.phase==='device_search'&&afterPickup.scene4&&afterPickup.deviceRemoved&&afterPickup.branchLocked&&completed.phase==='to_room5'&&completed.branchOpened};
+      return{beforePickup,deviceReady,afterPickup,completed,pass:beforePickup.scene3&&!beforePickup.device&&beforePickup.entryLocked&&beforePickup.routeState==='ROOM4_LOCKED_DOOR_DIALOGUE_3'&&deviceReady.device&&deviceReady.phase==='device_search'&&deviceReady.entryLocked&&deviceReady.routeState==='ROOM4_DEVICE_SEARCH'&&deviceReady.insideRoom4&&afterPickup.scene4&&afterPickup.deviceRemoved&&afterPickup.entryLocked&&afterPickup.routeState==='ROOM4_DEVICE_DIALOGUE_4'&&completed.phase==='to_room5'&&completed.entryOpened&&completed.routeState==='ROOM4_TO_ROOM5_OPEN'};
+    };
+    window.__TOY_TEST__.factoryP0RouteRegressionAudit=async(iterations=20)=>{
+      const runs=[];
+      for(let i=1;i<=iterations;i++){
+        try{
+          const device=await window.__TOY_TEST__.factoryDeviceOrderAudit();
+          const room5=await window.__TOY_TEST__.factoryStoryFlowAudit();
+          const room6=await window.__TOY_TEST__.factoryBulldozerFlowAudit();
+          const route=await window.__TOY_TEST__.factoryRouteAudit();
+          const map=await window.__TOY_TEST__.factoryMapJoinAudit();
+          const finalBoss=await window.__TOY_TEST__.factoryFinalBossAudit();
+          runs.push({iteration:i,device:device.pass,room5:room5.pass,room6:room6.pass,route:route.pass,map:map.pass,finalBoss:finalBoss.pass,pass:device.pass&&room5.pass&&room6.pass&&route.pass&&map.pass&&finalBoss.pass});
+        }catch(error){runs.push({iteration:i,pass:false,error:String(error?.stack||error)});}
+      }
+      const failures=runs.filter(run=>!run.pass);
+      return{iterations,passed:runs.length-failures.length,failures,runs,pass:runs.length===iterations&&failures.length===0};
     };
     const panel=document.getElementById('toyTestPanel'),output=document.getElementById('toyTestOutput');
     if(panel&&output){
@@ -782,7 +901,8 @@
         ['toyTestFactoryDifficulty','공장 난이도 검사',window.__TOY_TEST__.factoryDifficultyAudit],
         ['toyTestFactoryBulldozer','공장 불도저·문 순서 검사',window.__TOY_TEST__.factoryBulldozerFlowAudit],
         ['toyTestFactoryRoute','공장 동선 검사',window.__TOY_TEST__.factoryRouteAudit],
-        ['toyTestFactoryDevice','공장 장치 순서 검사',window.__TOY_TEST__.factoryDeviceOrderAudit]
+        ['toyTestFactoryDevice','공장 장치 순서 검사',window.__TOY_TEST__.factoryDeviceOrderAudit],
+        ['toyTestFactoryP0Route','P0 3→4→5→6 20회 회귀검사',window.__TOY_TEST__.factoryP0RouteRegressionAudit]
       ])if(!document.getElementById(id)){const b=document.createElement('button');b.id=id;b.textContent=label;b.addEventListener('click',async()=>{try{output.textContent=JSON.stringify(await run(),null,2);}catch(err){output.textContent=JSON.stringify({pass:false,error:String(err?.stack||err)},null,2);}});panel.appendChild(b);}
       if(new URLSearchParams(location.search).has('factoryAudit')){panel.style.cssText='position:fixed;left:4px;bottom:4px;width:min(96vw,520px);max-height:80vh;overflow:auto;z-index:10050;opacity:1;background:#07170d;color:#d8ffe1;padding:8px;border:2px solid #72db8a';output.style.cssText='display:block;white-space:pre-wrap;font:11px/1.35 monospace;margin-bottom:6px';for(const button of panel.querySelectorAll('button'))button.style.cssText='display:inline-block;margin:2px;padding:6px;font-size:11px';}
     }
