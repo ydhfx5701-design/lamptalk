@@ -3,7 +3,7 @@
  * Shop, inventory and weapon/equipment management read from this one catalog.
  */
 (()=>{
-  const GRADE_COLORS={C:'#8B919A',B:'#4FAE58',A:'#3D7BFF','A+':'#9656DF',S:'#FF8A24',SS:'#E43D59',SSS:'#FFD447'};
+  const GRADE_COLORS={C:'#8B919A',B:'#4FAE58',A:'#9656DF','A+':'#E43D59',S:'#FF8A24',SS:'#B91C3C',SSS:'#FFD447'};
   const GRADE_ORDER={C:1,B:2,A:3,'A+':4,S:5,SS:6,SSS:7};
   const ITEM_IMG='assets/items2/';
   const SHOP_IMG='assets/shop3/';
@@ -50,7 +50,10 @@
     spring:item('스프링 펀치','weapon','A',WPN_IMG+'spring.webp','강한 주먹을 발사해 적을 크게 밀어내는 무기.',{displayScale:.88}),
     spear:item('팝업 창','weapon','A',WPN_IMG+'spear.webp','긴 직선 범위의 적을 관통하는 장난감 창.',{displayScale:.92}),
     sword:item('장난감 칼','weapon','A',WPN_IMG+'sword.webp','전방의 여러 적을 부채꼴로 베는 장난감 칼.',{displayScale:.86}),
-    hammer:item('수호 해머','weapon','A+',WPN_IMG+'hammer.webp','넓은 범위를 내려찍고 일반 적을 기절시키는 해머.',{displayScale:.88})
+    hammer:item('수호 해머','weapon','A+',WPN_IMG+'hammer.webp','넓은 범위를 내려찍고 일반 적을 기절시키는 해머.',{displayScale:.88}),
+    revolver:item('장난감 리볼버','weapon','A+','assets/v2weapons/revolver.png','강한 단발 화력을 가진 장난감 리볼버. 정확하고 묵직한 한 발로 적을 빠르게 정리한다.',{displayScale:.86,price:1800,currency:'gem'}),
+    shotgun:item('장난감 샷건','weapon','A','assets/v2weapons/shotgun.png','넓게 퍼지는 산탄으로 전방의 적을 시원하게 쓸어버리는 장난감 샷건. 근거리일수록 더욱 강력하다.',{displayScale:.86,price:1600,currency:'gem'}),
+    mechammer:item('부스터 메카 해머','weapon','A+','assets/v2weapons/mechammer.png','부스터 힘으로 강하게 내려찍는 중량형 메카 해머. 충격파와 넉백으로 다수의 적을 한 번에 밀어낸다.',{displayScale:.84,price:1900,currency:'gem'})
   };
   const TB_ALL=Object.assign({},TB_ITEM_CATALOG,TB_WEAPON_CATALOG);
   window.TB_ITEM_CATALOG=TB_ITEM_CATALOG;
@@ -62,6 +65,7 @@
     {id:'package',name:'패키지',items:[]},
     {id:'currency',name:'재화',items:['gold_box']},
     {id:'equipment',name:'장비',items:['toy_helmet','windup_armor','toy_gloves','spring_shoes','lucky_badge','windup_necklace']},
+    {id:'weapon',name:'무기',items:['revolver','shotgun','mechammer']},
     {id:'material',name:'재료',items:['char_shard','weapon_part','pet_shard','toy_part','precision_gear','orbit_core','flight_core','explosion_core','fire_core','power_core','enhancement_stone','awakening_fragment','promotion_screw','awaken_core']},
     {id:'box',name:'상자',items:['gold_box','part_box','char_box','weapon_box','equipment_box','orbit_box','premium_parts_box']},
     {id:'normal',name:'일반',items:['revive_ticket','repair_kit','lucky_ticket']}
@@ -132,25 +136,28 @@
   }
   function bindItemSlots(root,handler=openInventoryDetail){root.querySelectorAll('[data-item-id]').forEach(el=>{el.onclick=()=>{AudioMgr.sfx('click');handler(el.dataset.itemId);};});}
   function ensureEquipmentState(id){if(!saveData.equipment[id])saveData.equipment[id]=defaultManagedState();return saveData.equipment[id];}
+  function centerTabInScroller(el,wrap){if(!el||!wrap)return;wrap.scrollLeft=Math.max(0,el.offsetLeft-(wrap.clientWidth-el.offsetWidth)/2);}
 
   /* ---------------- Shop ---------------- */
   renderShopCats=function(){
     const wrap=$('#shopCats');wrap.innerHTML='';
     SHOP_CATEGORY_LIST.forEach((cat,i)=>{const b=document.createElement('button');b.className='shop-cat'+(i===shopCatIdx?' active':'');b.textContent=cat.name;b.onclick=()=>{AudioMgr.sfx('click');shopCatIdx=i;shopPage=0;renderShopCats();renderShopGrid();};wrap.appendChild(b);});
-    wrap.querySelector('.active')?.scrollIntoView({block:'nearest',inline:'center'});
+    centerTabInScroller(wrap.querySelector('.active'),wrap);
   };
   renderShopGrid=function(){
     const cat=SHOP_CATEGORY_LIST[shopCatIdx]||SHOP_CATEGORY_LIST[0],totalPages=Math.max(1,Math.ceil(cat.items.length/9));
     shopPage=clamp(shopPage,0,totalPages-1);const grid=$('#shopGrid');grid.innerHTML='';
     const ids=cat.items.slice(shopPage*9,shopPage*9+9);
     if(!ids.length)grid.innerHTML='<div class="shop-slot-empty">준비 중인 상품이에요</div>';
-    ids.forEach(id=>{const def=TB_ITEM_CATALOG[id],slot=document.createElement('button');slot.className='shop-slot';slot.style.setProperty('--item-scale',`${Math.round((def.displayScale||.84)*100)}%`);slot.innerHTML=`<div class="shop-slot-float"><div class="shop-slot-frame"><img src="${def.image}" alt="${def.name}">${gradeBadge(def)}</div></div><div class="shop-slot-name">${def.name}</div><div class="shop-slot-price">${CURRENCY_ICON2[def.currency]} ${def.price.toLocaleString('ko-KR')}</div>`;slot.onclick=()=>{AudioMgr.sfx('click');openShopDetail(id);};grid.appendChild(slot);});
+    ids.forEach(id=>{const def=TB_ALL[id];if(!def)return;const slot=document.createElement('button');slot.className='shop-slot';slot.style.setProperty('--item-scale',`${Math.round((def.displayScale||.84)*100)}%`);slot.innerHTML=`<div class="shop-slot-float"><div class="shop-slot-frame"><img src="${def.image}" alt="${def.name}">${gradeBadge(def)}</div></div><div class="shop-slot-name">${def.name}</div><div class="shop-slot-price">${CURRENCY_ICON2[def.currency]} ${def.price.toLocaleString('ko-KR')}</div>`;slot.onclick=()=>{AudioMgr.sfx('click');openShopDetail(id);};grid.appendChild(slot);});
     $('#shopPageLabel').textContent=`${shopPage+1} / ${totalPages}`;$('#shopPrevPage').disabled=shopPage<=0;$('#shopNextPage').disabled=shopPage>=totalPages-1;
   };
-  shopMaxQty=function(def){if(!def)return 0;const limit=Number.isFinite(def.maxPurchase)?Math.max(1,Math.floor(def.maxPurchase)):999;return Math.max(0,Math.min(limit,Math.floor((saveData.currencies[def.currency]||0)/Math.max(1,def.price))));};
-  normalizeShopQty=function(raw){const def=TB_ITEM_CATALOG[shopDetailId],max=shopMaxQty(def);let n=Math.floor(Number(raw));if(!Number.isFinite(n)||n<1)n=1;shopQty=max>0?clamp(n,1,max):1;return shopQty;};
+  shopMaxQty=function(def){if(!def||def.category==='weapon')return 0;const limit=Number.isFinite(def.maxPurchase)?Math.max(1,Math.floor(def.maxPurchase)):999;return Math.max(0,Math.min(limit,Math.floor((saveData.currencies[def.currency]||0)/Math.max(1,def.price))));};
+  normalizeShopQty=function(raw){const def=TB_ALL[shopDetailId],max=shopMaxQty(def);let n=Math.floor(Number(raw));if(!Number.isFinite(n)||n<1)n=1;shopQty=max>0?clamp(n,1,max):1;return shopQty;};
   refreshShopDetail=function(){
-    const def=TB_ITEM_CATALOG[shopDetailId];if(!def)return;const max=shopMaxQty(def),total=def.price*normalizeShopQty(shopQty);
+    const def=TB_ALL[shopDetailId];if(!def)return;
+    if(def.category==='weapon'){$('#shopQtyInput').value='1';$('#shopQtyInput').disabled=true;$('#shopQtyMinus').disabled=true;$('#shopQtyPlus').disabled=true;$('#shopQtyLimit').textContent='현재 인벤토리에 지급된 무기입니다';$('#sdBuyBtn').textContent='보유 중';$('#sdBuyBtn').disabled=true;$('#sdOwned').textContent=`보유 중 · 상점 기준 보석 ${def.price.toLocaleString('ko-KR')}`;return;}
+    const max=shopMaxQty(def),total=def.price*normalizeShopQty(shopQty);
     $('#shopQtyInput').max=String(Math.max(1,max));$('#shopQtyInput').value=String(shopQty);$('#shopQtyInput').disabled=max<1;
     $('#shopQtyMinus').disabled=max<1||shopQty<=1;$('#shopQtyPlus').disabled=max<1||shopQty>=max;
     $('#shopQtyLimit').textContent=max>0?`현재 재화로 최대 ${max}개 구매 가능`:'현재 재화로 구매할 수 없습니다';
@@ -158,14 +165,14 @@
     $('#sdOwned').textContent=`보유 ${ownedQty(shopDetailId).toLocaleString('ko-KR')}개 · 개당 ${CURRENCY_LABEL[def.currency]} ${def.price.toLocaleString('ko-KR')}`;
   };
   openShopDetail=function(id){
-    const def=TB_ITEM_CATALOG[id];if(!def)return;shopDetailId=id;shopQty=1;
+    const def=TB_ALL[id];if(!def)return;shopDetailId=id;shopQty=1;
     $('#sdName').textContent=def.name;$('#sdImg').src=def.image;$('#sdImg').alt=def.name;$('#sdImg').style.setProperty('--item-scale',`${Math.round((def.displayScale||.84)*100)}%`);
     $('#sdDesc').textContent=def.desc;$('#sdGrade').textContent=`${def.grade} 등급`;$('#sdGrade').dataset.grade=def.grade;$('#sdGrade').style.setProperty('--grade-color',GRADE_COLORS[def.grade]);
     refreshShopDetail();$('#shopDetail').classList.add('show');
   };
   closeShopDetail=function(){shopDetailId=null;shopQty=1;$('#shopDetail').classList.remove('show');};
   function buyShopItem(){
-    const def=TB_ITEM_CATALOG[shopDetailId];if(!def)return;const qty=normalizeShopQty($('#shopQtyInput').value),max=shopMaxQty(def),total=def.price*qty,bal=saveData.currencies[def.currency]||0;
+    const def=TB_ALL[shopDetailId];if(!def)return;if(def.category==='weapon'){showToast('이미 인벤토리에 지급된 무기입니다',1400);return;}const qty=normalizeShopQty($('#shopQtyInput').value),max=shopMaxQty(def),total=def.price*qty,bal=saveData.currencies[def.currency]||0;
     if(max<1||qty>max||bal<total){refreshShopDetail();showToast('재화가 부족합니다',1400);return;}
     saveData.currencies[def.currency]=bal-total;saveData.inventory[shopDetailId]=(saveData.inventory[shopDetailId]||0)+qty;
     if(['equipment','accessory'].includes(def.category))ensureEquipmentState(shopDetailId);
@@ -173,13 +180,13 @@
     saveGame();AudioMgr.sfx('chest');showToast(`${def.name} × ${qty} 구매 완료!`,1400);closeShopDetail();
   }
   openShop=function(){AudioMgr.unlock();shopCatIdx=0;shopPage=0;renderShopCats();renderShopGrid();$('#shop').classList.add('show');};
-  preloadShopImages=function(){preloadImages(Object.values(TB_ITEM_CATALOG).map(def=>def.image));};
+  preloadShopImages=function(){preloadImages(Object.values(TB_ALL).map(def=>def.image));};
 
   /* ---------------- Inventory ---------------- */
   renderInvTabs=function(){
     $('#invTabs').innerHTML=INV_CATEGORY_LIST.map((tab,i)=>`<button class="inv-tab${i===invTabIdx?' active':''}" data-invtab="${i}">${tab.name}</button>`).join('');
     $('#invTabs').querySelectorAll('[data-invtab]').forEach(btn=>btn.onclick=()=>{AudioMgr.sfx('click');invTabIdx=+btn.dataset.invtab;renderInvTabs();renderInvBody();});
-    $('#invTabs').querySelector('.active')?.scrollIntoView({block:'nearest',inline:'center'});
+    centerTabInScroller($('#invTabs').querySelector('.active'),$('#invTabs'));
   };
   renderInvBody=function(){
     const category=INV_CATEGORY_LIST[invTabIdx]?.id||'all',ids=inventoryIds(category),body=$('#invBody');
@@ -230,7 +237,7 @@
   function manageTabsHtml(){return `<div class="wpn-system-tabs">${MANAGE_TABS.map(t=>`<button class="wpn-system-tab${tbManageTab===t.id?' active':''}" data-manage-tab="${t.id}">${t.name}</button>`).join('')}</div>`;}
   function bindManageTabs(){
     $('#wpnBody').querySelectorAll('[data-manage-tab]').forEach(btn=>btn.onclick=()=>{AudioMgr.sfx('click');tbManageTab=btn.dataset.manageTab;tbActionSelected=null;renderWeaponScreen();});
-    $('#wpnBody').querySelector('[data-manage-tab].active')?.scrollIntoView({block:'nearest',inline:'center'});
+    const active=$('#wpnBody').querySelector('[data-manage-tab].active');centerTabInScroller(active,active?.parentElement);
   }
   function equipmentIds(){return sortIds(Object.keys(TB_ITEM_CATALOG).filter(id=>['equipment','accessory'].includes(TB_ITEM_CATALOG[id].category)&&ownedQty(id)>0));}
   function renderManageGrid(category){

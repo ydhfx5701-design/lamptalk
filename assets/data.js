@@ -1268,7 +1268,10 @@ window.TOY_DATA={
     "spring": "assets/v2weapons/spring.webp",
     "spear": "assets/v2weapons/spear.webp",
     "sword": "assets/v2weapons/sword.webp",
-    "hammer": "assets/v2weapons/hammer.webp"
+    "hammer": "assets/v2weapons/hammer.webp",
+    "revolver": "assets/v2weapons/revolver.png",
+    "shotgun": "assets/v2weapons/shotgun.png",
+    "mechammer": "assets/v2weapons/mechammer.png"
   },
   "pillbug": [
     "assets/mobs/pillbug_east.webp",
