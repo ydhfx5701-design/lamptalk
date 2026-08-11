@@ -1582,6 +1582,19 @@ window.TOY_DATA={
     "assets/swordfx2/3.png",
     "assets/swordfx2/4.png"
   ],
+  "mechaHammerFx": [
+    "assets/effects/mechammer/mechammer_impact_01.png",
+    "assets/effects/mechammer/mechammer_impact_02.png",
+    "assets/effects/mechammer/mechammer_impact_03.png",
+    "assets/effects/mechammer/mechammer_impact_04.png",
+    "assets/effects/mechammer/mechammer_impact_05.png",
+    "assets/effects/mechammer/mechammer_impact_06.png"
+  ],
+  "shotgunFx": [
+    "assets/effects/shotgun/shotgun_flash_01.png",
+    "assets/effects/shotgun/shotgun_flash_02.png",
+    "assets/effects/shotgun/shotgun_flash_03.png"
+  ],
   "ufoBoom": [
     "assets/ufo/boom1.png",
     "assets/ufo/boom2.png",
@@ -1659,6 +1672,9 @@ window.TOY_DATA={
     "spear": "assets/sfx/spear.mp3",
     "sword": "assets/sfx/sword.mp3",
     "hammer": "assets/sfx/hammer.mp3",
+    "revolver": "assets/sfx/revolver.mp3",
+    "shotgun": "assets/sfx/shotgun.mp3",
+    "mechammer": "assets/sfx/mechammer.mp3",
     "boomerang": "assets/sfx/boomerang.mp3",
     "death": "assets/sfx/death.mp3",
     "click": "assets/sfx/click.mp3",
