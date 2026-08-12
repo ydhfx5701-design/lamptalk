@@ -1,0 +1,67 @@
+/* Unified item / inventory / weapon-management UI */
+:root{
+  --grade-c:#8b919a;--grade-b:#4fae58;--grade-a:#3d7bff;--grade-ap:#9656df;
+  --grade-s:#ff8a24;--grade-ss:#e43d59;--grade-sss:#ffd447;
+}
+.inv-tabs,.shop-cats,.wpn-system-tabs{
+  flex-wrap:nowrap!important;justify-content:flex-start!important;overflow-x:auto!important;
+  overscroll-behavior-x:contain;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
+  scrollbar-width:none;padding:2px 1px 6px;
+}
+.inv-tabs::-webkit-scrollbar,.shop-cats::-webkit-scrollbar,.wpn-system-tabs::-webkit-scrollbar{display:none}
+.inv-tab,.shop-cat,.wpn-system-tab{flex:0 0 auto!important;min-width:max-content;scroll-snap-align:start}
+.inv-tab{padding-inline:11px!important}
+.shop-cat{padding-inline:13px!important}
+.inv-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:9px!important;padding:3px 2px 12px!important}
+.inv-slot,.wpn-slot{aspect-ratio:.88!important;overflow:visible!important;padding:5px 5px 8px!important;justify-content:flex-start!important;cursor:pointer}
+.tb-slot-art{position:relative;width:100%;height:72%;display:grid;place-items:center;min-height:0}
+.tb-slot-art img{width:var(--item-scale,84%)!important;height:var(--item-scale,84%)!important;object-fit:contain!important;display:block;filter:drop-shadow(0 3px 2px rgba(57,30,5,.24))}
+.inv-slot-name,.tb-slot-name{height:26px;display:flex;align-items:center;justify-content:center;margin-top:auto!important;font-size:clamp(9px,2.55vw,11px)!important;line-height:1.08;white-space:normal!important;overflow:hidden;text-align:center;font-weight:900;color:#5a3714;width:100%}
+.tb-grade-badge{position:absolute;left:3px;bottom:2px;z-index:4;min-width:25px;height:18px;padding:0 5px;border-radius:7px;border:2px solid rgba(255,255,255,.88);display:flex;align-items:center;justify-content:center;color:#fff;font:1000 10px/1 system-ui;text-shadow:0 1px 1px #0008;box-shadow:0 2px 3px #0004;background:var(--grade-color)}
+.tb-grade-badge[data-grade="SSS"]{color:#4b3000;text-shadow:none}
+.tb-slot-qty{position:absolute;right:3px;bottom:2px;z-index:4;border-radius:7px;background:#2d1b0ddd;color:#fff8df;padding:2px 5px;font:900 10px/1 system-ui;box-shadow:0 1px 2px #0005}
+.tb-slot-stars{position:absolute;right:3px;top:2px;color:#ffd447;font-size:9px;letter-spacing:-1px;text-shadow:0 1px 1px #5b3c00;max-width:72%;overflow:hidden;white-space:nowrap}
+.tb-slot-level{position:absolute;left:3px;top:2px;border-radius:6px;background:#153c72e8;color:#fff;padding:2px 4px;font:800 9px/1 system-ui}
+.tb-empty-state{margin:auto;text-align:center;color:#8a6a3a;font-weight:900;font-size:14px;padding:40px 12px}
+.shop-cats{gap:6px!important;padding-bottom:7px!important}
+.shop-cat{min-width:66px!important}
+.shop-slot{position:relative}
+.shop-slot-frame{position:relative;overflow:visible}
+.shop-slot-frame img{width:var(--item-scale,84%)!important;height:var(--item-scale,84%)!important;animation:none!important;filter:drop-shadow(0 3px 2px rgba(57,30,5,.22))}
+.shop-detail-name{margin-bottom:3px!important;text-align:center}
+.shop-detail-grade{margin:0 auto 7px;width:max-content;padding:4px 13px;border-radius:999px;background:var(--grade-color,#8b919a);border:2px solid #fff5d7;color:#fff;font:1000 12px/1 system-ui;text-shadow:0 1px 1px #0007;box-shadow:0 2px 0 #754c19}
+.shop-detail-grade[data-grade="SSS"]{color:#4b3000;text-shadow:none}
+.shop-detail-owned{text-align:center;color:#6b481f;font-size:12px;font-weight:900;margin:-5px 0 10px}
+.shop-detail-imgbox{position:relative}
+.shop-detail-imgbox img{width:var(--item-scale,84%)!important;height:var(--item-scale,84%)!important;animation:none!important;filter:drop-shadow(0 5px 3px rgba(57,30,5,.25))}
+.wpn-system-tabs{display:flex;gap:5px;margin:1px 0 9px;flex-shrink:0}
+.wpn-system-tab{padding:8px 12px;border-radius:12px;border:2px solid #8a6a3a;background:linear-gradient(180deg,#8a6244,#5c4128);color:#f3e2c0;font-weight:900;font-size:12px;font-family:inherit;box-shadow:0 3px 0 #3a2712}
+.wpn-system-tab.active{background:linear-gradient(180deg,#ffe27a,#f0862a);color:#4a2408;border-color:#fff0ac;box-shadow:0 3px 0 #8a3d10,0 0 8px #ffd75e99}
+.wpn-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important;padding-bottom:12px!important}
+.wpn-slot{position:relative;background:linear-gradient(160deg,#fffaf0,#f3d9a8)!important;border:2px solid #c99748!important}
+.tb-action-view{display:flex;flex-direction:column;align-items:center;gap:9px;padding:3px 2px 14px;min-height:100%}
+.tb-action-target{width:31vw;max-width:132px;aspect-ratio:1;border-radius:19px;border:3px dashed #b67b26;background:linear-gradient(160deg,#fffaf0,#f3d9a8);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:inset 0 2px 5px #fff}
+.tb-action-target img{width:84%;height:84%;object-fit:contain}
+.tb-action-plus{width:54px;height:54px;border-radius:50%;border:3px solid #ffe089;background:linear-gradient(180deg,#3a7bd5,#174d89);color:#fff;font-size:38px;line-height:1;font-weight:900;box-shadow:0 4px 0 #0d315c}
+.tb-action-caption{font-weight:900;color:#5a3714;text-align:center;font-size:13px}
+.tb-recipe-list{width:100%;display:flex;flex-direction:column;gap:7px}
+.tb-recipe{display:grid;grid-template-columns:54px 1fr auto;gap:8px;align-items:center;border:2px solid #c99748;border-radius:14px;background:#fff4d7;padding:7px;text-align:left;color:#5a3714;font-family:inherit}
+.tb-recipe.selected{border-color:#3479bd;box-shadow:0 0 0 2px #79c5ff}
+.tb-recipe img{width:54px;height:54px;object-fit:contain}
+.tb-recipe strong{display:block;font-size:13px}.tb-recipe small{display:block;margin-top:2px;font-size:10px;color:#86633a}
+.tb-material-row{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.tb-material{width:62px;position:relative;text-align:center;color:#5a3714;font-size:9px;font-weight:900}
+.tb-material img{width:54px;height:54px;border:2px solid #c99748;border-radius:12px;background:#fff4d7;object-fit:contain;padding:4px}
+.tb-material.short{color:#d8321c}
+.tb-action-button{width:min(100%,320px)!important;margin-top:auto}
+.tb-picker{position:absolute;inset:0;z-index:75;border-radius:26px;background:rgba(7,18,14,.82);display:flex;align-items:center;justify-content:center;padding:12px}
+.tb-picker-card{width:100%;max-height:88%;display:flex;flex-direction:column;border:4px solid #a8701a;border-radius:20px;background:linear-gradient(160deg,#fffaf0,#f3d9a8);padding:12px;box-shadow:0 12px 30px #0009}
+.tb-picker-head{display:flex;align-items:center;justify-content:space-between;color:#4d2d0f;font-weight:1000;font-size:18px;margin-bottom:8px}
+.tb-picker-close{width:36px;height:36px;border-radius:11px;border:2px solid #ffe089;background:#7b4a27;color:#fff;font-size:18px;font-weight:1000}
+.tb-picker-grid{overflow-y:auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:2px}
+.tb-picker-item{position:relative;min-width:0;aspect-ratio:.82;border:2px solid #c99748;border-radius:13px;background:#fff4d7;padding:4px;display:flex;flex-direction:column;align-items:center;font-family:inherit;color:#5a3714}
+.tb-picker-item img{width:80%;height:62%;object-fit:contain}.tb-picker-item strong{font-size:10px;line-height:1.1;text-align:center}.tb-picker-item small{font-size:8.5px;color:#76552a;text-align:center;margin-top:auto}
+.tb-item-detail{position:absolute;inset:0;z-index:78;border-radius:26px;background:rgba(7,18,14,.82);display:flex;align-items:center;justify-content:center;padding:13px}
+.tb-item-detail-card{width:92%;max-height:90%;overflow-y:auto;border:4px solid #a8701a;border-radius:21px;background:linear-gradient(160deg,#fffaf0,#f3d9a8);padding:15px;text-align:center;box-shadow:0 12px 30px #0009;color:#4d2d0f}
+.tb-item-detail-card img{width:150px;height:150px;object-fit:contain;display:block;margin:0 auto 7px}.tb-item-detail-card h3{margin:3px 0;font-size:20px}.tb-item-detail-card p{font-size:12px;line-height:1.45;color:#6b481f}.tb-item-detail-card .tb-detail-actions{display:flex;gap:8px;margin-top:12px}.tb-item-detail-card button{flex:1;padding:10px;border-radius:12px;border:2px solid #ffe089;background:linear-gradient(180deg,#3a7bd5,#174d89);color:#fff;font-weight:900;font-family:inherit}.tb-item-detail-card button.secondary{background:linear-gradient(180deg,#8a6244,#5c4128)}
+@media(max-width:370px){.inv-grid,.wpn-grid,.tb-picker-grid{grid-template-columns:repeat(3,minmax(0,1fr))!important}.inv-tab,.shop-cat,.wpn-system-tab{font-size:10px!important;padding-inline:9px!important}}

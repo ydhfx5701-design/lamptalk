@@ -1,0 +1,4186 @@
+{
+  "url": "http://127.0.0.1:8102/index.html?test=1&character=1&audit=1786469392825",
+  "consoleErrors": [
+    "Failed to load resource: net::ERR_NETWORK_ACCESS_DENIED",
+    "Failed to load resource: the server responded with a status of 404 (File not found)",
+    "Failed to load resource: the server responded with a status of 404 (File not found)"
+  ],
+  "pageErrors": [],
+  "requestFailures": [
+    {
+      "url": "https://fonts.googleapis.com/css2?family=Jua&family=Black+Han+Sans&display=swap",
+      "error": "net::ERR_NETWORK_ACCESS_DENIED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/jungle.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/escape.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/sfx/bossWarning.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/sfx/bossWarning.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:8102/assets/audio/main.mp3",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "httpErrors": [],
+  "results": {
+    "lifecycle": {
+      "requested": 30,
+      "completed": 30,
+      "clean": true,
+      "stable": true,
+      "duplicateCallbacks": 0,
+      "duplicateEntityUpdates": 0,
+      "runningAfter": false,
+      "rafAfter": 0,
+      "timeScale": 1,
+      "rows": [
+        {
+          "run": 1,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-1",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-2",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-3",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-4",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-5",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-6",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-7",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-8",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 2,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-9",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-10",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-11",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-12",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-13",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-14",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-15",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-16",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 3,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-17",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-18",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-19",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-20",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-21",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-22",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-23",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-24",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 4,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-25",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-26",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-27",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-28",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-29",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-30",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-31",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-32",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 5,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-33",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-34",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-35",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-36",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-37",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-38",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-39",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-40",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 6,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-41",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-42",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-43",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-44",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-45",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-46",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-47",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-48",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 7,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-49",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-50",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-51",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-52",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-53",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-54",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-55",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-56",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 8,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-57",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-58",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-59",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-60",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-61",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-62",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-63",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-64",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 9,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-65",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-66",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-67",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-68",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-69",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-70",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-71",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-72",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 10,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-73",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-74",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-75",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-76",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-77",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-78",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-79",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-80",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 11,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-81",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-82",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-83",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-84",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-85",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-86",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-87",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-88",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 12,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-89",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-90",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-91",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-92",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-93",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-94",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-95",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-96",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 13,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-97",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-98",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-99",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-100",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-101",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-102",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-103",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-104",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 14,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-105",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-106",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-107",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-108",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-109",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-110",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-111",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-112",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 15,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-113",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-114",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-115",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-116",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-117",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-118",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-119",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-120",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 16,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-121",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-122",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-123",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-124",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-125",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-126",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-127",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-128",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 17,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-129",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-130",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-131",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-132",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-133",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-134",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-135",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-136",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 18,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-137",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-138",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-139",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-140",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-141",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-142",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-143",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-144",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 19,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-145",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-146",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-147",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-148",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-149",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-150",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-151",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-152",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 20,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-153",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-154",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-155",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-156",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-157",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-158",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-159",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-160",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 21,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-161",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-162",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-163",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-164",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-165",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-166",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-167",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-168",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 22,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-169",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-170",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-171",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-172",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-173",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-174",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-175",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-176",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 23,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-177",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-178",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-179",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-180",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-181",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-182",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-183",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-184",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 24,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-185",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-186",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-187",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-188",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-189",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-190",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-191",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-192",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 25,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-193",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-194",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-195",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-196",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-197",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-198",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-199",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-200",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 26,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-201",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-202",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-203",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-204",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-205",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-206",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-207",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-208",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 27,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-209",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-210",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-211",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-212",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-213",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-214",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-215",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-216",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 28,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-217",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-218",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-219",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-220",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-221",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-222",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-223",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-224",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 29,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-225",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-226",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-227",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-228",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-229",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-230",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-231",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-232",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        },
+        {
+          "run": 30,
+          "defense": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-233",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-234",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-235",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-236",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "escape": {
+            "player": {
+              "char": "windup_soldier",
+              "speed": 245,
+              "attackMul": 1.05,
+              "finalAttackInterval": 1.05,
+              "runtimeId": "P-237",
+              "updates": 1
+            },
+            "allies": [
+              {
+                "char": "plush_cat",
+                "speed": 265.96,
+                "attackMul": 0.97,
+                "finalAttackInterval": 0.782609,
+                "runtimeId": "AI-238",
+                "updates": 1
+              },
+              {
+                "char": "wooden_puppet",
+                "speed": 196.2,
+                "attackMul": 1,
+                "finalAttackInterval": 1.086957,
+                "runtimeId": "AI-239",
+                "updates": 1
+              },
+              {
+                "char": "rubber_duck",
+                "speed": 235.44,
+                "attackMul": 0.94,
+                "finalAttackInterval": 1.3,
+                "runtimeId": "AI-240",
+                "updates": 1
+              }
+            ],
+            "fresh": true,
+            "updateOnce": true
+          },
+          "stopped": true
+        }
+      ]
+    },
+    "burstTarget": {
+      "queued": {
+        "count": 6,
+        "sameTarget": true,
+        "locked": true
+      },
+      "duringBurst": "primary",
+      "finished": {
+        "count": 6,
+        "pending": 0,
+        "burstTarget": null,
+        "remaining": 0
+      },
+      "afterBurst": "newBoss",
+      "cancelled": {
+        "beforeDeath": 1,
+        "afterDeath": 1,
+        "pending": 0,
+        "burstTarget": null,
+        "remaining": 0
+      },
+      "pass": true
+    },
+    "jungleP0Regression": {
+      "requested": 20,
+      "passed": 20,
+      "rows": [
+        {
+          "run": 1,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 2,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 3,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 4,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 5,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 6,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 7,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 8,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 9,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 10,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 11,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 12,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 13,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 14,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 15,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 16,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 17,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 18,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 19,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        },
+        {
+          "run": 20,
+          "intro": {
+            "route": "FINAL_GATE_APPROACH",
+            "dialogue": true,
+            "boss": false,
+            "device": false
+          },
+          "battle": {
+            "route": "SNAKE_BATTLE",
+            "boss": true,
+            "device": false,
+            "bossBlocked": false
+          },
+          "defeatDialogue": true,
+          "drop": {
+            "route": "FINAL_DEVICE_DROPPED",
+            "device": true,
+            "final": true,
+            "walkable": true
+          },
+          "collectDialogue": true,
+          "warning": {
+            "route": "FINAL_DEVICE_DIALOGUE",
+            "visible": true
+          },
+          "defenseStart": {
+            "route": "FINAL_DEFENSE_60",
+            "dur": 60,
+            "t": 60,
+            "gate": "DEFENDING"
+          },
+          "exit": {
+            "route": "EXIT_PORTAL",
+            "portal": true,
+            "gate": "OPEN"
+          },
+          "history": [
+            "RUSH_3_COMPLETE",
+            "FINAL_GATE_APPROACH",
+            "SNAKE_INTRO_DIALOGUE",
+            "SNAKE_WARNING",
+            "SNAKE_BATTLE",
+            "SNAKE_DEFEATED",
+            "FINAL_DEVICE_DROPPED",
+            "FINAL_DEVICE_COLLECTED",
+            "FINAL_DEVICE_DIALOGUE",
+            "FINAL_DEFENSE_WARNING",
+            "FINAL_DEFENSE_60",
+            "FINAL_COUNTDOWN",
+            "FINAL_GATE_OPEN",
+            "EXIT_PORTAL",
+            "CLEARED"
+          ],
+          "errors": [],
+          "pass": true
+        }
+      ],
+      "pass": true
+    },
+    "escapeAi": {
+      "statesSeen": [
+        "AUTONOMOUS_PATROL",
+        "REGROUP",
+        "COMBAT_SUPPORT",
+        "DEFEND_OBJECTIVE",
+        "EXIT_PORTAL"
+      ],
+      "required": [
+        "AUTONOMOUS_PATROL",
+        "COMBAT_SUPPORT",
+        "REGROUP",
+        "DEFEND_OBJECTIVE",
+        "EXIT_PORTAL"
+      ],
+      "missing": [],
+      "combatProbe": {
+        "distance": 45,
+        "onScreen": true,
+        "dead": false,
+        "state": "COMBAT_SUPPORT",
+        "locked": true
+      },
+      "rows": [
+        {
+          "char": "plush_cat",
+          "state": "AUTONOMOUS_PATROL",
+          "blocked": false,
+          "distance": 207.72,
+          "patrolMove": 288.16,
+          "stuckT": 0
+        },
+        {
+          "char": "wooden_puppet",
+          "state": "AUTONOMOUS_PATROL",
+          "blocked": false,
+          "distance": 131.42,
+          "patrolMove": 197.85,
+          "stuckT": 0
+        },
+        {
+          "char": "rubber_duck",
+          "state": "AUTONOMOUS_PATROL",
+          "blocked": false,
+          "distance": 184.56,
+          "patrolMove": 90.35,
+          "stuckT": 0
+        }
+      ],
+      "pairOverlaps": [],
+      "pass": true
+    },
+    "viewport": {
+      "inner": {
+        "w": 404,
+        "h": 844
+      },
+      "visual": {
+        "w": 404,
+        "h": 844
+      },
+      "app": {
+        "w": 404,
+        "h": 844
+      },
+      "document": {
+        "scrollW": 404,
+        "scrollH": 844
+      },
+      "overflowX": false,
+      "overflowY": false
+    },
+    "loop": {
+      "state": "home",
+      "running": false,
+      "rafId": 0,
+      "generation": 847,
+      "callbackDepth": 0,
+      "duplicateCallbacks": 0,
+      "duplicateEntityUpdates": 0,
+      "hidden": false,
+      "hasGame": false,
+      "fixedDeltaTime": 0.016666666666666666,
+      "accumulator": 0,
+      "timeScale": 1,
+      "engineStepId": 60,
+      "activeIntervals": 0,
+      "activeRepeatingTimeouts": 0
+    }
+  }
+}

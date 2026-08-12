@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "redmoon-p0",
+      "runtimeExecutable": "powershell",
+      "runtimeArgs": ["-NoProfile", "-ExecutionPolicy", "Bypass", "-File", "C:\\Users\\ydhfx\\Documents\\Codex\\2026-08-03\\so\\outputs\\toy-battle-redmoon-shotgun-mechhammer-final\\serve.ps1"],
+      "port": 8099
+    }
+  ]
+}

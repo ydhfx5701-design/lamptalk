@@ -1,0 +1,520 @@
+TOY BOTTLE 탈출 스토리 — 캐릭터 이름·얼굴 전수 검사
+검사 일시: 2026-08-08T15:33:32.406Z
+원문: assets/dialog/escape-dialogue.txt
+
+[고정 이름 매핑]
+- 기어 -> 태엽 병정 -> windup_soldier
+- 미유 -> 봉제 고양이 -> plush_cat
+- 우디 -> 나무 인형 -> wooden_puppet
+- 덕키 -> 고무 오리 -> rubber_duck
+- 페이퍼 -> 종이 로봇 -> paper_robot
+- 피코 -> 광대 인형 -> clown_doll
+- 랜슬롯 -> 장난감 기사 -> toy_knight
+- 전원 -> 캐릭터 얼굴을 표시하지 않는 단체 대사
+
+[대사 수]
+- 기어: 29줄
+- 미유: 24줄
+- 우디: 17줄
+- 덕키: 74줄
+- 페이퍼: 33줄
+- 피코: 40줄
+- 랜슬롯: 26줄
+- 전원: 3줄
+- 합계: 246줄
+
+[검사 결과] PASS — 이름/표정/얼굴 파일 오류 0개
+
+[처음부터 끝까지 줄별 검사]
+001. 구간 01 / 원문 004줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “이상해… 밀림의 장난감들이 전부 날뛰고 있어.”
+002. 구간 01 / 원문 006줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “주변 개체의 공격성 상승 확인. 평소 상태와는 확실히 다릅니다.”
+003. 구간 01 / 원문 008줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “꽥! 방금 저쪽에서도 뭔가 뛰어갔어!”
+004. 구간 01 / 원문 010줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “덕키, 네가 소리 질러서 도망간 거 아니야?”
+005. 구간 01 / 원문 012줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “내가 그렇게 시끄럽진 않거든?!”
+006. 구간 01 / 원문 016줄 / 이름=미유 / ID=plush_cat / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/plush_cat.png / PASS
+     “…방금 네 목소리 듣고 세 마리 더 온 것 같은데.”
+007. 구간 01 / 원문 018줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “꽥?!”
+008. 구간 01 / 원문 020줄 / 이름=우디 / ID=wooden_puppet / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/wooden_puppet.png / PASS
+     “뒤쪽 길도 막혔어. 덩굴이 아까보다 훨씬 많아졌어.”
+009. 구간 01 / 원문 022줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “앞에는 몬스터, 뒤에는 덩굴. 훌륭해. 완벽하게 갇혔네.”
+010. 구간 01 / 원문 024줄 / 이름=랜슬롯 / ID=toy_knight / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/toy_knight.webp / PASS
+     “훗! 그렇다면 전진뿐이다!”
+011. 구간 01 / 원문 026줄 / 이름=미유 / ID=plush_cat / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/plush_cat.png / PASS
+     “그걸 왜 그렇게 신나게 말해…”
+012. 구간 01 / 원문 028줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “밀림 깊은 곳에 오래된 출구가 있다는 이야기가 있어. 그쪽으로 간다.”
+013. 구간 01 / 원문 030줄 / 이름=덕키 / ID=rubber_duck / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/rubber_duck.webp / PASS
+     “좋아! 내가 선두에 설게!”
+014. 구간 01 / 원문 032줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “안 돼.”
+015. 구간 01 / 원문 034줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “…왜?”
+016. 구간 01 / 원문 036줄 / 이름=기어 / ID=windup_soldier / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/windup_soldier.png / PASS
+     “길 잃을 것 같으니까.”
+017. 구간 01 / 원문 038줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “만장일치네.”
+018. 구간 01 / 원문 040줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “아직 투표도 안 했잖아!”
+019. 구간 01 / 원문 042줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “전부 떨어지지 마. 출발한다.”
+020. 구간 02 / 원문 052줄 / 이름=우디 / ID=wooden_puppet / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/wooden_puppet.png / PASS
+     “잠깐… 주변에서 뭔가 움직이는 것 같아.”
+021. 구간 02 / 원문 054줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “또 뭐가 오는데…?”
+022. 구간 02 / 원문 056줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “전방과 후방에서 다수의 개체가 접근하고 있습니다.”
+023. 구간 02 / 원문 058줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “이번에는 몇 마리?”
+024. 구간 02 / 원문 060줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “묻지 마! 얘 숫자로 대답한다고!”
+025. 구간 02 / 원문 062줄 / 이름=페이퍼 / ID=paper_robot / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/paper_robot.png / PASS
+     “현재 확인되는 개체는—”
+026. 구간 02 / 원문 064줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “말하지 마!!”
+027. 구간 02 / 원문 068줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “좋다! 정면을 뚫는다!”
+028. 구간 02 / 원문 070줄 / 이름=미유 / ID=plush_cat / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/plush_cat.png / PASS
+     “…난 조용히 산책하는 줄 알았는데.”
+029. 구간 02 / 원문 072줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “앞뒤 모두 온다! 서로 떨어지지 말고 돌파해!”
+030. 구간 03 / 원문 080줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “어? 이제 아무것도 안 오는데?”
+031. 구간 03 / 원문 082줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “덕키야.”
+032. 구간 03 / 원문 084줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “왜?”
+033. 구간 03 / 원문 086줄 / 이름=피코 / ID=clown_doll / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/clown_doll.png / PASS
+     “그런 말 하지 마.”
+034. 구간 03 / 원문 088줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “이번엔 진짜 아무것도 없잖아!”
+035. 구간 03 / 원문 092줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “……”
+036. 구간 03 / 원문 096줄 / 이름=미유 / ID=plush_cat / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/plush_cat.png / PASS
+     “…또 시작이네.”
+037. 구간 03 / 원문 098줄 / 이름=우디 / ID=wooden_puppet / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/wooden_puppet.png / PASS
+     “땅이 흔들려!”
+038. 구간 03 / 원문 100줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “대형 개체가 빠르게 접근하고 있습니다.”
+039. 구간 03 / 원문 106줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “저게 장난감이라고?!”
+040. 구간 03 / 원문 108줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “가까이 가서 확인해봐.”
+041. 구간 03 / 원문 110줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “싫어!!”
+042. 구간 03 / 원문 112줄 / 이름=랜슬롯 / ID=toy_knight / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/toy_knight.webp / PASS
+     “훗! 저 정도 크기라면 상대할 가치가 있군!”
+043. 구간 03 / 원문 116줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “정면 돌진 예상. 충돌은 권장하지 않습니다.”
+044. 구간 03 / 원문 118줄 / 이름=랜슬롯 / ID=toy_knight / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/toy_knight.png / PASS
+     “그렇다면 내가 정면에서 받아—”
+045. 구간 03 / 원문 120줄 / 이름=전원 / ID=(없음) / 표정=놀란 표정 / 얼굴=(얼굴 없음 — 전원 대사) / PASS
+     “안 돼!!”
+046. 구간 03 / 원문 122줄 / 이름=랜슬롯 / ID=toy_knight / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/toy_knight.png / PASS
+     “…아직 말도 안 끝났다.”
+047. 구간 03 / 원문 124줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “돌진을 피하고 멈춘 순간을 노려! 전투 준비!”
+048. 구간 03 / 원문 130줄 / 이름=덕키 / ID=rubber_duck / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/rubber_duck.webp / PASS
+     “휴우… 이제 진짜 조용—”
+049. 구간 03 / 원문 134줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “…아무 말도 안 할게.”
+050. 구간 03 / 원문 136줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “드디어 학습했네.”
+051. 구간 04 / 원문 140줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “꽥?! 또 막혔어!”
+052. 구간 04 / 원문 142줄 / 이름=우디 / ID=wooden_puppet / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/wooden_puppet.png / PASS
+     “이건 그냥 덩굴이 아닌 것 같아. 안쪽에 장치가 연결돼 있어.”
+053. 구간 04 / 원문 144줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “비켜라! 이 정도 장애물은 내 검으로—”
+054. 구간 04 / 원문 148줄 / 이름=기어 / ID=windup_soldier / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/windup_soldier.png / PASS
+     “잠깐.”
+055. 구간 04 / 원문 152줄 / 이름=랜슬롯 / ID=toy_knight / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/toy_knight.png / PASS
+     “……”
+056. 구간 04 / 원문 154줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “멋졌다.”
+057. 구간 04 / 원문 156줄 / 이름=미유 / ID=plush_cat / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/plush_cat.webp / PASS
+     “응… 소리는 멋있었어.”
+058. 구간 04 / 원문 158줄 / 이름=랜슬롯 / ID=toy_knight / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/toy_knight.png / PASS
+     “방금 것은 공격이 아니라… 강도를 확인한 것이다.”
+059. 구간 04 / 원문 160줄 / 이름=덕키 / ID=rubber_duck / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/rubber_duck.webp / PASS
+     “아하!”
+060. 구간 04 / 원문 162줄 / 이름=페이퍼 / ID=paper_robot / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/paper_robot.png / PASS
+     “거짓말 가능성 97%.”
+061. 구간 04 / 원문 164줄 / 이름=랜슬롯 / ID=toy_knight / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/toy_knight.png / PASS
+     “페이퍼!”
+062. 구간 04 / 원문 166줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “그만. 억지로 부수는 건 힘들어.”
+063. 구간 04 / 원문 168줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “별도의 개방 장치가 존재할 가능성 92%입니다.”
+064. 구간 04 / 원문 170줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “나머지 8%는?”
+065. 구간 04 / 원문 172줄 / 이름=미유 / ID=plush_cat / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/plush_cat.png / PASS
+     “여기서 평생 사는 거겠지…”
+066. 구간 04 / 원문 174줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “그건 싫어!”
+067. 구간 04 / 원문 176줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “근처에 태엽장치가 있을 거야. 주변을 찾아보자.”
+068. 구간 05 / 원문 184줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “찾았다. 이걸 작동시키면 문이 열릴 거야.”
+069. 구간 05 / 원문 186줄 / 이름=우디 / ID=wooden_puppet / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/wooden_puppet.png / PASS
+     “잠깐만. 오래된 장치니까 함부로 만지면 위험하지 않을까?”
+070. 구간 05 / 원문 188줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “동의합니다. 우선 구조를 분석한 뒤 안전성을 확인하는 것이—”
+071. 구간 05 / 원문 194줄 / 이름=페이퍼 / ID=paper_robot / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/paper_robot.png / PASS
+     “……”
+072. 구간 05 / 원문 196줄 / 이름=기어 / ID=windup_soldier / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/windup_soldier.png / PASS
+     “……누가 눌렀어?”
+073. 구간 05 / 원문 200줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “응?”
+074. 구간 05 / 원문 202줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “범인이 너무 가까이 있는데?”
+075. 구간 05 / 원문 204줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “아니, 버튼이 있으면 누르는 거 아니야?!”
+076. 구간 05 / 원문 206줄 / 이름=미유 / ID=plush_cat / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/plush_cat.png / PASS
+     “보통은… 설명을 먼저 듣지…”
+077. 구간 05 / 원문 214줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “꽥?!”
+078. 구간 05 / 원문 216줄 / 이름=우디 / ID=wooden_puppet / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/wooden_puppet.png / PASS
+     “으악!”
+079. 구간 05 / 원문 218줄 / 이름=랜슬롯 / ID=toy_knight / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/toy_knight.png / PASS
+     “무, 무슨 일이냐!”
+080. 구간 05 / 원문 220줄 / 이름=미유 / ID=plush_cat / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/plush_cat.png / PASS
+     “…깜짝이야.”
+081. 구간 05 / 원문 222줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “방금 랜슬롯도 놀랐지?”
+082. 구간 05 / 원문 224줄 / 이름=랜슬롯 / ID=toy_knight / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/toy_knight.png / PASS
+     “아니다!”
+083. 구간 05 / 원문 226줄 / 이름=페이퍼 / ID=paper_robot / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/paper_robot.png / PASS
+     “심박 반응으로 판단할 때—”
+084. 구간 05 / 원문 228줄 / 이름=랜슬롯 / ID=toy_knight / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/toy_knight.png / PASS
+     “분석하지 마라!”
+085. 구간 05 / 원문 232줄 / 이름=기어 / ID=windup_soldier / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/windup_soldier.png / PASS
+     “잠깐… 이 소리, 너무 큰데.”
+086. 구간 05 / 원문 236줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “…설마 내가 잘못 누른 거야?”
+087. 구간 05 / 원문 238줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “아니야. 아주 잘 눌렀어. 밀림 전체가 네 위치를 알게 됐거든.”
+088. 구간 05 / 원문 240줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “그건 잘 누른 게 아니잖아!!”
+089. 구간 05 / 원문 242줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “다수의 생체 및 기계 반응 접근 중. 수가 빠르게 증가하고 있습니다.”
+090. 구간 05 / 원문 244줄 / 이름=미유 / ID=plush_cat / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/plush_cat.png / PASS
+     “하아… 그냥 버튼 하나 눌렀을 뿐인데 일이 너무 커졌어…”
+091. 구간 05 / 원문 246줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “적이 온다! 모두 전투 준비!”
+092. 구간 05 / 원문 248줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “문이 열릴 때까지 버틴다! 덕키는 다음부터 내가 말하기 전까지 아무것도 누르지 마!”
+093. 구간 05 / 원문 250줄 / 이름=덕키 / ID=rubber_duck / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/rubber_duck.png / PASS
+     “알겠어!”
+094. 구간 05 / 원문 254줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “…그럼 저 옆에 있는 버튼은?”
+095. 구간 05 / 원문 256줄 / 이름=전원 / ID=(없음) / 표정=화난 표정 / 얼굴=(얼굴 없음 — 전원 대사) / PASS
+     “누르지 마!!”
+096. 구간 06 / 원문 270줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “기어! 대체 몇 마리나 오는 거야?!”
+097. 구간 06 / 원문 272줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “현재 시야 내 37개체. 후방 추가 반응 21개체.”
+098. 구간 06 / 원문 274줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “숫자로 말하니까 더 무섭잖아!”
+099. 구간 06 / 원문 276줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “그럼 ‘엄청 많아’로 바꿔줄까?”
+100. 구간 06 / 원문 278줄 / 이름=페이퍼 / ID=paper_robot / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/paper_robot.png / PASS
+     “엄청 많습니다.”
+101. 구간 06 / 원문 280줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “그것도 무서워!”
+102. 구간 06 / 원문 282줄 / 이름=기어 / ID=windup_soldier / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/windup_soldier.png / PASS
+     “말할 힘 있으면 싸워!”
+103. 구간 06 / 원문 286줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “개방까지 5초.”
+104. 구간 06 / 원문 288줄 / 이름=미유 / ID=plush_cat / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/plush_cat.png / PASS
+     “5초가… 이렇게 길었나…”
+105. 구간 06 / 원문 290줄 / 이름=우디 / ID=wooden_puppet / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/wooden_puppet.png / PASS
+     “조금만 더 버티자!”
+106. 구간 06 / 원문 292줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “최후의 순간이다! 물러서지 마라!”
+107. 구간 06 / 원문 294줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “우린 애초에 뒤로 갈 길도 막혔는데?”
+108. 구간 06 / 원문 296줄 / 이름=랜슬롯 / ID=toy_knight / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/toy_knight.png / PASS
+     “…그렇군.”
+109. 구간 06 / 원문 298줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “그걸 이제 알았어?!”
+110. 구간 06 / 원문 304줄 / 이름=우디 / ID=wooden_puppet / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/wooden_puppet.webp / PASS
+     “열렸다!”
+111. 구간 06 / 원문 306줄 / 이름=덕키 / ID=rubber_duck / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/rubber_duck.webp / PASS
+     “살았다!!”
+112. 구간 06 / 원문 308줄 / 이름=기어 / ID=windup_soldier / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/windup_soldier.png / PASS
+     “덕키, 혼자 가지 마!”
+113. 구간 06 / 원문 310줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “아, 맞다!”
+114. 구간 06 / 원문 312줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “오늘 덕키 혼자 세 번은 죽을 뻔했네.”
+115. 구간 06 / 원문 314줄 / 이름=미유 / ID=plush_cat / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/plush_cat.webp / PASS
+     “세 번보다 많은 것 같은데…”
+116. 구간 06 / 원문 316줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “전원 이동한다! 이번에는 대형을 유지하라!”
+117. 구간 06 / 원문 318줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “좋아. 다음 구역으로 간다.”
+118. 구간 07 / 원문 326줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “……또?”
+119. 구간 07 / 원문 328줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “이번에는 네가 아무것도 안 했는데도 막혔네.”
+120. 구간 07 / 원문 330줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “원래 내 잘못 아니었거든?!”
+121. 구간 07 / 원문 332줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “자동 개방 절차 확인. 남은 시간 30초.”
+122. 구간 07 / 원문 334줄 / 이름=덕키 / ID=rubber_duck / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/rubber_duck.webp / PASS
+     “30초? 아까 절반밖에 안 되네!”
+123. 구간 07 / 원문 338줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “…왜 또 그렇게 봐?”
+124. 구간 07 / 원문 342줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “이제 알 것 같다. 덕키가 좋아하면 뭔가 온다.”
+125. 구간 07 / 원문 344줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “내 탓 아니야!!”
+126. 구간 07 / 원문 346줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “30초만 막으면 된다. 전부 문 앞에서 버텨!”
+127. 구간 08 / 원문 358줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “전방 다수 반응.”
+128. 구간 08 / 원문 360줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “숫자는 말하지 마!”
+129. 구간 08 / 원문 362줄 / 이름=페이퍼 / ID=paper_robot / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/paper_robot.png / PASS
+     “아직 숫자를 말하지 않았습니다.”
+130. 구간 08 / 원문 364줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “아.”
+131. 구간 08 / 원문 366줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “페이퍼가 드디어 배려를 배웠네.”
+132. 구간 08 / 원문 368줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “현재 43개체입니다.”
+133. 구간 08 / 원문 370줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “결국 말했잖아!!”
+134. 구간 08 / 원문 374줄 / 이름=우디 / ID=wooden_puppet / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/wooden_puppet.png / PASS
+     “뒤에서도 와!”
+135. 구간 08 / 원문 376줄 / 이름=미유 / ID=plush_cat / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/plush_cat.png / PASS
+     “앞뒤로 막는 거… 얘들도 이제 익숙해졌나 봐…”
+136. 구간 08 / 원문 378줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “그렇다면 정면을 뚫어 길을 만든다!”
+137. 구간 08 / 원문 380줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “멈추지 마! 싸우면서 계속 전진한다!”
+138. 구간 08 / 원문 382줄 / 이름=피코 / ID=clown_doll / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/clown_doll.png / PASS
+     “뒤쪽은 내가 볼게. 덕키는 앞만 보고 뛰어.”
+139. 구간 08 / 원문 384줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “왜 나한테만 그런 말 하는데?!”
+140. 구간 08 / 원문 386줄 / 이름=미유 / ID=plush_cat / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/plush_cat.png / PASS
+     “아까 혼자 반대로 뛰었잖아…”
+141. 구간 08 / 원문 388줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “그건 길 확인한 거야!”
+142. 구간 08 / 원문 390줄 / 이름=페이퍼 / ID=paper_robot / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/paper_robot.png / PASS
+     “잘못된 방향으로 6.4초간 이동했습니다.”
+143. 구간 08 / 원문 392줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “그걸 시간까지 재고 있었어?!”
+144. 구간 08 / 원문 394줄 / 이름=기어 / ID=windup_soldier / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/windup_soldier.png / PASS
+     “온다! 대화 그만!”
+145. 구간 09 / 원문 408줄 / 이름=우디 / ID=wooden_puppet / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/wooden_puppet.png / PASS
+     “뒤쪽이 막혔어!”
+146. 구간 09 / 원문 412줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “앞도 막혔어!!”
+147. 구간 09 / 원문 414줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “좋아. 앞도 막히고 뒤도 막혔고.”
+148. 구간 09 / 원문 416줄 / 이름=미유 / ID=plush_cat / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/plush_cat.png / PASS
+     “그 말… 이제 익숙해지려고 해…”
+149. 구간 09 / 원문 418줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “개방까지 60초가 필요합니다.”
+150. 구간 09 / 원문 420줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “또 60초?!”
+151. 구간 09 / 원문 424줄 / 이름=랜슬롯 / ID=toy_knight / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/toy_knight.webp / PASS
+     “좋다! 도망갈 곳이 없다면 싸우는 수밖에!”
+152. 구간 09 / 원문 426줄 / 이름=피코 / ID=clown_doll / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/clown_doll.png / PASS
+     “왜 항상 그런 상황에서만 신나는 거야?”
+153. 구간 09 / 원문 428줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “이번에도 사방에서 올 거야. 중앙에서 서로 등을 지켜!”
+154. 구간 09 / 원문 447줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “개방까지 5초.”
+155. 구간 09 / 원문 449줄 / 이름=덕키 / ID=rubber_duck / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/rubber_duck.webp / PASS
+     “이번엔 숫자가 반갑다!”
+156. 구간 09 / 원문 451줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “드디어 숫자의 소중함을 깨달았네.”
+157. 구간 09 / 원문 453줄 / 이름=미유 / ID=plush_cat / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/plush_cat.png / PASS
+     “빨리… 열려라…”
+158. 구간 09 / 원문 463줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “열렸다! 전원 이동!”
+159. 구간 10 / 원문 471줄 / 이름=덕키 / ID=rubber_duck / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/rubber_duck.png / PASS
+     “이번엔 내가 아무 말도 안 할 거야.”
+160. 구간 10 / 원문 473줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “갑자기 왜?”
+161. 구간 10 / 원문 475줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “내가 조용하다고 하면 또 뭐 나온다며!”
+162. 구간 10 / 원문 477줄 / 이름=미유 / ID=plush_cat / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/plush_cat.webp / PASS
+     “조금 성장했네…”
+163. 구간 10 / 원문 479줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “하지만 이미 접근 중입니다.”
+164. 구간 10 / 원문 481줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “내가 아무 말도 안 했는데?!”
+165. 구간 10 / 원문 483줄 / 이름=페이퍼 / ID=paper_robot / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/paper_robot.png / PASS
+     “몬스터는 덕키의 발언 여부와 관계없이 움직입니다.”
+166. 구간 10 / 원문 485줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “그걸 이제 알려주네.”
+167. 구간 10 / 원문 491줄 / 이름=우디 / ID=wooden_puppet / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/wooden_puppet.png / PASS
+     “이번에는 앞뒤 둘 다 많아!”
+168. 구간 10 / 원문 493줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “최종 구역이 가까워서 그래. 여기서 멈추면 포위된다!”
+169. 구간 10 / 원문 495줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “길을 연다! 모두 내 뒤를 따라와라!”
+170. 구간 10 / 원문 497줄 / 이름=덕키 / ID=rubber_duck / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/rubber_duck.png / PASS
+     “이번엔 진짜 따라갈게!”
+171. 구간 10 / 원문 499줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “그 말부터 불안한데.”
+172. 구간 11 / 원문 513줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “어?”
+173. 구간 11 / 원문 515줄 / 이름=우디 / ID=wooden_puppet / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/wooden_puppet.png / PASS
+     “몬스터들이… 더 이상 안 따라와.”
+174. 구간 11 / 원문 517줄 / 이름=피코 / ID=clown_doll / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/clown_doll.png / PASS
+     “이상한데. 방금까지 그렇게 열심히 쫓아오더니.”
+175. 구간 11 / 원문 519줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “주변 개체들이 이 구역을 의도적으로 회피하고 있습니다.”
+176. 구간 11 / 원문 521줄 / 이름=미유 / ID=plush_cat / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/plush_cat.png / PASS
+     “……그 말 별로 안 좋은데.”
+177. 구간 11 / 원문 523줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “왜? 우리 포기한 거 아니야?”
+178. 구간 11 / 원문 525줄 / 이름=피코 / ID=clown_doll / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/clown_doll.png / PASS
+     “그랬으면 좋겠다.”
+179. 구간 11 / 원문 531줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “……방금 무슨 소리야?”
+180. 구간 11 / 원문 535줄 / 이름=우디 / ID=wooden_puppet / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/wooden_puppet.png / PASS
+     “우리 주변을 돌고 있는 것 같아…”
+181. 구간 11 / 원문 537줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “모두 경계해라!”
+182. 구간 11 / 원문 541줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “저, 저기 뭐 지나갔어!”
+183. 구간 11 / 원문 543줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “대형 생체 반응 확인.”
+184. 구간 11 / 원문 545줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “이번엔 크기부터 말하지 마.”
+185. 구간 11 / 원문 547줄 / 이름=페이퍼 / ID=paper_robot / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/paper_robot.png / PASS
+     “매우 큽니다.”
+186. 구간 11 / 원문 549줄 / 이름=피코 / ID=clown_doll / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/clown_doll.png / PASS
+     “…그 정도면 충분해.”
+187. 구간 11 / 원문 555줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “꽤애액!!”
+188. 구간 11 / 원문 557줄 / 이름=미유 / ID=plush_cat / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/plush_cat.png / PASS
+     “…덕키보다 훨씬 길다.”
+189. 구간 11 / 원문 559줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “왜 나랑 비교하는데?!”
+190. 구간 11 / 원문 563줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “좋다! 드디어 이 밀림의 주인이 모습을 드러냈군!”
+191. 구간 11 / 원문 565줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “주인인지 어떻게 알아?”
+192. 구간 11 / 원문 567줄 / 이름=랜슬롯 / ID=toy_knight / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/toy_knight.png / PASS
+     “……분위기가 그렇지 않나?”
+193. 구간 11 / 원문 569줄 / 이름=페이퍼 / ID=paper_robot / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/paper_robot.png / PASS
+     “확인되지 않은 정보입니다.”
+194. 구간 11 / 원문 571줄 / 이름=랜슬롯 / ID=toy_knight / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/toy_knight.png / PASS
+     “지금 그게 중요한가?!”
+195. 구간 11 / 원문 579줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “저 녀석을 쓰러뜨려야 출구로 갈 수 있어. 전원 전투 준비!”
+196. 구간 12 / 원문 591줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “……끝났어?”
+197. 구간 12 / 원문 595줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “아니! 이번에는 보스까지 잡았잖아!”
+198. 구간 12 / 원문 597줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “그래도 네가 말하면 불안해.”
+199. 구간 12 / 원문 599줄 / 이름=우디 / ID=wooden_puppet / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/wooden_puppet.webp / PASS
+     “저기 봐. 뒤쪽에 길이 있어!”
+200. 구간 12 / 원문 601줄 / 이름=미유 / ID=plush_cat / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/plush_cat.webp / PASS
+     “드디어 나가는 건가…”
+201. 구간 12 / 원문 603줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “아직 아닙니다.”
+202. 구간 12 / 원문 605줄 / 이름=미유 / ID=plush_cat / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/plush_cat.png / PASS
+     “……왜.”
+203. 구간 12 / 원문 611줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “또 문이야?!”
+204. 구간 12 / 원문 613줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “밀림이 우리를 정말 좋아하나 봐. 계속 못 보내주잖아.”
+205. 구간 12 / 원문 615줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “마지막 문이다. 태엽장치를 찾아.”
+206. 구간 13 / 원문 623줄 / 이름=덕키 / ID=rubber_duck / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/rubber_duck.webp / PASS
+     “찾았다!!”
+207. 구간 13 / 원문 627줄 / 이름=전원 / ID=(없음) / 표정=놀란 표정 / 얼굴=(얼굴 없음 — 전원 대사) / PASS
+     “잠깐!!”
+208. 구간 13 / 원문 631줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “……나 아직 안 눌렀는데.”
+209. 구간 13 / 원문 635줄 / 이름=피코 / ID=clown_doll / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/clown_doll.png / PASS
+     “오.”
+210. 구간 13 / 원문 637줄 / 이름=우디 / ID=wooden_puppet / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/wooden_puppet.webp / PASS
+     “이번엔 기다렸어!”
+211. 구간 13 / 원문 639줄 / 이름=미유 / ID=plush_cat / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/plush_cat.webp / PASS
+     “많이 성장했네…”
+212. 구간 13 / 원문 641줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “나 원래 기다릴 줄 알거든?!”
+213. 구간 13 / 원문 643줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “확인하겠습니다.”
+214. 구간 13 / 원문 647줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “장치 이상 없음. 작동 가능합니다.”
+215. 구간 13 / 원문 649줄 / 이름=기어 / ID=windup_soldier / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/windup_soldier.png / PASS
+     “좋아. 덕키, 눌러.”
+216. 구간 13 / 원문 651줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “이번에는 진짜 눌러도 되는 거지?”
+217. 구간 13 / 원문 653줄 / 이름=기어 / ID=windup_soldier / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/windup_soldier.png / PASS
+     “응.”
+218. 구간 13 / 원문 655줄 / 이름=덕키 / ID=rubber_duck / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/rubber_duck.webp / PASS
+     “간다!”
+219. 구간 13 / 원문 661줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “……어?”
+220. 구간 13 / 원문 665줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “어어?”
+221. 구간 13 / 원문 671줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “이번에는 허락받고 눌렀잖아!!”
+222. 구간 13 / 원문 673줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “버튼 문제가 아니라 우리 팔자인 것 같은데.”
+223. 구간 13 / 원문 675줄 / 이름=미유 / ID=plush_cat / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/plush_cat.png / PASS
+     “나도 이제 그렇게 생각해…”
+224. 구간 14 / 원문 704줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “최종문 개방까지 5초.”
+225. 구간 14 / 원문 706줄 / 이름=덕키 / ID=rubber_duck / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/rubber_duck.png / PASS
+     “이번엔 진짜 마지막이지?!”
+226. 구간 14 / 원문 708줄 / 이름=피코 / ID=clown_doll / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/clown_doll.png / PASS
+     “그 질문에 아무도 대답하지 마.”
+227. 구간 14 / 원문 710줄 / 이름=우디 / ID=wooden_puppet / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/wooden_puppet.png / PASS
+     “조금만 더 버텨!”
+228. 구간 14 / 원문 712줄 / 이름=미유 / ID=plush_cat / 표정=겁먹은 표정 / 얼굴=assets/dialog/expressions/scared/plush_cat.png / PASS
+     “이번에 나가면… 하루 종일 잘 거야…”
+229. 구간 14 / 원문 714줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “마지막이다! 전원 버텨라!”
+230. 구간 14 / 원문 716줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “문에서 떨어지지 마! 열리는 순간 전부 같이 이동한다!”
+231. 구간 15 / 원문 732줄 / 이름=덕키 / ID=rubber_duck / 표정=놀란 표정 / 얼굴=assets/dialog/expressions/surprised/rubber_duck.png / PASS
+     “저건 뭐야?!”
+232. 구간 15 / 원문 734줄 / 이름=페이퍼 / ID=paper_robot / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/paper_robot.png / PASS
+     “공간 이동 반응으로 추정됩니다.”
+233. 구간 15 / 원문 736줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “추정?”
+234. 구간 15 / 원문 738줄 / 이름=페이퍼 / ID=paper_robot / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/paper_robot.png / PASS
+     “직접 들어가 보기 전에는 확정할 수 없습니다.”
+235. 구간 15 / 원문 742줄 / 이름=덕키 / ID=rubber_duck / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/rubber_duck.png / PASS
+     “……왜 다 나를 봐?”
+236. 구간 15 / 원문 744줄 / 이름=피코 / ID=clown_doll / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/clown_doll.webp / PASS
+     “버튼 담당이잖아.”
+237. 구간 15 / 원문 746줄 / 이름=덕키 / ID=rubber_duck / 표정=화난 표정 / 얼굴=assets/dialog/expressions/angry/rubber_duck.png / PASS
+     “포탈은 버튼이 아니거든?!”
+238. 구간 15 / 원문 748줄 / 이름=미유 / ID=plush_cat / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/plush_cat.png / PASS
+     “비슷하지 않을까… 들어가면 뭔가 일어나잖아.”
+239. 구간 15 / 원문 750줄 / 이름=랜슬롯 / ID=toy_knight / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/toy_knight.png / PASS
+     “두려워할 필요 없다! 내가 먼저 들어가겠다!”
+240. 구간 15 / 원문 752줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “이번엔 안 말릴게.”
+241. 구간 15 / 원문 754줄 / 이름=랜슬롯 / ID=toy_knight / 표정=당황 표정 / 얼굴=assets/dialog/expressions/flustered/toy_knight.png / PASS
+     “……조금은 말려도 된다.”
+242. 구간 15 / 원문 756줄 / 이름=우디 / ID=wooden_puppet / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/wooden_puppet.webp / PASS
+     “다 같이 들어가자. 여기까지도 같이 왔잖아.”
+243. 구간 15 / 원문 758줄 / 이름=기어 / ID=windup_soldier / 표정=진지한 표정 / 얼굴=assets/dialog/expressions/serious/windup_soldier.png / PASS
+     “맞아. 무슨 일이 생길지 모르니까 떨어지지 마.”
+244. 구간 15 / 원문 760줄 / 이름=덕키 / ID=rubber_duck / 표정=웃는 얼굴 / 얼굴=assets/dialog/expressions/smile/rubber_duck.webp / PASS
+     “좋아! 이번엔 진짜 탈출이다!”
+245. 구간 15 / 원문 762줄 / 이름=피코 / ID=clown_doll / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/clown_doll.png / PASS
+     “그 말 또 했다.”
+246. 구간 15 / 원문 764줄 / 이름=덕키 / ID=rubber_duck / 표정=기본 표정 / 얼굴=assets/dialog/expressions/normal/rubber_duck.png / PASS
+     “아!!”
