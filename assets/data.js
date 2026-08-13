@@ -1545,6 +1545,27 @@ window.TOY_DATA={
     "mouse": "assets/stage2/mouse.png",
     "bulldozer": "assets/stage2/bulldozer.png"
   },
+  "stage3mobs": {
+    "bear_idle": "assets/factory3/monsters/bear_idle.png",
+    "bear_footL": "assets/factory3/monsters/bear_footL.png",
+    "bear_footR": "assets/factory3/monsters/bear_footR.png",
+    "bigbear_idle": "assets/factory3/monsters/bigbear_footR.png",
+    "bigbear_footL": "assets/factory3/monsters/bigbear_footL.png",
+    "bigbear_footR": "assets/factory3/monsters/bigbear_footR.png",
+    "throwbot_idle": "assets/factory3/monsters/throwbot_idle.png",
+    "throwbot_throw": "assets/factory3/monsters/throwbot_throw.png",
+    "soldier_idle": "assets/factory3/monsters/soldier_idle.png",
+    "soldier_attack": "assets/factory3/monsters/soldier_attack.png",
+    "healbot": "assets/factory3/monsters/healbot.png",
+    "onearm": "assets/factory3/monsters/onearm.png",
+    "boss3_idle": "assets/factory3/monsters/boss_pose3.png",
+    "boss3_attack": "assets/factory3/monsters/boss_pose1.png",
+    "boss3_walk1": "assets/factory3/monsters/boss_walk1.png",
+    "boss3_walk2": "assets/factory3/monsters/boss_walk2.png",
+    "midboss3_idle": "assets/factory3/monsters/midboss_idle.png",
+    "midboss3_walkL": "assets/factory3/monsters/midboss_walkL.png",
+    "midboss3_walkR": "assets/factory3/monsters/midboss_walkR.png"
+  },
   "boomerangFx": [
     "assets/boomerang/1.png",
     "assets/boomerang/2.png",
