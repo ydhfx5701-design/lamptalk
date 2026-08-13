@@ -4,7 +4,7 @@
   'use strict';
 
   const VERSION='20260810-25';
-  const MAP_PATHS=['assets/factory_escape/map1.png','assets/factory_escape/map2.png','assets/factory_escape/map3.png'];
+  const MAP_PATH='assets/factory_escape/factory_combined.png';
   const CHAR_BY_NAME={기어:'windup_soldier',미유:'plush_cat',우디:'wooden_puppet',덕키:'rubber_duck',페이퍼:'paper_robot',피코:'clown_doll',랜슬롯:'toy_knight'};
   const FACTORY_TYPES=['greenbot','bluebot','redbot','mouse'];
   const isFactory=()=>selectedMode==='escape'&&selectedStage===2||!!(G&&G.mode==='escape'&&G.stage===2);
@@ -77,69 +77,71 @@
     },
     stripImage(im){
       const w=im.naturalWidth||im.width,h=im.naturalHeight||im.height,cv=document.createElement('canvas');cv.width=w;cv.height=h;
-      const c=cv.getContext('2d',{willReadFrequently:true});c.drawImage(im,0,0,w,h);const id=c.getImageData(0,0,w,h),a=id.data,lum=new Uint8Array(w*h);
-      for(let i=0,j=0;i<a.length;i+=4,j++){const l=(a[i]*3+a[i+1]*4+a[i+2])/8;lum[j]=l;a[i+3]=l<23?0:l<34?Math.round((l-23)/11*255):255;}
-      c.putImageData(id,0,0);return{canvas:cv,lum,w,h};
+      const c=cv.getContext('2d',{willReadFrequently:true});c.drawImage(im,0,0,w,h);const id=c.getImageData(0,0,w,h),a=id.data,lum=new Uint8Array(w*h),alpha=new Uint8Array(w*h);
+      for(let i=0,j=0;i<a.length;i+=4,j++){const l=(a[i]*3+a[i+1]*4+a[i+2])/8;lum[j]=l;const av=l<23?0:l<34?Math.round((l-23)/11*255):255;a[i+3]=av;alpha[j]=av;}
+      c.putImageData(id,0,0);return{canvas:cv,lum,alpha,w,h};
     },
     bake(){
       if(this.active&&ESCAPE.baked&&ESCAPE.factory)return;
-      const s=3,raw=MAP_PATHS.map(p=>IMG[p]).map((im,i)=>{if(!im||!im.complete||!im.naturalWidth)throw new Error(`factory map not ready: ${MAP_PATHS[i]}`);return this.stripImage(im);});
-      const m2={id:'m2',...raw[1],x:0,y:4200,s};
-      const connectorX=m2.x+m2.w*s,lowerConnectorY=m2.y+1225*s,upperConnectorY=m2.y+165*s;
-      const m1={id:'m1',...raw[0],x:connectorX,y:lowerConnectorY-380*s,s};
-      const m3={id:'m3',...raw[2],x:connectorX,y:upperConnectorY-380*s,s};
-      this.parts=[m1,m2,m3];
-      // 세 PNG의 통로 끝점을 정확히 맞대어 사용한다. 예전의 갈색 캡슐형 임시
-      // 연결판은 원본 맵을 가리고 충돌 모양도 달라서 완전히 제거했다.
+      const s=4.3,im=IMG[MAP_PATH];
+      if(!im||!im.complete||!im.naturalWidth)throw new Error(`factory map not ready: ${MAP_PATH}`);
+      const raw=this.stripImage(im);
+      const m1={id:'m1',...raw,x:0,y:0,s};
+      this.parts=[m1];
+      // 새 맵은 방/보스방이 전부 하나로 이어진 단일 원화 이미지라 예전처럼
+      // 세 조각을 잇는 연결판/브릿지가 필요 없다.
       this.bridges=[];
-      const minX=Math.max(0,Math.min(...this.parts.map(p=>p.x))),minY=Math.min(...this.parts.map(p=>p.y)),maxX=Math.min(WORLD,Math.max(...this.parts.map(p=>p.x+p.w*s))),maxY=Math.max(...this.parts.map(p=>p.y+p.h*s));
+      const minX=0,minY=0,maxX=Math.min(WORLD,m1.w*s),maxY=m1.h*s;
       ESCAPE.factory=true;ESCAPE.baked=true;ESCAPE.mapCanvas=null;ESCAPE.sourceCanvas=null;ESCAPE.mapLeft=minX;ESCAPE.mapTop=minY;ESCAPE.mapW=maxX-minX;ESCAPE.mapH=maxY-minY;
       ESCAPE.map2TopY=minY;ESCAPE.map2W=ESCAPE.mapW;ESCAPE.map2H=ESCAPE.mapH;ESCAPE.map1W=0;ESCAPE.map1H=0;ESCAPE.map2BotY=maxY;ESCAPE.map1TopY=maxY;
       this.points={
-        start:this.local(m1,1240,385),room2:this.local(m1,995,385),room4:this.local(m1,535,175),room5:this.local(m1,485,585),bulldozerTrigger:this.local(m1,165,485),
-        transferLow:this.local(m2,690,1215),arena:this.local(m2,380,690),transferHigh:this.local(m2,690,175),room9:this.local(m3,205,380),
-        // 최종보스 트리거는 교차로가 아니라 타원형 보스방 입구 안쪽이다.
-        finalLock:this.local(m3,845,380),finalDevice:this.local(m3,940,380),exit:this.local(m3,1280,380)
+        start:this.local(m1,1215,780),room2:this.local(m1,1035,775),room4:this.local(m1,785,695),room5:this.local(m1,545,865),bulldozerTrigger:this.local(m1,430,775),
+        transferLow:this.local(m1,250,600),arena:this.local(m1,250,485),transferHigh:this.local(m1,250,180),room9:this.local(m1,600,190),
+        finalLock:this.local(m1,1030,190),finalDevice:this.local(m1,1150,195),exit:this.local(m1,1235,195)
       };
       ESCAPE.cx=this.points.start.x;ESCAPE.startY=this.points.start.y;
       this.buildGrid();this.installDoors();this.loadDialogue();this.active=true;
     },
     local(part,x,y){return{x:part.x+x*part.s,y:part.y+y*part.s};},
     samplePart(part,x,y){
+      // 실제로 눈에 보이는 불투명한 바닥일 때만 걸을 수 있게 한다. 렌더링에
+      // 쓰는 alpha와 같은 기준을 써서, 화면엔 검은 배경인데 이동은 되는
+      // 어긋남(보이지 않는 구멍)이 생기지 않게 막는다.
       const sx=(x-part.x)/part.s,sy=(y-part.y)/part.s;if(sx<0||sy<0||sx>=part.w||sy>=part.h)return 0;
       const ix=Math.max(0,Math.min(part.w-1,Math.round(sx))),iy=Math.max(0,Math.min(part.h-1,Math.round(sy))),r=3;
-      let sum=0,n=0,max=0;for(let oy=-r;oy<=r;oy+=3)for(let ox=-r;ox<=r;ox+=3){const xx=Math.max(0,Math.min(part.w-1,ix+ox)),yy=Math.max(0,Math.min(part.h-1,iy+oy)),v=part.lum[yy*part.w+xx];sum+=v;n++;if(v>max)max=v;}
-      return sum/n>=28&&max>=35?1:0;
+      let sum=0,n=0,min=255;for(let oy=-r;oy<=r;oy+=3)for(let ox=-r;ox<=r;ox+=3){const xx=Math.max(0,Math.min(part.w-1,ix+ox)),yy=Math.max(0,Math.min(part.h-1,iy+oy)),v=part.alpha[yy*part.w+xx];sum+=v;n++;if(v<min)min=v;}
+      return sum/n>=200&&min>=120?1:0;
     },
     pointBridgeWalkable(){return false;},
     buildGrid(){
       const cell=24,ox=0,oy=Math.max(0,ESCAPE.mapTop-120),gw=Math.ceil(WORLD/cell),gh=Math.ceil((ESCAPE.mapTop+ESCAPE.mapH+120-oy)/cell),grid=new Uint8Array(gw*gh);
       ESCAPE.gridCell=cell;ESCAPE.gridOX=ox;ESCAPE.gridOY=oy;ESCAPE.gridW=gw;ESCAPE.gridH=gh;
       for(let gy=0;gy<gh;gy++)for(let gx=0;gx<gw;gx++){const x=ox+(gx+.5)*cell,y=oy+(gy+.5)*cell;grid[gy*gw+gx]=this.parts.some(p=>this.samplePart(p,x,y))?1:0;}
-      for(let pass=0;pass<2;pass++){
+      // 안티에일리어싱 잡음만 메우고, 그림에 실제로 없는 통로를 이어붙이지
+      // 않도록 8칸 전부 걸을 수 있을 때만 구멍을 채운다(진짜 틈은 그대로 막힘).
+      {
         const src=grid.slice();for(let gy=1;gy<gh-1;gy++)for(let gx=1;gx<gw-1;gx++){
           let n=0;for(let oy2=-1;oy2<=1;oy2++)for(let ox2=-1;ox2<=1;ox2++)if(ox2||oy2)n+=src[(gy+oy2)*gw+gx+ox2];
-          const i=gy*gw+gx;if(!src[i]&&n>=6)grid[i]=1;else if(src[i]&&n<=1)grid[i]=0;
+          const i=gy*gw+gx;if(!src[i]&&n>=8)grid[i]=1;else if(src[i]&&n<=1)grid[i]=0;
         }
       }
       ESCAPE.grid=grid;
     },
     installDoors(){
-      const p=this.parts.find(x=>x.id==='m1'),p2=this.parts.find(x=>x.id==='m2'),p3=this.parts.find(x=>x.id==='m3');
+      const p=this.parts.find(x=>x.id==='m1');
       this.doors=[
         // 아래 길이는 안전한 초깃값이며, 생성 직후 실제 통로의 양쪽 벽까지 자동으로 맞춘다.
-        // 3번과 4번은 같은 태엽장치 방이므로 그 사이를 막는 별도 문은 두지 않는다.
-        this.door('firstBack',this.local(p,820,385),Math.PI/2,450,false,'첫 습격 후방문'),
-        this.door('firstFront',this.local(p,1120,385),Math.PI/2,450,false,'첫 습격 전방문'),
-        this.door('door_room4_to_room5',this.local(p,610,545),Math.PI/2,405,true,'4번→5번 입구'),
-        this.door('door_room5_to_room6',this.local(p,280,585),Math.PI/2,405,true,'5번→6번 출구'),
-        this.door('door_room6_to_arena',this.local(p,55,380),Math.PI/2,405,true,'6번→7·8번 출구'),
-        this.door('arenaLow',this.local(p2,380,905),0,345,false,'투기장 하부 태엽문'),
-        this.door('arenaHigh',this.local(p2,380,505),0,345,false,'투기장 상부 태엽문'),
-        this.door('room9Back',this.local(p3,65,380),Math.PI/2,330,false,'9번 구역 후방문'),
-        this.door('room9Front',this.local(p3,340,380),Math.PI/2,330,false,'9번 구역 전방문'),
-        this.door('finalBack',this.local(p3,810,380),Math.PI/2,345,false,'최종 구역 후방문'),
-        this.door('final',this.local(p3,1205,380),Math.PI/2,345,true,'최종 셔터 태엽문')
+        this.door('firstFront',this.local(p,1130,778),Math.PI/2,180,false,'첫 습격 전방문'),
+        this.door('firstBack',this.local(p,930,775),Math.PI/2,180,false,'첫 습격 후방문'),
+        this.door('door_room4_to_room5',this.local(p,654.65,776.05),Math.PI/2,180,true,'4번→5번 입구'),
+        this.door('door_room5_to_room6',this.local(p,476.05,776.16),Math.PI/2,180,true,'5번→6번 출구'),
+        this.door('door_room6_to_arena',this.local(p,249.07,619.53),0,180,true,'6번→7·8번 출구'),
+        this.door('arenaLow',this.local(p,239.77,592.93),0,180,false,'투기장 하부 태엽문'),
+        this.door('arenaHigh',this.local(p,250,183),0,180,false,'투기장 상부 태엽문'),
+        this.door('room9Back',this.local(p,348.8,181.4),Math.PI/2,180,false,'9번 구역 후방문'),
+        this.door('room9Front',this.local(p,625.6,181.4),Math.PI/2,180,false,'9번 구역 전방문'),
+        this.door('finalBack',this.local(p,950,192),Math.PI/2,180,false,'최종 구역 후방문'),
+        this.door('final',this.local(p,1244.2,195),Math.PI/2,180,true,'최종 셔터 태엽문')
       ];
       for(const d of this.doors)this.fitDoorToPassage(d);
       ESCAPE.gateA=this.byDoor('door_room4_to_room5');ESCAPE.gateB=this.byDoor('door_room5_to_room6');ESCAPE.gateC=this.byDoor('door_room6_to_arena');ESCAPE.gateD=null;
@@ -792,14 +794,14 @@
     window.__TOY_TEST__.factoryMapJoinAudit=async()=>{
       const old={selectedMode,selectedStage,selectedParty,selectedWeapon,selected,selectedDiff};selectedMode='escape';selectedStage=2;selectedParty=3;selectedWeapon='nerf';selectedDiff='normal';selected=0;
       startGame(CHAR_ORDER[selected]);await F.loadDialogue();ESCAPE.advanceDialogue(true);stopGameLoop();
-      const m1=F.parts.find(p=>p.id==='m1'),m2=F.parts.find(p=>p.id==='m2'),m3=F.parts.find(p=>p.id==='m3'),joinX=m2.x+m2.w*m2.s;
-      const joins={bridgeCount:F.bridges.length,partCount:F.parts.length,lowerEdgeGap:Math.abs(m1.x-joinX),upperEdgeGap:Math.abs(m3.x-joinX)};
+      // 새 맵은 3장을 잇는 대신 하나의 원화 이미지를 그대로 쓰므로 이음매 자체가 없다.
+      const joins={bridgeCount:F.bridges.length,partCount:F.parts.length};
       const A='door_room4_to_room5',B='door_room5_to_room6',C='door_room6_to_arena';F.lockDoors([A,B,C]);F.openDoors([A]);
       const path=F.buildGuidancePath(F.points.room4,F.points.room5)||[],start=path[0]||null,end=path[path.length-1]||null,room5=F.nearestWalkable(F.points.room5.x,F.points.room5.y);
       const guidance={count:path.length,mostlyDown:!!start&&!!end&&end.y>start.y+120,allWalkable:path.every(p=>F.cellAt(p.x,p.y)===1&&!F.blocked(p.x,p.y,8)),endDistance:end?Math.hypot(end.x-room5.x,end.y-room5.y):Infinity};
       const routeLocks={room4Open:!F.byDoor(A).locked,room5ExitLocked:F.byDoor(B).locked,room6ExitLocked:F.byDoor(C).locked};
       home();selectedMode=old.selectedMode;selectedStage=old.selectedStage;selectedParty=old.selectedParty;selectedWeapon=old.selectedWeapon;selectedDiff=old.selectedDiff;selected=old.selected;
-      return{joins,guidance,routeLocks,pass:joins.bridgeCount===0&&joins.partCount===3&&joins.lowerEdgeGap<.01&&joins.upperEdgeGap<.01&&guidance.count>2&&guidance.mostlyDown&&guidance.allWalkable&&guidance.endDistance<2&&routeLocks.room4Open&&routeLocks.room5ExitLocked&&routeLocks.room6ExitLocked};
+      return{joins,guidance,routeLocks,pass:joins.bridgeCount===0&&joins.partCount===1&&guidance.count>2&&guidance.mostlyDown&&guidance.allWalkable&&guidance.endDistance<2&&routeLocks.room4Open&&routeLocks.room5ExitLocked&&routeLocks.room6ExitLocked};
     };
     window.__TOY_TEST__.factoryFinalBossAudit=async()=>{
       const old={selectedMode,selectedStage,selectedParty,selectedWeapon,selected,selectedDiff};selectedMode='escape';selectedStage=2;selectedParty=3;selectedWeapon='nerf';selectedDiff='normal';selected=0;

@@ -53,7 +53,6 @@
     hammer:item('수호 해머','weapon','A+',WPN_IMG+'hammer.webp','넓은 범위를 내려찍고 일반 적을 기절시키는 해머.',{displayScale:.88}),
     revolver:item('장난감 리볼버','weapon','A+','assets/v2weapons/revolver.png','강한 단발 화력을 가진 장난감 리볼버. 정확하고 묵직한 한 발로 적을 빠르게 정리한다.',{displayScale:.86,price:1800,currency:'gem'}),
     shotgun:item('장난감 샷건','weapon','A','assets/v2weapons/shotgun.png','넓게 퍼지는 산탄으로 전방의 적을 시원하게 쓸어버리는 장난감 샷건. 근거리일수록 더욱 강력하다.',{displayScale:.86,price:1600,currency:'gem'}),
-    mechammer:item('부스터 메카 해머','weapon','A+','assets/v2weapons/mechammer.png','부스터 힘으로 강하게 내려찍는 중량형 메카 해머. 충격파와 넉백으로 다수의 적을 한 번에 밀어낸다.',{displayScale:.84,price:1900,currency:'gem'}),
     red_moon:item('레드 문','weapon','A+','assets/v2weapons/red_moon.png','붉은 검기를 뿜어내는 강력한 상위 검. 장난감 칼보다 긴 사거리와 높은 공격력을 가지며 정확한 타이밍에는 적의 공격을 패링할 수 있다.',{displayScale:.84,price:2000,currency:'gem'})
   };
   const TB_ALL=Object.assign({},TB_ITEM_CATALOG,TB_WEAPON_CATALOG);
@@ -66,7 +65,7 @@
     {id:'package',name:'패키지',items:[]},
     {id:'currency',name:'재화',items:['gold_box']},
     {id:'equipment',name:'장비',items:['toy_helmet','windup_armor','toy_gloves','spring_shoes','lucky_badge','windup_necklace']},
-    {id:'weapon',name:'무기',items:['revolver','shotgun','mechammer','red_moon']},
+    {id:'weapon',name:'무기',items:['revolver','shotgun','red_moon']},
     {id:'material',name:'재료',items:['char_shard','weapon_part','pet_shard','toy_part','precision_gear','orbit_core','flight_core','explosion_core','fire_core','power_core','enhancement_stone','awakening_fragment','promotion_screw','awaken_core']},
     {id:'box',name:'상자',items:['gold_box','part_box','char_box','weapon_box','equipment_box','orbit_box','premium_parts_box']},
     {id:'normal',name:'일반',items:['revive_ticket','repair_kit','lucky_ticket']}
@@ -97,6 +96,9 @@
     saveData.equipment=saveData.equipment||{};
     saveData.purchaseRecords=saveData.purchaseRecords||{};
     saveData.settings=saveData.settings||{};
+    /* 메카해머는 더 이상 사용하지 않는 무기다 — 예전 빌드에서 이미 지급/구매되어 저장된 기존 세이브도
+       정리해서 인벤토리/장착창에 다시 나타나지 않게 한다 */
+    if(saveData.weapons.mechammer)delete saveData.weapons.mechammer;
     Object.keys(TB_ITEM_CATALOG).forEach(id=>{if(!Number.isFinite(+saveData.inventory[id]))saveData.inventory[id]=0;else saveData.inventory[id]=Math.max(0,Math.floor(+saveData.inventory[id]));});
     Object.keys(TB_WEAPON_CATALOG).forEach(id=>{
       if(!saveData.weapons[id])saveData.weapons[id]=defaultManagedState();

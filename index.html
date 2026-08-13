@@ -761,7 +761,7 @@
   addEventListener('orientationchange',()=>{setTimeout(resize,80);setTimeout(resize,400);},{passive:true});
 
   function uniqueAssetPaths(){
-    const out=new Set(['assets/ui/main.webp','assets/ui/select.webp','assets/icons2/weapon.png','assets/icons2/shop.png','assets/icons2/settings.png','assets/icons2/nut.png','assets/icons2/map.png','assets/icons2/inventory.png','assets/icons2/gem.png','assets/icons2/coin.png','assets/escape/map1.png','assets/escape/map2.png','assets/escape/windup.png','assets/factory_escape/map1.png','assets/factory_escape/map2.png','assets/factory_escape/map3.png',...Object.values(DATA.weapons),...DATA.pillbug,...Object.values(DATA.items||{}),...Object.values(PROP_PATHS),...Object.values(TOYBOX_PATHS),...Object.values(FACTORY_PATHS),...Object.values(PUZZLE_PATHS),...Object.values(FACTORY2_PATHS),...Object.values(PUZZLE2B_PATHS),...Object.values(ROBOTBOSS2_PATHS)]);
+    const out=new Set(['assets/ui/main.webp','assets/ui/select.webp','assets/icons2/weapon.png','assets/icons2/shop.png','assets/icons2/settings.png','assets/icons2/nut.png','assets/icons2/map.png','assets/icons2/inventory.png','assets/icons2/gem.png','assets/icons2/coin.png','assets/escape/jungle_combined.png','assets/escape/windup.png','assets/factory_escape/factory_combined.png',...Object.values(DATA.weapons),...DATA.pillbug,...Object.values(DATA.items||{}),...Object.values(PROP_PATHS),...Object.values(TOYBOX_PATHS),...Object.values(FACTORY_PATHS),...Object.values(PUZZLE_PATHS),...Object.values(FACTORY2_PATHS),...Object.values(PUZZLE2B_PATHS),...Object.values(ROBOTBOSS2_PATHS)]);
     Object.values(DATA.characters).forEach(c=>{out.add(c.smile);Object.values(c.directions).forEach(d=>out.add(d.file));});
     Object.values(DATA.v2characters||{}).forEach(c=>{out.add(c.portrait);c.frames.forEach(p=>out.add(p));});
     Object.values(DATA.portraits||{}).forEach(p=>out.add(p));
@@ -798,7 +798,7 @@
     tone(freq,dur=.08,type='sine',vol=.12,slide=0){this.unlock();const t=this.ctx.currentTime,o=this.ctx.createOscillator(),g=this.ctx.createGain();o.type=type;o.frequency.setValueAtTime(freq,t);if(slide)o.frequency.exponentialRampToValueAtTime(Math.max(35,freq+slide),t+dur);g.gain.setValueAtTime(vol,t);g.gain.exponentialRampToValueAtTime(.001,t+dur);o.connect(g);g.connect(this.master);o.start(t);o.stop(t+dur);},
     noise(dur=.08,vol=.08,freq=1400){this.unlock();const n=Math.max(1,Math.floor(this.ctx.sampleRate*dur)),b=this.ctx.createBuffer(1,n,this.ctx.sampleRate),v=b.getChannelData(0);for(let i=0;i<n;i++)v[i]=(Math.random()*2-1)*(1-i/n);const s=this.ctx.createBufferSource(),f=this.ctx.createBiquadFilter(),g=this.ctx.createGain();s.buffer=b;f.type='bandpass';f.frequency.value=freq;f.Q.value=.7;g.gain.value=vol;s.connect(f);f.connect(g);g.connect(this.master);s.start();},
     engine(on){this.unlock();if(on&&!this.engineOsc){const o=this.ctx.createOscillator(),g=this.ctx.createGain();o.type='sawtooth';o.frequency.value=78;g.gain.value=.11;o.connect(g);g.connect(this.master);o.start();this.engineOsc=o;this.engineGain=g;}else if(!on&&this.engineOsc){const o=this.engineOsc,g=this.engineGain,t=this.ctx.currentTime;g.gain.exponentialRampToValueAtTime(.001,t+.16);o.stop(t+.18);this.engineOsc=this.engineGain=null;}},
-    sfx(k,spatial=1){const v=clamp(spatial,0,1),vols={nerf:1.02,bubble:.92,spring:1.08,spear:1.02,sword:1.04,red_moon:1.10,parry:1.08,hammer:1.12,revolver:1.10,shotgun:1.14,mechammer:1.16,death:.92,click:.90},dur={nerf:.30,bubble:.30,spring:.78,spear:.82,sword:.48,red_moon:.48,parry:.48,hammer:.78,revolver:.68,shotgun:.34,mechammer:.82,death:.62,click:.24};if(k==='click'&&!this.buffers.click&&DATA.sfx?.click){const a=new Audio(DATA.sfx.click);a.volume=.9*this.sfxVol;a.play().catch(()=>{});return;}if(this.sample(k,(vols[k]||.95)*v,dur[k]||.72))return;if(k==='nerf'){this.tone(185,.065,'square',.34*v,95);this.noise(.055,.24*v,1700);}else if(k==='revolver'){this.tone(118,.095,'square',.42*v,-58);this.noise(.085,.36*v,1900);this.tone(760,.032,'triangle',.16*v,-250);}else if(k==='shotgun'){this.tone(82,.135,'square',.46*v,-38);this.noise(.14,.43*v,1150);this.noise(.075,.22*v,3200);}else if(k==='water'){this.tone(720,.14,'sine',.36*v,-460);this.noise(.12,.28*v,2300);}else if(k==='bubble'){this.tone(420,.14,'sine',.31*v,260);}else if(k==='spring'){this.tone(145,.22,'triangle',.36*v,430);}else if(k==='mechammer'){this.tone(155,.12,'sawtooth',.18*v,260);setTimeout(()=>{this.tone(54,.24,'square',.48*v,-20);this.noise(.18,.44*v,520);},75);}else if(k==='hammer'){this.tone(72,.20,'square',.42*v,-32);this.noise(.14,.34*v,430);}else if(k==='parry'){this.tone(1180,.07,'square',.29*v,-230);this.tone(690,.13,'triangle',.24*v,-250);this.noise(.10,.27*v,3600);}else if(k==='spear'||k==='sword'||k==='red_moon'){this.noise(.13,.37*v,k==='spear'?1900:2500);}else if(k==='hit'){this.noise(.045,.17*v,1100);this.tone(220,.045,'triangle',.13*v,-80);}else if(k==='death'){this.tone(92,.15,'square',.34*v,-50);this.noise(.13,.38*v,650);}else if(k==='click'){this.tone(520,.035,'square',.16*v,170);}else if(k==='chest'){this.tone(520,.1,'sine',.32*v,280);setTimeout(()=>this.tone(880,.16,'sine',.25*v,-100),80);}else if(k==='carHit'){this.tone(72,.11,'square',.32*v,-20);this.noise(.10,.34*v,500);}else if(k==='boss'||k==='rhino'){this.tone(k==='rhino'?72:58,.38,'sawtooth',.31*v,-15);}else if(k==='hurt'){this.tone(130,.11,'square',.27*v,-50);}}
+    sfx(k,spatial=1){const v=clamp(spatial,0,1),vols={nerf:1.02,bubble:.92,spring:1.08,spear:1.02,sword:1.04,red_moon:1.10,parry:1.08,hammer:1.12,revolver:1.10,shotgun:1.14,mechammer:1.16,death:.92,click:.90},dur={nerf:.30,bubble:.30,spring:.78,spear:.82,sword:.48,red_moon:.75,parry:.48,hammer:.78,revolver:.68,shotgun:.34,mechammer:.82,death:.62,click:.24},offs={red_moon:.08};if(k==='click'&&!this.buffers.click&&DATA.sfx?.click){const a=new Audio(DATA.sfx.click);a.volume=.9*this.sfxVol;a.play().catch(()=>{});return;}if(this.sample(k,(vols[k]||.95)*v,dur[k]||.72,offs[k]||0))return;if(k==='nerf'){this.tone(185,.065,'square',.34*v,95);this.noise(.055,.24*v,1700);}else if(k==='revolver'){this.tone(118,.095,'square',.42*v,-58);this.noise(.085,.36*v,1900);this.tone(760,.032,'triangle',.16*v,-250);}else if(k==='shotgun'){this.tone(82,.135,'square',.46*v,-38);this.noise(.14,.43*v,1150);this.noise(.075,.22*v,3200);}else if(k==='water'){this.tone(720,.14,'sine',.36*v,-460);this.noise(.12,.28*v,2300);}else if(k==='bubble'){this.tone(420,.14,'sine',.31*v,260);}else if(k==='spring'){this.tone(145,.22,'triangle',.36*v,430);}else if(k==='mechammer'){this.tone(155,.12,'sawtooth',.18*v,260);setTimeout(()=>{this.tone(54,.24,'square',.48*v,-20);this.noise(.18,.44*v,520);},75);}else if(k==='hammer'){this.tone(72,.20,'square',.42*v,-32);this.noise(.14,.34*v,430);}else if(k==='parry'){this.tone(1180,.07,'square',.29*v,-230);this.tone(690,.13,'triangle',.24*v,-250);this.noise(.10,.27*v,3600);}else if(k==='spear'||k==='sword'||k==='red_moon'){this.noise(.13,.37*v,k==='spear'?1900:2500);}else if(k==='hit'){this.noise(.045,.17*v,1100);this.tone(220,.045,'triangle',.13*v,-80);}else if(k==='death'){this.tone(92,.15,'square',.34*v,-50);this.noise(.13,.38*v,650);}else if(k==='click'){this.tone(520,.035,'square',.16*v,170);}else if(k==='chest'){this.tone(520,.1,'sine',.32*v,280);setTimeout(()=>this.tone(880,.16,'sine',.25*v,-100),80);}else if(k==='carHit'){this.tone(72,.11,'square',.32*v,-20);this.noise(.10,.34*v,500);}else if(k==='boss'||k==='rhino'){this.tone(k==='rhino'?72:58,.38,'sawtooth',.31*v,-15);}else if(k==='hurt'){this.tone(130,.11,'square',.27*v,-50);}}
   };
   window.__toyAudio=AudioMgr;
   let __audioColdStarted=false;
@@ -2054,9 +2054,15 @@
     }
   }
   /* ==================== 탈출 모드 — 장난감 밀림 (스테이지1 전용) ==================== */
-  const ESCAPE_SCALE=5, ESCAPE_TYPES=['pillbug','croc','hippo','fly'], ESCAPE_WORLD_H=14100;
-  let escapeImg1=new Image(),escapeImg2=new Image();
-  escapeImg1.src='assets/escape/map1.png';escapeImg2.src='assets/escape/map2.png';
+  const ESCAPE_SCALE=6, ESCAPE_TYPES=['pillbug','croc','hippo','fly'], ESCAPE_WORLD_H=14100;
+  /* 신규 합본 이미지(장난감 밀림 탈출맵.png)는 기존 map1(768x1376)+map2(768x1376) 두 장을 이어붙였던 것을
+     하나의 새 세로 일러스트(1024x1536)로 다시 그린 것이다. 기존 이벤트 좌표는 전부 "map1/map2 각각의
+     원본 픽셀 오프셋"으로 정의돼 있으므로, 새 이미지의 세로 절반(768px)을 각각 옛 map2/map1 자리로 보고
+     JUNGLE_OFF=768/1376 비율로 그 오프셋들을 그대로 축소 적용한다 — 이벤트 순서/의미는 100% 그대로 유지,
+     좌표만 새 이미지 크기에 맞게 정규화(normalized coordinate) 재배치. */
+  const JUNGLE_OFF=768/1376;
+  let escapeImgCombined=new Image();
+  escapeImgCombined.src='assets/escape/jungle_combined.png';
   IMG['escape_windup']=new Image();IMG['escape_windup'].src='assets/escape/windup.png';
   const ESCAPE={
     baked:false,mapCanvas:null,sourceCanvas:null,grid:null,gridCell:30,gridW:0,gridH:0,gridOX:0,gridOY:0,mapLeft:0,
@@ -2069,30 +2075,29 @@
     finalRouteState:null,finalRouteHistory:[],finalRouteErrors:[],
     bake(){
       if(this.baked)return;
-      const s=ESCAPE_SCALE;
-      const i1=IMG['assets/escape/map1.png']||escapeImg1,i2=IMG['assets/escape/map2.png']||escapeImg2;
-      const sw1=i1.naturalWidth||768,sh1=i1.naturalHeight||1376,sw2=i2.naturalWidth||768,sh2=i2.naturalHeight||1376;
-      this.map1W=Math.round(sw1*s);this.map1H=Math.round(sh1*s);
-      this.map2W=Math.round(sw2*s);this.map2H=Math.round(sh2*s);
+      const s=ESCAPE_SCALE,o=JUNGLE_OFF;
+      const im=IMG['assets/escape/jungle_combined.png']||escapeImgCombined;
+      const sw=im.naturalWidth||1024,sh=im.naturalHeight||1536,halfH=sh/2;
+      this.map1W=Math.round(sw*s);this.map1H=Math.round(halfH*s);
+      this.map2W=Math.round(sw*s);this.map2H=Math.round(halfH*s);
       this.cx=WORLD/2;
       this.map2TopY=120;
       this.map2BotY=this.map2TopY+this.map2H;
       this.map1TopY=this.map2BotY;
       this.mapLeft=Math.round(this.cx-Math.max(this.map1W,this.map2W)/2);
-      this.startY=this.map1TopY+1295*s;
-      this.ambush1Y=this.map1TopY+785*s;
-      this.midbossY=this.map1TopY+355*s;
-      this.gateAY=this.map1TopY+145*s;
-      this.gateBY=this.map2TopY+1220*s;
-      this.ambush2Y=this.map2TopY+1000*s;
-      this.midDefenseY=this.map2TopY+690*s;
-      this.ambush3Y=this.map2TopY+410*s;
-      this.gateCY=this.map2TopY+225*s;
-      this.finalbossY=this.map2TopY+88*s;
-      const cv=document.createElement('canvas');cv.width=Math.max(sw1,sw2);cv.height=sh2+sh1;
+      this.startY=this.map1TopY+1295*o*s;
+      this.ambush1Y=this.map1TopY+785*o*s;
+      this.midbossY=this.map1TopY+355*o*s;
+      this.gateAY=this.map1TopY+145*o*s;
+      this.gateBY=this.map2TopY+1220*o*s;
+      this.ambush2Y=this.map2TopY+1000*o*s;
+      this.midDefenseY=this.map2TopY+690*o*s;
+      this.ambush3Y=this.map2TopY+410*o*s;
+      this.gateCY=this.map2TopY+225*o*s;
+      this.finalbossY=this.map2TopY+88*o*s;
+      const cv=document.createElement('canvas');cv.width=sw;cv.height=sh;
       const g=cv.getContext('2d',{willReadFrequently:true});
-      g.drawImage(i2,(cv.width-sw2)/2,0,sw2,sh2);
-      g.drawImage(i1,(cv.width-sw1)/2,sh2,sw1,sh1);
+      g.drawImage(im,0,0,sw,sh);
       this.sourceCanvas=cv;this.mapCanvas=null;
       this.buildGrid();
       this.baked=true;
@@ -2148,7 +2153,7 @@
     dropFinalDevice(){
       if(this.device||this.finalRouteState!=='SNAKE_DEFEATED')return false;
       const dp=this.findSpawnNear(G.p.x,G.p.y,90,260)||this.nearestWalkable(this.cx,this.finalbossY+150);
-      this.gateD=this.makeGate(this.map2TopY+18*ESCAPE_SCALE,'최종 탈출문');
+      this.gateD=this.makeGate(this.map2TopY+18*JUNGLE_OFF*ESCAPE_SCALE,'최종 탈출문');
       this.device={x:dp.x,y:dp.y,gate:this.gateD,armed:false,final:true};
       this.setFinalRouteState('FINAL_DEVICE_DROPPED');return true;
     },
@@ -2487,7 +2492,7 @@
       $('#escapeAlertFlash').classList.add('show');setTimeout(()=>$('#escapeAlertFlash').classList.remove('show'),1800);
     },
     drawMapLayer(g){
-      const i1=IMG['assets/escape/map1.png']||escapeImg1,i2=IMG['assets/escape/map2.png']||escapeImg2;
+      const im=IMG['assets/escape/jungle_combined.png']||escapeImgCombined;
       /* 세로로 긴 탈출맵 전체를 매 프레임 확대 그리면 iPhone GPU 대역폭과 발열이 크게
          증가한다. 카메라에 실제로 보이는 원본 픽셀만 잘라서 그린다. */
       const pad=120,viewL=cam.x-W/2-pad,viewT=cam.y-H/2-pad,viewR=cam.x+W/2+pad,viewB=cam.y+H/2+pad;
@@ -2498,8 +2503,7 @@
         const sx=(l-dx)/dw*im.naturalWidth,sy=(t-dy)/dh*im.naturalHeight,sw=(r-l)/dw*im.naturalWidth,sh=(b-t)/dh*im.naturalHeight;
         g.drawImage(im,sx,sy,sw,sh,l,t,r-l,b-t);
       };
-      drawVisible(i2,this.cx-this.map2W/2,this.map2TopY,this.map2W,this.map2H);
-      drawVisible(i1,this.cx-this.map1W/2,this.map1TopY,this.map1W,this.map1H);
+      drawVisible(im,this.cx-this.map1W/2,this.map2TopY,this.map1W,this.map1H+this.map2H);
     },
     pausedForStory(){return !!(this.dialogue||this.warning);},
     beginDialogue(lines,onDone,skippable=true){
