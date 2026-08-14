@@ -786,6 +786,7 @@
     Object.values(DATA.stage2mobs||{}).forEach(p=>out.add(p));
     Object.values(DATA.stage3mobs||{}).forEach(p=>out.add(p));
     Object.values(FACTORY3_PATHS).forEach(p=>out.add(p));
+    Object.values(FACTORY3B_PATHS).forEach(p=>out.add(p));
     (DATA.boomerangFx||[]).forEach(p=>out.add(p));
     Object.values(DATA.hitfx||{}).forEach(arr=>arr.forEach(p=>out.add(p)));
     (DATA.littlefireIdle||[]).forEach(p=>out.add(p));(DATA.littlefireAttack||[]).forEach(p=>out.add(p));if(DATA.tank)out.add(DATA.tank);(DATA.spintopFrames||[]).forEach(p=>out.add(p));(DATA.spintopFrag||[]).forEach(p=>out.add(p));(DATA.bluebotFrag||[]).forEach(p=>out.add(p));(DATA.yoyoFrames||[]).forEach(p=>out.add(p));(DATA.swordFx2||[]).forEach(p=>out.add(p));(DATA.redMoonFx||[]).forEach(p=>out.add(p));(DATA.mechaHammerFx||[]).forEach(p=>out.add(p));(DATA.shotgunFx||[]).forEach(p=>out.add(p));
@@ -2157,6 +2158,134 @@
     }
   }
 
+  /* ---------------- 스테이지3 · 부품창고 무한생존/유랑쿠키 전용 맵(쿠키수호맵과 다른 베이스 이미지) ----------------
+     쿠키수호 맵(factory3)과 동일하게 검은 영역=절대 통과 불가를 raster로 판정해 벽 원을 깐다.
+     이 베이스 이미지는 정사각형이 아니라 1200x896 비율이라 스케일/오프셋만 따로 잡는다. */
+  const FACTORY3B_PATHS={
+    base:'assets/factory3b/base.png',
+    obs_cart:'assets/factory3b/obs_cart.png', obs_toolbox:'assets/factory3b/obs_toolbox.png',
+    obs_opencase:'assets/factory3b/obs_opencase.png', obs_box1:'assets/factory3b/obs_box1.png', obs_box2:'assets/factory3b/obs_box2.png',
+  };
+  const FACTORY3B_SCALE=2.6, FACTORY3B_IMGW=1200, FACTORY3B_IMGH=896;
+  const FACTORY3B_OFFX=CORE.x-FACTORY3B_IMGW/2*FACTORY3B_SCALE, FACTORY3B_OFFY=CORE.y-FACTORY3B_IMGH/2*FACTORY3B_SCALE;
+  const FACTORY3B_IMGCACHE={}, FACTORY3B_SHAPEGRID={}, FACTORY3B_CELL=36, FACTORY3B_CELLR=FACTORY3B_CELL*0.72;
+  let FACTORY3B_WALK=null, FACTORY3B_WCELL=30, FACTORY3B_WGW=0, FACTORY3B_WGH=0;
+  function buildFactory3bWalkGrid(im){
+    const cv=document.createElement('canvas'); cv.width=im.naturalWidth||im.width; cv.height=im.naturalHeight||im.height;
+    const g=cv.getContext('2d',{willReadFrequently:true}); g.drawImage(im,0,0);
+    const iw=cv.width, ih=cv.height, data=g.getImageData(0,0,iw,ih).data;
+    const cell=FACTORY3B_WCELL, gw=Math.ceil(WORLD/cell), gh=gw;
+    const grid=new Uint8Array(gw*gh);
+    const lumAt=(ix,iy)=>{const i=((iy|0)*iw+(ix|0))*4;return (data[i]*3+data[i+1]*4+data[i+2])/8;};
+    for(let gy=0;gy<gh;gy++)for(let gx=0;gx<gw;gx++){
+      const wx=(gx+.5)*cell, wy=(gy+.5)*cell;
+      const ix=(wx-FACTORY3B_OFFX)/FACTORY3B_SCALE, iy=(wy-FACTORY3B_OFFY)/FACTORY3B_SCALE;
+      if(ix<3||iy<3||ix>=iw-3||iy>=ih-3){ continue; }
+      let maxLum=0;
+      for(let oy=-3;oy<=3;oy+=2)for(let ox=-3;ox<=3;ox+=2){const l=lumAt(ix+ox,iy+oy);if(l>maxLum)maxLum=l;}
+      if(maxLum>=48) grid[gy*gw+gx]=1;
+    }
+    FACTORY3B_WGW=gw; FACTORY3B_WGH=gh; return grid;
+  }
+  function insideFactory3bArea(x,y,margin=0){
+    if(!FACTORY3B_WALK) return true;
+    const cell=FACTORY3B_WCELL, gx=Math.floor(x/cell), gy=Math.floor(y/cell);
+    if(gx<0||gy<0||gx>=FACTORY3B_WGW||gy>=FACTORY3B_WGH) return false;
+    if(!FACTORY3B_WALK[gy*FACTORY3B_WGW+gx]) return false;
+    if(margin>0){
+      const steps=8;
+      for(let i=0;i<steps;i++){
+        const a=i/steps*TAU, sx=x+Math.cos(a)*margin, sy=y+Math.sin(a)*margin;
+        const sgx=Math.floor(sx/cell), sgy=Math.floor(sy/cell);
+        if(sgx<0||sgy<0||sgx>=FACTORY3B_WGW||sgy>=FACTORY3B_WGH||!FACTORY3B_WALK[sgy*FACTORY3B_WGW+sgx]) return false;
+      }
+    }
+    return true;
+  }
+  function nearestFactory3bSpot(x,y){
+    if(insideFactory3bArea(x,y,20)) return {x,y};
+    const cell=FACTORY3B_WCELL, gx0=Math.floor(x/cell), gy0=Math.floor(y/cell);
+    for(let rad=1;rad<40;rad++)for(let dy=-rad;dy<=rad;dy++)for(let dx=-rad;dx<=rad;dx++){
+      if(Math.abs(dx)!==rad&&Math.abs(dy)!==rad) continue;
+      const gx=gx0+dx, gy=gy0+dy; if(gx<0||gy<0||gx>=FACTORY3B_WGW||gy>=FACTORY3B_WGH) continue;
+      if(!FACTORY3B_WALK[gy*FACTORY3B_WGW+gx]) continue;
+      const wx=(gx+.5)*cell, wy=(gy+.5)*cell;
+      if(insideFactory3bArea(wx,wy,20)) return {x:wx,y:wy};
+    }
+    return {x:CORE.x,y:CORE.y};
+  }
+  function ensureFactory3bProcessed(){
+    for(const k of ['obs_cart','obs_toolbox','obs_opencase','obs_box1','obs_box2']){
+      if(FACTORY3B_IMGCACHE[k]) continue;
+      const im=IMG[FACTORY3B_PATHS[k]]; if(im&&im.complete){ FACTORY3B_IMGCACHE[k]=stripDarkBg(im); FACTORY3B_SHAPEGRID[k]=buildShapeGrid(FACTORY3B_IMGCACHE[k],FACTORY3B_CELL); }
+    }
+  }
+  let factory3bBaked=null, _ogFactory3b=null, _ogwFactory3b=0, FACTORY3B_OBJS=[];
+  function bakeFactory3b(){
+    const baseIm=IMG[FACTORY3B_PATHS.base];
+    if(!baseIm||!baseIm.complete) return;
+    ensureFactory3bProcessed();
+    FACTORY3B_WALK=buildFactory3bWalkGrid(baseIm);
+    const COLS3B=[];
+    const cell=FACTORY3B_WCELL, wallR=cell*0.72;
+    for(let gy=0;gy<FACTORY3B_WGH;gy++)for(let gx=0;gx<FACTORY3B_WGW;gx++){
+      if(FACTORY3B_WALK[gy*FACTORY3B_WGW+gx]) continue;
+      let touchesWalk=false;
+      for(const[dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
+        const nx=gx+dx,ny=gy+dy; if(nx<0||ny<0||nx>=FACTORY3B_WGW||ny>=FACTORY3B_WGH) continue;
+        if(FACTORY3B_WALK[ny*FACTORY3B_WGW+nx]){ touchesWalk=true; break; }
+      }
+      if(touchesWalk) COLS3B.push({x:(gx+.5)*cell,y:(gy+.5)*cell,r:wallR,id:'wall'});
+    }
+    const R=seedRand(48231);
+    FACTORY3B_OBJS=[];
+    // 맵이 좁은 편이라 소형~중형 장애물 위주, 너무 촘촘하지 않게 개수도 적게 잡는다.
+    const queue=[
+      {k:'obs_cart',targetW:150},{k:'obs_cart',targetW:135},
+      {k:'obs_toolbox',targetW:110},{k:'obs_toolbox',targetW:100},
+      {k:'obs_opencase',targetW:150},{k:'obs_opencase',targetW:135},
+      {k:'obs_box1',targetW:95},{k:'obs_box1',targetW:85},
+      {k:'obs_box2',targetW:130},{k:'obs_box2',targetW:118},
+    ];
+    queue.sort(()=>R()-.5);
+    const centerHalf=300;
+    for(const q of queue){
+      let tries=0, ok=false, x=0,y=0,rot=0, cir=null;
+      const im=IMG[FACTORY3B_PATHS[q.k]], nativeW=(im&&im.complete&&im.naturalWidth)?im.naturalWidth:1024, ar=(im&&im.complete&&im.width)?im.height/im.width:.67;
+      const grid=FACTORY3B_SHAPEGRID[q.k], scale=q.targetW/nativeW;
+      do{
+        tries++;
+        const ang=R()*TAU, rr=380+R()*880;
+        x=CORE.x+Math.cos(ang)*rr; y=CORE.y+Math.sin(ang)*rr;
+        rot=Math.floor(R()*4)*(Math.PI/2);
+        cir = grid ? shapeGridCircles(x,y,scale,rot,grid,FACTORY3B_CELLR) : coverCircles(x,y,q.targetW,q.targetW*ar,rot);
+        const insideAll=cir.every(c=>insideFactory3bArea(c.x,c.y,24));
+        const clearCenter=Math.abs(x-CORE.x)>centerHalf||Math.abs(y-CORE.y)>centerHalf;
+        ok = insideAll && clearCenter && !cir.some(c=>COLS3B.some(o=>o.id!=='wall'&&Math.hypot(o.x-c.x,o.y-c.y)<o.r+c.r+70));
+      }while(!ok && tries<50);
+      if(!ok) continue;
+      const id=FACTORY3B_OBJS.length;
+      FACTORY3B_OBJS.push({k:q.k,x,y,rot,scale,ar});
+      for(const c of cir){ c.id=id+40000; COLS3B.push(c); }
+    }
+    const built=buildObsGridGeneric(COLS3B);
+    _ogFactory3b=built.og; _ogwFactory3b=built.ogw;
+    factory3bBaked=document.createElement('canvas');
+    factory3bBaked.width=WORLD; factory3bBaked.height=WORLD;
+    const g=factory3bBaked.getContext('2d');
+    g.imageSmoothingEnabled=true; g.imageSmoothingQuality='high';
+    g.fillStyle='#08090b'; g.fillRect(0,0,WORLD,WORLD);
+    g.drawImage(baseIm,FACTORY3B_OFFX,FACTORY3B_OFFY,FACTORY3B_IMGW*FACTORY3B_SCALE,FACTORY3B_IMGH*FACTORY3B_SCALE);
+    for(const o of FACTORY3B_OBJS.slice().sort((a,b)=>a.y-b.y)){
+      const im=FACTORY3B_IMGCACHE[o.k]||IMG[FACTORY3B_PATHS[o.k]]; if(!im) continue;
+      const nativeW=im.width||im.naturalWidth||1024;
+      g.save(); g.translate(o.x,o.y); g.rotate(o.rot);
+      const s=nativeW*o.scale, hh=s*o.ar;
+      g.drawImage(im,-s/2,-hh/2,s,hh);
+      g.restore();
+    }
+  }
+
   /* ---------------- 스테이지2 · 무한생존/움직이는 쿠키 전용 맵 — 원형 톱니 경기장(제공 이미지 그대로, 타일링 없음) ---------------- */
   const PUZZLE2B_PATHS={
     base:'assets/puzzle2b/arena_floor.png', center_gear:'assets/puzzle2b/center_gear.png',
@@ -2246,6 +2375,9 @@
     }else if(stage===3&&mode==='defense'){
       if(!factory3Baked) bakeFactory3();
       mapBaked=factory3Baked; _og=_ogFactory3; _ogw=_ogwFactory3; riverActive=false;
+    }else if(stage===3){
+      if(!factory3bBaked) bakeFactory3b();
+      mapBaked=factory3bBaked; _og=_ogFactory3b; _ogw=_ogwFactory3b; riverActive=false;
     }else if(mode!=='defense'){
       if(!PUZZLE_SYS.state.mapBaked) PUZZLE_SYS.bake(55211,'#7a8a72',true);
       mapBaked=PUZZLE_SYS.state.mapBaked; _og=PUZZLE_SYS.state.og; _ogw=PUZZLE_SYS.state.ogw; riverActive=false;
@@ -2967,7 +3099,7 @@
   }
   let nextFighterEntityId=1;
   function makeFighter(char,x,y,isPlayer=false,weapon=CHARS[char].weapon){const rs=buildRuntimeStats(char,isPlayer),base=CHARACTER_BASE_STATS[char],baseInterval=WEAPONS[weapon].cd,finalInterval=baseInterval*rs.cooldownMul;return{entityId:`${isPlayer?'P':'AI'}-${nextFighterEntityId++}`,x,y,r:18,char,hp:rs.maxHp,maxHp:rs.maxHp,speed:rs.speed,moveX:0,moveY:1,aim:-Math.PI/2,walk:false,weapons:[{id:weapon,lv:1,cd:rnd(.45,.10),maxCd:finalInterval,baseInterval}],xp:0,level:1,nextXp:34,invul:0,weapon,attackT:0,attackDur:.1,attackWeapon:weapon,lock:null,lockT:0,scanT:0,dead:false,respawnT:0,isPlayer,baseStats:base,runtimeStats:rs,attackMul:rs.attackMul,crit:rs.crit,critMul:1.75,armor:rs.armor,pickup:rs.pickup,cooldownMul:rs.cooldownMul,incomingMul:1,weaponDamage:1,weaponRange:1,weaponCd:1,extraShots:0,extraAttacks:0,pierce:3,burstMul:1,slow:.15,bubbleSize:1,bubbleLife:0,bubbleTrack:1,knock:1,stun:.7,bossMul:1,items:{},tempBuffs:{},flags:{},avoidT:0,avoidAngle:0,regen:0,regenT:5,attackCount:0,aiXp:0,aiNext:48,carT:0,carHitT:0,gearNextKill:30,gearBuffT:0,duckyT:30};}
-  function startGame(char){deferredRewardUIs.length=0;stopGameLoop();cancelAnimationFrame(previewRAF);state='play';showScreen(null);AudioMgr.bgm(selectedMode==='escape'?(selectedStage===2?'factoryescape':'escape'):selectedStage===1?'jungle':(selectedStage===3&&selectedMode==='defense')?'partswarehouse':'toybox');const diff=DIFFICULTIES[selectedDiff];CORE.x=WORLD/2;CORE.y=WORLD/2;CORE.vx=CORE.vy=0;CORE.maxHp=diff.core;CORE.hp=CORE.maxHp;
+  function startGame(char){deferredRewardUIs.length=0;stopGameLoop();cancelAnimationFrame(previewRAF);state='play';showScreen(null);AudioMgr.bgm(selectedMode==='escape'?(selectedStage===2?'factoryescape':'escape'):selectedStage===1?'jungle':selectedStage===3?'partswarehouse':'toybox');const diff=DIFFICULTIES[selectedDiff];CORE.x=WORLD/2;CORE.y=WORLD/2;CORE.vx=CORE.vy=0;CORE.maxHp=diff.core;CORE.hp=CORE.maxHp;
     const isEscape=selectedMode==='escape';if(isEscape){ESCAPE.bake();ESCAPE.resetRun();}
     const startX=isEscape?ESCAPE.cx:CORE.x,startY=isEscape?ESCAPE.startY:CORE.y+230;
     const p=makeFighter(char,startX,startY,true,selectedWeapon),pool=CHAR_ORDER.filter(k=>k!==char),partyN=clamp(selectedParty??3,0,3),allies=[];for(let i=0;i<partyN;i++){const ang=i/Math.max(1,partyN)*TAU-Math.PI/2,allyChar=pool[i],a=makeFighter(allyChar,startX+Math.cos(ang)*(90+i*40),startY+Math.sin(ang)*(90+i*40)+40,false,pickAllyWeapon(allyChar));a.guardAngle=ang;a.guardRadius=330+i*55;a.role=i;a.roamT=0;a.roamPhase=rnd(TAU);a.patrolBand=250+i*135;allies.push(a);}
@@ -3002,6 +3134,11 @@
     const p=nearestPartsWarehouseSpot(e.x,e.y);
     e.x=p.x; e.y=p.y;
   }
+  function clampToFactory3bArea(e){
+    if(insideFactory3bArea(e.x,e.y,(e.r||16)+6)) return;
+    const p=nearestFactory3bSpot(e.x,e.y);
+    e.x=p.x; e.y=p.y;
+  }
   function insideFactoryZone(e,x=e.x,y=e.y,pad=0){const z=e&&e.factoryZone;if(!z)return true;const m=Math.max(0,e.r||0)+pad;return x>=z.x+m&&x<=z.x+z.w-m&&y>=z.y+m&&y<=z.y+z.h-m;}
   function restoreFactoryZone(e){
     if(!(G&&G.mode==='escape'&&ESCAPE.baked&&e&&e.factoryZone)||insideFactoryZone(e))return false;
@@ -3019,6 +3156,7 @@
     if(G.stage===2&&G.mode==='defense')clampToFactory2Rect(e);
     else if(G.stage===2&&G.mode!=='escape')clampToPuzzle2bEllipse(e);
     else if(G.stage===3&&G.mode==='defense')clampToFactory3Area(e);
+    else if(G.stage===3)clampToFactory3bArea(e);
     if(restoreFactoryZone(e))return;
     if(G&&G.mode==='escape'&&ESCAPE.baked&&ESCAPE.blocked(e.x,e.y,e.r)){
       const sx=Number(e.factorySafeX),sy=Number(e.factorySafeY);
@@ -3039,6 +3177,7 @@
     if(G&&G.stage===2&&G.mode==='defense')clampToFactory2Rect(e);
     else if(G&&G.stage===2&&G.mode!=='escape')clampToPuzzle2bEllipse(e);
     else if(G&&G.stage===3&&G.mode==='defense')clampToFactory3Area(e);
+    else if(G&&G.stage===3)clampToFactory3bArea(e);
     else if(restoreFactoryZone(e)){}
     else if(G&&G.mode==='escape'&&ESCAPE.baked&&ESCAPE.blocked(e.x,e.y,e.r)){
       const sx=Number(e.factorySafeX),sy=Number(e.factorySafeY),safe=Number.isFinite(sx)&&Number.isFinite(sy)&&!ESCAPE.blocked(sx,sy,e.r);
@@ -3529,6 +3668,7 @@
       if(G.stage===2&&G.mode==='defense'&&!insideFactory2Rect(x,y,60)) continue;
       if(G.stage===2&&G.mode!=='defense'&&!insidePuzzle2bEllipse(x,y,60)) continue;
       if(G.stage===3&&G.mode==='defense'&&!insidePartsWarehouseArea(x,y,60)) continue;
+      if(G.stage===3&&G.mode!=='defense'&&!insideFactory3bArea(x,y,60)) continue;
       if(blockedAt(x,y,34)) continue;
       return {x,y};
     }
@@ -3543,6 +3683,10 @@
     if(G.stage===3&&G.mode==='defense'){                 // 부품창고 안쪽 가장자리에서 스폰(완전 실패 시)
       const a=Math.random()*TAU, rr=760+Math.random()*680;
       return nearestPartsWarehouseSpot(CORE.x+Math.cos(a)*rr, CORE.y+Math.sin(a)*rr);
+    }
+    if(G.stage===3&&G.mode!=='defense'){                 // 부품창고(무한생존/유랑쿠키) 안쪽 가장자리에서 스폰(완전 실패 시)
+      const a=Math.random()*TAU, rr=380+Math.random()*640;
+      return nearestFactory3bSpot(CORE.x+Math.cos(a)*rr, CORE.y+Math.sin(a)*rr);
     }
     const a=Math.random()*TAU, rad=ring+rnd(180,40);   // 26번 실패하면 예전 방식으로
     return pushOutOfWater({x:clamp(pl.x+Math.cos(a)*rad,40,WORLD-40),y:clamp(pl.y+Math.sin(a)*rad,40,WORLD-40)},40);
@@ -3659,7 +3803,7 @@
 
   function updateWave(dt){G.waveT+=dt;G.spawnT-=dt;const stage2=G.stage===2,stage3=G.stage===3;if(stage2&&G.wave>=4&&(G.wave-4)%6===0&&G.spintopLastWave!==G.wave&&G.waveT>2.0&&!G.arena&&!G.bossIntro){G.spintopLastWave=G.wave;spawnSpintopSwarm();}if(G.wave>=8&&(G.wave-8)%8===0&&G.rhinoLastWave!==G.wave&&!G.rhino&&G.waveT>1.4&&(G.time-(G.rhinoKilledAt??-999))>100&&!G.arena&&!G.bossIntro){if(stage2)spawnBulldozer();else if(stage3)spawnBigBear();else spawnRhino();}if(G.wave===15&&!stage3&&!G.bossSpawned&&!G.bossIntro&&G.waveT>1.4){startBossIntro(stage2);}if(stage3&&G.wave===15&&!G.bossSpawned&&!G.bossIntro&&G.waveT>1.4){startBossIntro(false,'partsmid');}if(stage2&&G.wave===25&&!G.bossSpawned2&&!G.bossIntro&&G.waveT>1.4){startBossIntro(stage2,'giant');}if(stage3&&G.wave===25&&!G.bossSpawned2&&!G.bossIntro&&G.waveT>1.4){startBossIntro(false,'parts');}const bossWave=!!G.arena||!!G.bossIntro||(G.boss&&!G.boss.dead),diff=DIFFICULTIES[G.difficulty];const gap=Math.max(.19,.84-G.wave*.015)*diff.spawn*(stage2?.80:1);if(G.spawnT<=0&&!bossWave){G.spawnT=gap;let type=stage2?'bluebot':stage3?'bear':'pillbug';const r=Math.random();const extraBase=G.difficulty==='hard'?.38:G.difficulty==='normal'?.23:.12,extra=Math.min(.85,extraBase+G.wave*.014),extra2=Math.min(.55,Math.max(0,G.wave-12)*.020);if(stage2){if(G.wave>=7&&r<.10)type='golem';else if(G.wave>=5&&r<.25)type='mouse';else if(G.wave>=3&&r<.45)type='greenbot';else if(r<.72)type=Math.random()<.5?'bluebot':'redbot';spawnEnemy(type,rnd(TAU));if(Math.random()<extra)spawnEnemy(G.wave>=3&&Math.random()<.30?'greenbot':(Math.random()<.5?'bluebot':'redbot'),rnd(TAU));if(Math.random()<extra2)spawnEnemy(Math.random()<.5?'bluebot':'redbot',rnd(TAU));}else if(stage3){if(G.wave>=6&&r<.12)type='onearm';else if(G.wave>=4&&r<.36)type='soldier';else if(G.wave>=3&&r<.42)type='throwbot';else if(r<.55)type='bear';else type=['bear','soldier','soldier'][Math.floor(rnd(3))];spawnEnemy(type,rnd(TAU));if(Math.random()<.28)spawnEnemy('healbot',rnd(TAU));if(Math.random()<extra)spawnEnemy(['bear','soldier','soldier','onearm'][Math.floor(rnd(4))],rnd(TAU));if(Math.random()<extra2)spawnEnemy('bear',rnd(TAU));}else{if(G.wave>=7&&r<.10)type='hippo';else if(G.wave>=5&&r<.25)type='fly';else if(G.wave>=3&&r<.45)type='croc';spawnEnemy(type,rnd(TAU));if(Math.random()<extra)spawnEnemy(G.wave>=3&&Math.random()<.30?'croc':'pillbug',rnd(TAU));if(Math.random()<extra2)spawnEnemy(Math.random()<.5?'croc':'pillbug',rnd(TAU));}}if(G.waveT>=G.waveLen){G.waveT=0;G.wave++;G.spawnT=0;if(G.wave>=8&&(G.wave-8)%5===0)showToast(stage2?'중간보스의 엔진 소리가 들립니다!':stage3?'거대한 발소리가 들립니다!':'중간보스의 태엽 소리가 들립니다!',2000);else if(G.wave===15)showToast('보스 웨이브가 다가옵니다!',2300);else if(stage2&&G.wave===25)showToast('거대한 진동이 느껴집니다...',2300);else if(stage3&&G.wave===24)showToast('창고 안쪽이 조용해졌습니다...',2300);else showToast(`WAVE ${G.wave}`,1100);}}
 
-  function updateCookie(dt){if(G.mode!=='hunt')return;G.cookieMoveT-=dt;if(!G.cookieTarget&&G.cookieMoveT<=0){for(let tries=0;tries<20;tries++){let x,y;if(G.stage===2){const a=rnd(TAU),rr=Math.sqrt(Math.random());x=CORE.x+Math.cos(a)*rr*(PUZZLE2B_ELLIPSE.a-160);y=CORE.y+Math.sin(a)*rr*(PUZZLE2B_ELLIPSE.b-160);}else{const a=rnd(TAU),d=rnd(900,520);x=clamp(CORE.x+Math.cos(a)*d,300,WORLD-300);y=clamp(CORE.y+Math.sin(a)*d,300,WORLD-300);}if(!blockedAt(x,y,CORE.r+30)&&!inWater(x,y,CORE.r+40)){G.cookieTarget={x,y};showToast('🍪 쿠키가 이동합니다!',1500);break;}}G.cookieMoveT=18+rnd(9);}if(G.cookieTarget){const dx=G.cookieTarget.x-CORE.x,dy=G.cookieTarget.y-CORE.y,d=Math.hypot(dx,dy)||1,sp=Math.min(170,d*2.1);CORE.vx=dx/d*sp;CORE.vy=dy/d*sp;CORE.x+=CORE.vx*dt;CORE.y+=CORE.vy*dt;if(G.stage===2)resolveObstacle(CORE);G.anchorX=CORE.x;G.anchorY=CORE.y;if(d<12){CORE.x=G.cookieTarget.x;CORE.y=G.cookieTarget.y;CORE.vx=CORE.vy=0;G.cookieTarget=null;}}}
+  function updateCookie(dt){if(G.mode!=='hunt')return;G.cookieMoveT-=dt;if(!G.cookieTarget&&G.cookieMoveT<=0){for(let tries=0;tries<20;tries++){let x,y;if(G.stage===2){const a=rnd(TAU),rr=Math.sqrt(Math.random());x=CORE.x+Math.cos(a)*rr*(PUZZLE2B_ELLIPSE.a-160);y=CORE.y+Math.sin(a)*rr*(PUZZLE2B_ELLIPSE.b-160);}else if(G.stage===3){const a=rnd(TAU),rr=380+Math.random()*640,p=nearestFactory3bSpot(CORE.x+Math.cos(a)*rr,CORE.y+Math.sin(a)*rr);x=p.x;y=p.y;}else{const a=rnd(TAU),d=rnd(900,520);x=clamp(CORE.x+Math.cos(a)*d,300,WORLD-300);y=clamp(CORE.y+Math.sin(a)*d,300,WORLD-300);}if(!blockedAt(x,y,CORE.r+30)&&!inWater(x,y,CORE.r+40)){G.cookieTarget={x,y};showToast('🍪 쿠키가 이동합니다!',1500);break;}}G.cookieMoveT=18+rnd(9);}if(G.cookieTarget){const dx=G.cookieTarget.x-CORE.x,dy=G.cookieTarget.y-CORE.y,d=Math.hypot(dx,dy)||1,sp=Math.min(170,d*2.1);CORE.vx=dx/d*sp;CORE.vy=dy/d*sp;CORE.x+=CORE.vx*dt;CORE.y+=CORE.vy*dt;if(G.stage===2||G.stage===3)resolveObstacle(CORE);G.anchorX=CORE.x;G.anchorY=CORE.y;if(d<12){CORE.x=G.cookieTarget.x;CORE.y=G.cookieTarget.y;CORE.vx=CORE.vy=0;G.cookieTarget=null;}}}
 
   function updateEnemies(dt){for(let i=G.enemies.length-1;i>=0;i--){const e=G.enemies[i];if(e.dead){e.deadT-=dt;if(e.deadT<=0)G.enemies.splice(i,1);continue;}if(G&&G.mode==='escape'&&ESCAPE.baked&&insideFactoryZone(e,e.x,e.y)&&!ESCAPE.blocked(e.x,e.y,e.r)){e.factorySafeX=e.x;e.factorySafeY=e.y;}e.anim+=dt*(e.type==='fly'?24:e.type==='snake'?5:8);e.flash=Math.max(0,e.flash-dt);e.hitCd=Math.max(0,e.hitCd-dt);e.carHit=Math.max(0,(e.carHit||0)-dt);e.stun=Math.max(0,(e.stun||0)-dt);e.slowT=Math.max(0,(e.slowT||0)-dt);e.slowMul=e.slowT>0?e.slowMul:1;e.frozenT=Math.max(0,(e.frozenT||0)-dt);if(e.midboss){if(e.type==='bulldozer')updateBulldozer(e,dt);else if(e.type==='bigbear')updateBigBear(e,dt);else updateRhino(e,dt);continue;}if(e.boss){if(e.type==='robotboss2')updateGiantRobotBoss(e,dt);else if(e.type==='robotboss')updateRobotBoss(e,dt);else if(e.type==='boss3')updatePartsBoss(e,dt);else if(e.type==='boss3mid')updatePartsMidBoss(e,dt);else updateBoss(e,dt);continue;}if(e.type==='spintop'){updateSpintopUnit(e,dt);continue;}let guardMode=G.mode==='defense'||G.mode==='hunt',tx=guardMode?CORE.x:G.p.x,ty=guardMode?CORE.y:G.p.y,best=guardMode?380:1e9;for(const u of [G.p,...G.allies]){if(u.dead)continue;const du=Math.hypot(e.x-u.x,e.y-u.y);if(du<best){best=du;tx=u.x;ty=u.y;}}const a=Math.atan2(ty-e.y,tx-e.x);e.dir=a;if(e.stun>0){e.vx*=Math.pow(.05,dt);e.vy*=Math.pow(.05,dt);continue;}const moveSpeed=e.speed*e.slowMul;
       if(e.type==='healbot'){
