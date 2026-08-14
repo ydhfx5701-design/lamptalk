@@ -1778,6 +1778,49 @@
     STAGE3_BGCACHE[key]=c;
     return c;
   }
+  /* 좌/우 발 포즈 이미지들은 원본 캔버스 크기·여백이 서로 달라서, 캔버스 가로세로비만 맞춰서는
+     실제 캐릭터 몸통이 프레임마다 커졌다 작아졌다 하는 것처럼 보인다(포즈마다 크롭 여백이 다르므로).
+     그래서 각 이미지에서 "실제로 그려진 내용(투명이 아닌 픽셀)"의 타이트한 바운딩박스를 직접 스캔해,
+     그 내용물 높이를 기준으로 프레임마다 스케일을 보정한다 — 몸통 크기와 중심이 완전히 고정된다. */
+  function contentBBox(canvas){
+    const w=canvas.width,h=canvas.height;
+    const cctx=canvas.getContext('2d');
+    const stepX=Math.max(1,Math.floor(w/256)),stepY=Math.max(1,Math.floor(h/256));
+    const data=cctx.getImageData(0,0,w,h).data;
+    let minX=w,minY=h,maxX=-1,maxY=-1;
+    for(let y=0;y<h;y+=stepY){
+      const row=y*w;
+      for(let x=0;x<w;x+=stepX){
+        if(data[(row+x)*4+3]>16){ if(x<minX)minX=x; if(x>maxX)maxX=x; if(y<minY)minY=y; if(y>maxY)maxY=y; }
+      }
+    }
+    if(maxX<0) return {w,h,cx:w/2,cy:h/2,contentH:h};
+    return {w,h,cx:(minX+maxX)/2,cy:(minY+maxY)/2,contentH:Math.max(1,maxY-minY)};
+  }
+  const STAGE3_BODYFIT={};
+  function ensureBodyFit(family,refKey,frameKeys,refBoxW){
+    if(STAGE3_BODYFIT[family]) return STAGE3_BODYFIT[family];
+    const refIm=stage3Img(refKey);
+    if(!refIm) return null;
+    const refBox=contentBBox(refIm);
+    const fit={refContentH:refBox.contentH,targetH:refBoxW*(refBox.contentH/refIm.width),frames:{}};
+    for(const k of frameKeys){
+      const im=stage3Img(k); if(!im) continue;
+      const box=contentBBox(im);
+      fit.frames[k]={imW:im.width,imH:im.height,cx:box.cx,cy:box.cy,scale:refBox.contentH/box.contentH};
+    }
+    STAGE3_BODYFIT[family]=fit;
+    return fit;
+  }
+  function drawBodyFitFrame(ctx,family,key){
+    const fit=STAGE3_BODYFIT[family]; if(!fit) return false;
+    const f=fit.frames[key]; if(!f) return false;
+    const im=stage3Img(key); if(!im) return false;
+    const worldScale=(fit.targetH/fit.refContentH)*f.scale;
+    const w=f.imW*worldScale,h=f.imH*worldScale;
+    ctx.drawImage(im,-f.cx*worldScale,-f.cy*worldScale,w,h);
+    return true;
+  }
   const TOYBOX_IMG={};
   function toyboxReady(){
     for(const k in TOYBOX_PATHS){ const im=IMG[TOYBOX_PATHS[k]]; if(!im||!im.complete) return false; }
@@ -4061,9 +4104,17 @@
       else if(cd==='duck'){u.duckyT=(u.duckyT??30)-dt;if(u.duckyT<=0){u.duckyT=30;const heal=u.maxHp*.04;u.hp=Math.min(u.maxHp,u.hp+heal);number(u.x,u.y-30,'+'+Math.round(heal),'#7dffb0');G.effects.push({type:'duckyHealFx',x:u.x,y:u.y,t:0,life:.5,color:'#7dffb0',rad:36});}}
     }}
   function updateDrops(dt){const units=[G.p,...G.allies].filter(u=>!u.dead);for(let i=G.drops.length-1;i>=0;i--){const d=G.drops[i];d.t+=dt;let best=null,bd=1e9;for(const u of units){const dist=Math.hypot(u.x-d.x,u.y-d.y);if(dist<(u.pickup||150)&&dist<bd){bd=dist;best=u;}}if(best){const dx=best.x-d.x,dy=best.y-d.y,dist=Math.hypot(dx,dy)||1,sp=80+((best.pickup||150)-dist)*4;d.x+=dx/dist*sp*dt;d.y+=dy/dist*sp*dt;if(dist<best.r+d.r+5){G.drops.splice(i,1);if(best.isPlayer){AudioMgr.sfx('xp',.8);best.xp+=d.xp;if(best.xp>=best.nextXp)levelUp();}else grantAiXp(d.xp);}}}}
+  function insideCurrentMapArea(x,y,margin){
+    if(G.stage===2&&G.mode==='defense') return insideFactory2Rect(x,y,margin);
+    if(G.stage===2&&G.mode!=='escape') return insidePuzzle2bEllipse(x,y,margin);
+    if(G.stage===3&&G.mode==='defense') return insidePartsWarehouseArea(x,y,margin);
+    if(G.stage===3) return insideFactory3bArea(x,y,margin);
+    return true;
+  }
   function spawnChest(){
     for(let tries=0;tries<32;tries++){
       const a=rnd(TAU),d=rnd(720,360),x=clamp(G.p.x+Math.cos(a)*d,120,WORLD-120),y=clamp(G.p.y+Math.sin(a)*d,120,WORLD-120);
+      if(!insideCurrentMapArea(x,y,44)) continue;
       if(!blockedAt(x,y,34)&&!inWater(x,y,40)){G.chests.push({x,y,t:0,life:75});showToast('근처에 히든상자가 나타났습니다!',1200);return;}
     }
   }
@@ -4261,9 +4312,10 @@
       if(st==='WALK'||st==='RECOVERY')key=Math.sin(cyc)>0?'midboss3_walkL':'midboss3_walkR';
       else if(attacking)key='midboss3_walkR';
       else key='midboss3_idle';
-      const im=stage3Img(key)||stage3Img('midboss3_idle');
+      if(!stage3Img(key))key='midboss3_idle';
+      ensureBodyFit('midboss3','midboss3_idle',['midboss3_idle','midboss3_walkL','midboss3_walkR'],e.r*3.6);
       ctx.scale(e.facing>0?-1:1,1);
-      if(im){const w=e.r*3.6,h=w*(im.height/im.width);ctx.drawImage(im,-w/2,-h/2,w,h);}
+      drawBodyFitFrame(ctx,'midboss3',key);
       drawPartsBossFx(e);
     }else if(e.type==='boss3'&&DATA.stage3mobs){
       const st=e.state,attacking=/WARN|THROW|SLAM|SWEEP|ORBIT|RAIN|TRANSITION/.test(st);
@@ -4271,29 +4323,23 @@
       if(st==='WALK'||st==='RECOVERY'){const cyc=e.anim*.85;key=Math.sin(cyc)>0?'boss3_walk1':'boss3_walk2';}
       else if(attacking)key='boss3_attack';
       else key='boss3_idle';
-      const im=stage3Img(key)||stage3Img('boss3_idle');
+      if(!stage3Img(key))key='boss3_idle';
+      ensureBodyFit('boss3','boss3_idle',['boss3_idle','boss3_attack','boss3_walk1','boss3_walk2'],e.r*4.4);
       ctx.scale(e.facing>0?-1:1,1);
-      if(im){
-        const w=e.r*4.4,h=w*(im.height/im.width);
-        const shakeX=e.phase===2?Math.sin(clock*40)*1.6:0;
-        ctx.translate(shakeX,0);
-        ctx.drawImage(im,-w/2,-h/2,w,h);
-      }
+      const shakeX=e.phase===2?Math.sin(clock*40)*1.6:0;
+      ctx.translate(shakeX,0);
+      drawBodyFitFrame(ctx,'boss3',key);
       drawPartsBossFx(e);
     }else if((e.type==='bear'||e.type==='bigbear')&&DATA.stage3mobs){
-      // 두 포즈 이미지가 각각 통짜 전신 그림(다리 위치만 다름)이라, 부위별로 잘라 합성하지 않고
-      // 그대로 번갈아 보여주는 2프레임 걷기 애니메이션으로 처리한다.
-      // 프레임마다 이미지 자체의 세로/가로 비율이 살짝 달라서, 매번 그 비율로 높이를 다시 계산하면
-      // 발만 바뀌어야 할 게 몸통까지 커졌다 작아졌다 하는 것처럼 보인다 — 기준 프레임 하나의 비율로
-      // 고정해서 크기가 절대 흔들리지 않게 한다.
+      // 두 포즈 이미지가 각각 통짜 전신 그림(다리 위치만 다름)이며, 원본 캔버스 크기/여백이
+      // 서로 달라 캔버스 가로세로비만 맞춰서는 몸통이 커졌다 작아졌다 하는 것처럼 보인다.
+      // 실제 그려진 내용물(투명 아닌 픽셀)의 타이트한 박스를 기준으로 스케일을 맞춰
+      // 몸통 크기와 중심이 프레임이 바뀌어도 완전히 고정되게 한다.
       const pref=e.type,cyc=e.anim*.85,useL=Math.sin(cyc)>0;
-      const im=stage3Img(pref+(useL?'_footL':'_footR'));
-      STAGE3_ASPECT_CACHE[pref]=STAGE3_ASPECT_CACHE[pref]||(stage3Img(pref+'_footR')?stage3Img(pref+'_footR').height/stage3Img(pref+'_footR').width:1.4);
+      const key=pref+(useL?'_footL':'_footR');
+      ensureBodyFit(pref,pref+'_footR',[pref+'_footL',pref+'_footR'],e.r*3.5);
       ctx.scale(e.facing>0?-1:1,1);
-      if(im){
-        const w=e.r*3.5,h=w*STAGE3_ASPECT_CACHE[pref];
-        ctx.drawImage(im,-w/2,-h/2,w,h);
-      }
+      drawBodyFitFrame(ctx,pref,key);
     }else if((e.type==='throwbot'||e.type==='soldier')&&DATA.stage3mobs){
       const attacking=(e.atkAnimT||0)>0;
       const key=e.type+(attacking?(e.type==='throwbot'?'_throw':'_attack'):'_idle');
