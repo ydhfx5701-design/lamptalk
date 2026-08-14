@@ -1730,7 +1730,7 @@
   }
   /* 어두운 배경뿐 아니라 크림/베이지 등 임의 단색 배경도 제거한다 — 이미지 네 모서리 색을
      배경색으로 샘플링해서, 그 색과 가까운(연결된) 픽셀만 가장자리에서부터 지운다. */
-  function stripSolidBg(img,thresh=34){
+  function stripSolidBg(img,thresh=34,smooth=true){
     const c=document.createElement('canvas'); c.width=img.width; c.height=img.height;
     const g=c.getContext('2d'); g.drawImage(img,0,0);
     const id=g.getImageData(0,0,c.width,c.height), d=id.data, w=c.width, h=c.height;
@@ -1753,13 +1753,17 @@
     // 가장자리 안티에일리어싱 잔여물만 아주 살짝 정리한다. 범위를 넓게 잡으면 캐릭터 몸통의
     // 어두운 그림자/틈(예: 보스 머리 갈라진 부분)까지 함께 지워져 얼굴이 얼룩덜룩 투명해지므로,
     // 배경색과 실질적으로 거의 같은 픽셀(아주 좁은 여유)만 대상으로 한다.
-    const edgeThresh=thresh*0.6;
-    for(let i=0;i<w*h;i++){
-      if(visited[i]) continue;
-      const i4=i*4,x=i%w,y=(i/w)|0;
-      let touch=0,total=0;
-      for(const[ox,oy] of [[1,0],[-1,0],[0,1],[0,-1]]){ const nx=x+ox,ny=y+oy; if(nx<0||ny<0||nx>=w||ny>=h) continue; total++; if(visited[ny*w+nx])touch++; }
-      if(total&&touch/total>=0.5){ const r=d[i4],gg=d[i4+1],b=d[i4+2],dist=Math.abs(r-br)+Math.abs(gg-bg)+Math.abs(b-bb); if(dist<=edgeThresh) d[i4+3]=Math.round(d[i4+3]*(dist/edgeThresh));}
+    // 단, 장애물류(두꺼운 단색 테두리 일러스트)는 이 스무딩이 테두리 어두운 무늬(나무 그레인/그림자)를
+    // 배경으로 오인해 갉아먹으므로(요청: "장애물 자체를 투명배경 처리 하지마라") smooth=false로 건너뛴다.
+    if(smooth){
+      const edgeThresh=thresh*0.6;
+      for(let i=0;i<w*h;i++){
+        if(visited[i]) continue;
+        const i4=i*4,x=i%w,y=(i/w)|0;
+        let touch=0,total=0;
+        for(const[ox,oy] of [[1,0],[-1,0],[0,1],[0,-1]]){ const nx=x+ox,ny=y+oy; if(nx<0||ny<0||nx>=w||ny>=h) continue; total++; if(visited[ny*w+nx])touch++; }
+        if(total&&touch/total>=0.5){ const r=d[i4],gg=d[i4+1],b=d[i4+2],dist=Math.abs(r-br)+Math.abs(gg-bg)+Math.abs(b-bb); if(dist<=edgeThresh) d[i4+3]=Math.round(d[i4+3]*(dist/edgeThresh));}
+      }
     }
     g.putImageData(id,0,0);
     return c;
@@ -2217,7 +2221,7 @@
   function ensureFactory3bProcessed(){
     for(const k of ['obs_cart','obs_toolbox','obs_opencase','obs_box1','obs_box2']){
       if(FACTORY3B_IMGCACHE[k]) continue;
-      const im=IMG[FACTORY3B_PATHS[k]]; if(im&&im.complete){ FACTORY3B_IMGCACHE[k]=stripDarkBg(im); FACTORY3B_SHAPEGRID[k]=buildShapeGrid(FACTORY3B_IMGCACHE[k],FACTORY3B_CELL); }
+      const im=IMG[FACTORY3B_PATHS[k]]; if(im&&im.complete){ FACTORY3B_IMGCACHE[k]=stripSolidBg(im,34,false); FACTORY3B_SHAPEGRID[k]=buildShapeGrid(FACTORY3B_IMGCACHE[k],FACTORY3B_CELL); }
     }
   }
   let factory3bBaked=null, _ogFactory3b=null, _ogwFactory3b=0, FACTORY3B_OBJS=[];
