@@ -25,6 +25,8 @@ while ($listener.IsListening) {
       $bytes = [System.IO.File]::ReadAllBytes($full)
       $res.ContentType = $ct
       $res.ContentLength64 = $bytes.Length
+      $res.Headers.Add("Cache-Control", "no-store, no-cache, must-revalidate, max-age=0")
+      $res.Headers.Add("Pragma", "no-cache")
       $res.OutputStream.Write($bytes, 0, $bytes.Length)
     } else {
       $res.StatusCode = 404
