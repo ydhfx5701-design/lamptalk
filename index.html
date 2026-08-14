@@ -579,11 +579,6 @@
   let effectOpacity=1;
   try{const savedFx=localStorage.getItem('fxOpacity');if(savedFx!=null)effectOpacity=clamp(+savedFx,.1,1);}catch(_){}
   const DATA=window.TOY_DATA, IMG={}, WORLD=6400, CORE={x:3200,y:3200,r:70,maxHp:5200,hp:5200,vx:0,vy:0};
-  /* 에셋 파일을 서버에서 계속 덮어써서 배포하는 프로젝트라, 기기(특히 iOS 홈화면 PWA)가 예전 이미지
-     바이트를 계속 캐시해서 보여주는 경우가 실제로 있다. IMG 오브젝트의 key는 원본 경로 그대로 두되,
-     실제 네트워크 요청에만 버전 쿼리스트링을 붙여서 매번 새로 받아오게 강제한다. */
-  const ASSET_BUILD_VERSION='pw17-'+Date.now();
-  function versionedSrc(src){ return src+(src.includes('?')?'&':'?')+'v='+ASSET_BUILD_VERSION; }
   let W=innerWidth,H=innerHeight,DPR=1,topSafe=12,bottomSafe=10,state='loading',last=performance.now(),clock=0,selected=0,cam={x:3200,y:3200},shake=0,shakeX=0,shakeY=0;
   let G=null,loadDone=false,previewRAF=0,toastTimer=0,homeToastTimer=0,selectedMode='defense',selectedDiff='normal',selectedWeapon='nerf',selectedStage=1;
   const deferredRewardUIs=[];
@@ -802,7 +797,7 @@
   }
   async function preload(){
     const paths=uniqueAssetPaths();let n=0;
-    await Promise.all(paths.map(src=>new Promise(res=>{const im=new Image();im.onload=im.onerror=()=>{$('#loadFill').style.width=(++n/paths.length*100)+'%';res();};im.src=versionedSrc(src);IMG[src]=im;})));
+    await Promise.all(paths.map(src=>new Promise(res=>{const im=new Image();im.onload=im.onerror=()=>{$('#loadFill').style.width=(++n/paths.length*100)+'%';res();};im.src=src;IMG[src]=im;})));
     loadDone=true;setTimeout(()=>{$('#loading').classList.add('hide');state='home';AudioMgr.bgm('main');},250);
   }
 
@@ -1306,7 +1301,7 @@
   $('#sfxVol').value=clamp(Number(saveData.settings.sfxVol ?? 100),0,100);$('#sfxOut').value=$('#sfxVol').value;
   $('#resumeBtn').onclick=resumeGame;$('#quitBtn').onclick=home;$('#overHomeBtn').onclick=home;$('#againBtn').onclick=()=>startGame(CHAR_ORDER[selected]);
   const _preloadedUrls=new Set();
-  function preloadImages(urls){for(const u of urls){if(_preloadedUrls.has(u))continue;_preloadedUrls.add(u);const im=new Image();im.src=versionedSrc(u);}}
+  function preloadImages(urls){for(const u of urls){if(_preloadedUrls.has(u))continue;_preloadedUrls.add(u);const im=new Image();im.src=u;}}
   function preloadShopImages(){preloadImages(Object.values(SHOP_ITEMS).map(it=>it.image));}
   function preloadStageImages(){preloadImages(STAGES.map(st=>`assets/stages3/s${String(st.id).padStart(2,'0')}.png`));}
   function home(){stopGameLoop();state='home';AudioMgr.engine(false);G=null;if(typeof ESCAPE!=='undefined'){ESCAPE.dialogue=null;ESCAPE.warning=null;}$('#escapeStory').classList.remove('show');$('#escapeWarning').classList.remove('show');$('#escapeAlertFlash').classList.remove('show');showScreen('#home');AudioMgr.bgm('main');preloadShopImages();}
