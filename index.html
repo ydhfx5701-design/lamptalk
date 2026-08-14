@@ -2136,7 +2136,7 @@
   function ensureFactory3Processed(){
     for(const k of ['obs_organizer','obs_longshelf','obs_lshelf','obs_box','obs_box2']){
       if(FACTORY3_IMGCACHE[k]) continue;
-      const im=IMG[FACTORY3_PATHS[k]]; if(im&&im.complete){ FACTORY3_IMGCACHE[k]=stripDarkBg(im); FACTORY3_SHAPEGRID[k]=buildShapeGrid(FACTORY3_IMGCACHE[k],FACTORY3_CELL); }
+      const im=IMG[FACTORY3_PATHS[k]]; if(im&&im.complete){ FACTORY3_IMGCACHE[k]=stripSolidBg(im,34,false); FACTORY3_SHAPEGRID[k]=buildShapeGrid(FACTORY3_IMGCACHE[k],FACTORY3_CELL); }
     }
   }
   let factory3Baked=null, _ogFactory3=null, _ogwFactory3=0, FACTORY3_OBJS=[];
