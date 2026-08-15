@@ -4233,7 +4233,10 @@
 
   function drawPartsBossFx(e){
     // 보스 자체 회전/반전 트랜스폼 밖에서(월드 절대좌표로) 경고 원·궤도무기·낙하공격을 그린다.
-    ctx.save();ctx.setTransform(1,0,0,1,0,0);
+    // 주의: DPR 스케일 자체는 유지해야 한다 — identity(1,0,0,1,0,0)로 리셋하면 worldToScreen()이
+    // 돌려주는 CSS-픽셀 좌표가 DPR!=1인 기기에서 좌상단으로 압축되어, 궤도무기가 보스 중심에서
+    // 벗어난 엉뚱한 위치에 그려지는 버그가 생긴다.
+    ctx.save();ctx.setTransform(DPR,0,0,DPR,0,0);
     const st=e.state;
     if(st==='SCREW_THROW_WARN'||st==='ARM_SWEEP_WARN'||st==='LEG_SLAM_WARN'||st==='ORBIT_ATTACK_WARN'||st==='PARTS_RAIN_WARN'){
       const s=worldToScreen(e.x,e.y),pulse=(Math.sin(clock*14)+1)*.5;
